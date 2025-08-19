@@ -1,7 +1,8 @@
-#include <iostream>
+#include "CellularSimulator/App/Application.h"
 
-int main() {
-    std::cout << "Cellular Simulator started!" << std::endl;
-    std::cin.get(); 
+int main()
+{
+    CellularSimulator::App::Application App;
+    App.Run();
     return 0;
 }

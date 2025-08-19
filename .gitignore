@@ -627,3 +627,6 @@ FodyWeavers.xsd
 
 ### Build folder ###
 /build/
+
+### Project files folder ###
+.idea/
