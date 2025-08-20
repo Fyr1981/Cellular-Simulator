@@ -1,13 +1,19 @@
 #pragma once
 
-#include "CellularSimulator/Core/Simulator.h"
 #include <memory>
+#include "raylib.h"
+#include "CellularSimulator/Core/Simulator.h"
+
+struct Color; 
+struct Camera2D;
+
+class CellularSimulator::Core::GridTile;
+class CellularSimulator::Core::Simulator;
 
 namespace CellularSimulator
 {
 namespace App
 {
-class Simulator;
 
 class Application
 {
@@ -18,12 +24,21 @@ public:
     void Run();
 
 private:
+    void ProcessInput();
     void Update();
     void Draw();
+    
+    static Color GetTileColor(const Core::GridTile* Tile);
 
     int32_t WindowWidth = 1280;
     int32_t WindowHeight = 720;
-    int32_t CellSize = 5;
+    int32_t CellSize = 10;
+
+    bool bIsPaused = false;
+    int32_t UpdatesPerSecond = 10;
+    float TimeSinceLastUpdate = 0.0;
+
+    Camera2D WorldCamera;
 
     std::unique_ptr<Core::Simulator> Sim;
 };
