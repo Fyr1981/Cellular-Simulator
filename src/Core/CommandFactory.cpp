@@ -1,4 +1,5 @@
 ﻿#include "CellularSimulator/Core/CommandFactory.h"
+#include "CellularSimulator/Core/Command.h"
 
 using namespace CellularSimulator::Core;
 

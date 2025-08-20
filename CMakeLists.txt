@@ -25,11 +25,16 @@ set(CORE_HEADERS
     include/CellularSimulator/Core/Cell.h
     include/CellularSimulator/Core/GridTile.h
     include/CellularSimulator/Core/Simulator.h
+    include/CellularSimulator/Core/CellSimulatorTypes.h
+    include/CellularSimulator/Core/Command.h
+    include/CellularSimulator/Core/CommandFactory.h
+    include/CellularSimulator/Core/CommandRegistry.h
 )
 set(CORE_SOURCES
     src/Core/Cell.cpp
     src/Core/GridTile.cpp
     src/Core/Simulator.cpp
+    src/Core/CommandFactory.cpp
 )
 
 add_executable(CellularSimulator src/main.cpp)

@@ -22,7 +22,7 @@ void Simulator::Update()
     Requests.reserve(AllCells.size());
     for (auto& cell : AllCells)
     {
-        Requests.push_back({ &cell, cell.DecideNextCommand() });
+        Requests.push_back({&cell, cell.DecideNextCommand()});
     }
 
     for (const auto& request : Requests)
@@ -34,11 +34,11 @@ void Simulator::Update()
             Cmd->Execute(*this, *agent);
         }
     }
-    
-    for (GridTile CurrentTile : Grid)
+
+    /*for (GridTile CurrentTile : Grid)
     {
         CurrentTile.Update();
-    }
+    }*/
 }
 
 void Simulator::Randomize(float Density)
@@ -48,8 +48,12 @@ void Simulator::Randomize(float Density)
     {
         tile.SetCell(nullptr);
     }
+    const std::vector<std::string> availableCommands = CommandFactory::GetRegisteredCommandNames();
+   // if (availableCommands.empty()) return;
+
     std::mt19937 Rng(std::random_device{}());
     std::uniform_real_distribution<float> Dist(0.0f, 1.0f);
+    std::uniform_int_distribution<size_t> CommandIndexDist(0, availableCommands.size() - 1);
 
     for (int32_t Y = 0; Y < Height; ++Y)
     {
@@ -57,15 +61,19 @@ void Simulator::Randomize(float Density)
         {
             if (Dist(Rng) < Density)
             {
-                AllCells.emplace_back(X, Y);
-                Cell* NewCell = &AllCells.back();
-                Grid[static_cast<size_t>(Y) * Width + X].SetCell(NewCell);
+                std::vector<std::string> RandomGenome;
+              /*  RandomGenome.reserve(GenomeLength);
+                for (int i = 0; i < GenomeLength; ++i)
+                {
+                    RandomGenome.push_back(availableCommands[CommandIndexDist(Rng)]);
+                }*/
+                SpawnCell(X, Y, EDirection::North, std::move(RandomGenome));
             }
         }
     }
 }
 
-const GridTile* Simulator::GetTile(int32_t X, int32_t Y) const
+GridTile* Simulator::GetTile(int32_t X, int32_t Y)
 {
     if (X < 0 || X >= Width || Y < 0 || Y >= Height) return nullptr;
     return &Grid[static_cast<size_t>(Y) * Width + X];
@@ -79,4 +87,33 @@ int32_t Simulator::GetWidth() const
 int32_t Simulator::GetHeight() const
 {
     return Height;
+}
+
+bool Simulator::IsTileValidAndEmpty(int32_t X, int32_t Y) const
+{
+    if (X < 0 || X >= Width || Y < 0 || Y >= Height) return false;
+    const GridTile* Tile = &Grid[static_cast<size_t>(Y) * Width + X];
+    return Tile->GetCell() == nullptr;
+}
+
+void Simulator::MoveCell(Cell* Agent, int32_t NewX, int32_t NewY)
+{
+    if (!IsTileValidAndEmpty(NewX, NewY)) return;
+
+    GridTile* OldTile = &Grid[static_cast<size_t>(Agent->GetY()) * Width + Agent->GetX()];
+    OldTile->SetCell(nullptr);
+
+    GridTile* NewTile = &Grid[static_cast<size_t>(NewY) * Width + NewX];
+    NewTile->SetCell(Agent);
+    Agent->SetX(NewX);
+    Agent->SetY(NewY);
+}
+
+Cell* Simulator::SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<std::string> Genome)
+{
+    if (!IsTileValidAndEmpty(X, Y)) return nullptr;
+    Cell* NewCell = new Cell(X, Y, Direction, std::move(Genome));
+    GetTile(X, Y)->SetCell(NewCell);
+    AllCells.push_back(*NewCell);
+    return NewCell;
 }

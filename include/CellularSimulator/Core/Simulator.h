@@ -5,6 +5,11 @@
 
 #include "CommandFactory.h"
 
+namespace CellularSimulator::Core
+{
+enum class EDirection;
+}
+
 namespace CellularSimulator
 {
 namespace Core
@@ -43,7 +48,7 @@ public:
     * @param Y The y-coordinate of the tile.
     * @return A const pointer to the Tile, or nullptr if coordinates are out of bounds.
     */
-    [[nodiscard]] const GridTile* GetTile(int32_t X, int32_t Y) const;
+    [[nodiscard]] GridTile* GetTile(int32_t X, int32_t Y);
 
     /**
      * @brief Gets the width of the simulation grid.
@@ -57,6 +62,10 @@ public:
      */
     [[nodiscard]] int32_t GetHeight() const;
 
+    [[nodiscard]] bool IsTileValidAndEmpty(int32_t X, int32_t Y) const;
+    void MoveCell(Cell* Agent, int32_t NewX, int32_t NewY);
+    Cell* SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<std::string> Genome);
+
 private:
     int32_t Width = 256;
     int32_t Height = 256;
@@ -64,6 +73,8 @@ private:
     std::list<Cell> AllCells;
 
     CommandFactory CmdFactory;
+
+    int32_t GenomeLength = 16;
 };
 } // namespace Core
 } // namespace CellularSimulator

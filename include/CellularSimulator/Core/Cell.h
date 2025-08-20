@@ -25,6 +25,8 @@ public:
      * @brief Constructs a cell.
      * @param InX The x-coordinate of the cell.
      * @param InY The y-coordinate of the cell.
+     * @param InDirection The direction of the cell.
+     * @param InGenome The genome of the cell.
      */
     Cell(int32_t InX, int32_t InY, EDirection InDirection, std::vector<std::string> InGenome);
 
@@ -51,6 +53,24 @@ public:
      * @return The direction of the cell.
      */
     [[nodiscard]] EDirection GetDirection() const;
+
+    /**
+     * @brief Sets the x-coordinate of the cell.
+     * @param InX The x-coordinate of the cell.
+     */
+   void SetX(int32_t InX);
+
+   /**
+    * @brief Sets the y-coordinate of the cell.
+    * @param InY The y-coordinate of the cell.
+    */
+   void SetY(int32_t InY);
+
+    /**
+     * @brief Sets the direction of the cell.
+     * @param InDirection The direction of the cell.
+     */
+    void SetDirection(EDirection InDirection);
 
 private:
     int32_t X;

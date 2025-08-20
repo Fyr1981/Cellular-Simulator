@@ -36,3 +36,18 @@ EDirection Cell::GetDirection() const
 {
     return Direction;
 }
+
+void Cell::SetX(int32_t InX)
+{
+    X = InX;
+}
+
+void Cell::SetY(int32_t InY)
+{
+    Y = InY;
+}
+
+void Cell::SetDirection(EDirection InDirection)
+{
+    Direction = InDirection;
+}
