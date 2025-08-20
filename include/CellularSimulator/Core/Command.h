@@ -1,19 +1,11 @@
 ﻿#pragma once
 
-// Forward declarations
 namespace CellularSimulator
 {
 namespace Core
 {
 class Simulator;
 class Cell;
-}
-}
-
-namespace CellularSimulator
-{
-namespace Core
-{
 
 /**
  * @class Command

@@ -3,6 +3,8 @@
 #include <vector>
 #include <cstdint>
 
+#include "CommandFactory.h"
+
 namespace CellularSimulator
 {
 namespace Core
@@ -60,6 +62,8 @@ private:
     int32_t Height = 256;
     std::vector<GridTile> Grid;
     std::list<Cell> AllCells;
+
+    CommandFactory CmdFactory;
 };
 } // namespace Core
 } // namespace CellularSimulator

@@ -2,6 +2,7 @@
 #include <random>
 #include "CellularSimulator/Core/GridTile.h"
 #include "CellularSimulator/Core/Cell.h"
+#include "CellularSimulator/Core/Command.h"
 
 using namespace CellularSimulator::Core;
 
@@ -12,11 +13,29 @@ Simulator::Simulator(int32_t InWidth, int32_t InHeight) : Width(InWidth), Height
 
 void Simulator::Update()
 {
-    for (auto& CurrentCell : AllCells)
+    struct ActionRequest
     {
-        CurrentCell.Update();
+        Cell* Agent;
+        std::string CommandName;
+    };
+    std::vector<ActionRequest> Requests;
+    Requests.reserve(AllCells.size());
+    for (auto& cell : AllCells)
+    {
+        Requests.push_back({ &cell, cell.DecideNextCommand() });
     }
-    for (auto& CurrentTile : Grid)
+
+    for (const auto& request : Requests)
+    {
+        Cell* agent = request.Agent;
+        std::unique_ptr<Command> Cmd = CmdFactory.CreateCommand(request.CommandName);
+        if (Cmd)
+        {
+            Cmd->Execute(*this, *agent);
+        }
+    }
+    
+    for (GridTile CurrentTile : Grid)
     {
         CurrentTile.Update();
     }
