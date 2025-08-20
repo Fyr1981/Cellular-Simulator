@@ -2,58 +2,57 @@
 #include "CellularSimulator/Core/GridTile.h"
 #include "CellularSimulator/Core/Cell.h"
 #include <iostream>
-#include <thread>   
-#include <chrono>
+#include <thread>
+#include "raylib.h"
 
 using namespace CellularSimulator::App;
-using namespace CellularSimulator::Core;
 
 Application::Application()
 {
-    Sim = std::make_unique<Core::Simulator>(10, 10);
+    InitWindow(WindowWidth, WindowHeight, "Cellular Simulator");
+    SetTargetFPS(60);
+    int32_t SimWidth = WindowWidth / CellSize;
+    int32_t SimHeight = WindowHeight / CellSize;
+    Sim = std::make_unique<Core::Simulator>(SimWidth, SimHeight);
+    Sim->Randomize(0.5f);
 }
 
 Application::~Application()
 {
-}
-
-void PrintGrid(const Simulator& Sim)
-{
-    for (int32_t Y = 0; Y < Sim.GetHeight(); ++Y)
-    {
-        for (int32_t X = 0; X < Sim.GetWidth(); ++X)
-        {
-            const GridTile* Tile = Sim.GetTile(X, Y);
-            if (Tile && Tile->HasCell())
-            {
-                std::cout << "O ";
-            }
-            else
-            {
-                std::cout << ". ";
-            }
-        }
-        std::cout << '\n';
-    }
-    std::cout << "--------------------" << '\n';
+    CloseWindow();
 }
 
 void Application::Run()
 {
-    std::cout << "Starting simulation..." << '\n';
-    
-    Sim->Randomize(0.5f);
-    PrintGrid(*Sim);
-    
-    for (int i = 0; i < 100; ++i)
+    while (!WindowShouldClose())
     {
-        Sim->Update();
-        PrintGrid(*Sim);
-        std::cout << "Step: " << i + 1 << '\n';
-        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        Update();
+        Draw();
     }
-    
-    std::cout << "Simulation finished. Press Enter to exit." << '\n';
-    std::cin.get();
 }
 
+void Application::Update()
+{
+    Sim->Update();
+}
+
+void Application::Draw()
+{
+    BeginDrawing();
+    ClearBackground(RAYWHITE);
+    
+    for (int32_t y = 0; y < Sim->GetHeight(); ++y)
+    {
+        for (int32_t x = 0; x < Sim->GetWidth(); ++x)
+        {
+            const Core::GridTile* tile = Sim->GetTile(x, y);
+            if (tile && tile->HasCell())
+            {
+                DrawRectangle(x * CellSize, y * CellSize, CellSize, CellSize, BLACK);
+            }
+        }
+    }
+    DrawFPS(10, 10);
+
+    EndDrawing();
+}

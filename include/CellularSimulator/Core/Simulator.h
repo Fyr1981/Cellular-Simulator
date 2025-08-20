@@ -22,7 +22,7 @@ public:
      * @param InWidth The width of the grid.
      * @param InHeight The height of the grid.
      */
-    explicit Simulator(int InWidth, int InHeight);
+    explicit Simulator(int32_t InWidth, int32_t InHeight);
 
     /**
      * @brief Advances the entire simulation by one step.
