@@ -21,7 +21,7 @@ void DivideCommand::Execute(Simulator& Sim, Cell& Agent)
     std::uniform_real_distribution<float> MutationChance(0.0f, 1.0f);
     if (MutationChance(Rng) < 0.05f)
     {
-        const auto AvailableCommands = CommandFactory::GetRegisteredCommandNames();
+        const auto AvailableCommands = CommandManager::GetRegisteredCommandNames();
         if (!AvailableCommands.empty())
         {
             std::uniform_int_distribution<size_t> CmdIndex(0, AvailableCommands.size() - 1);
@@ -36,5 +36,5 @@ void DivideCommand::Execute(Simulator& Sim, Cell& Agent)
 
 namespace
 {
-const CommandRegistrar Registrar("Divide", MakeCommandCreator<DivideCommand>());
+const CommandRegistrar<DivideCommand> Registrar("Divide");
 }

@@ -20,18 +20,18 @@ void Simulator::Update()
     };
     std::vector<ActionRequest> Requests;
     Requests.reserve(AllCells.size());
-    for (auto& cell : AllCells)
+    for (auto& Agent : AllCells)
     {
-        Requests.push_back({&cell, cell.DecideNextCommand()});
+        Requests.push_back({&Agent, Agent.DecideNextCommand()});
     }
 
-    for (const auto& request : Requests)
+    for (const auto& Request : Requests)
     {
-        Cell* agent = request.Agent;
-        std::unique_ptr<Command> Cmd = CmdFactory.CreateCommand(request.CommandName);
+        Cell* Agent = Request.Agent;
+        Command* Cmd = CmdManager.GetCommand(Request.CommandName);
         if (Cmd)
         {
-            Cmd->Execute(*this, *agent);
+            Cmd->Execute(*this, *Agent);
         }
     }
 
@@ -40,7 +40,7 @@ void Simulator::Update()
         Agent.ConsumeEnergy(10);
     }
 
-    for (auto it = AllCells.begin(); it != AllCells.end(); )
+    for (auto it = AllCells.begin(); it != AllCells.end();)
     {
         if (!it->IsAlive())
         {
@@ -52,11 +52,6 @@ void Simulator::Update()
             ++it;
         }
     }
-
-    /*for (GridTile CurrentTile : Grid)
-    {
-        CurrentTile.Update();
-    }*/
 }
 
 void Simulator::Randomize(float Density)
@@ -66,7 +61,7 @@ void Simulator::Randomize(float Density)
     {
         tile.SetCell(nullptr);
     }
-    const std::vector<std::string> AvailableCommands = CommandFactory::GetRegisteredCommandNames();
+    const std::vector<std::string> AvailableCommands = CommandManager::GetRegisteredCommandNames();
     if (AvailableCommands.empty()) return;
 
     std::mt19937 Rng(std::random_device{}());

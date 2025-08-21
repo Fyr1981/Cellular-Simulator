@@ -13,36 +13,36 @@ enum class EGeneCommand;
 class Command;
 
 /**
- * @class CommandFactory
- * @brief Owns a registry of commands and creates them.
+ * @class CommandManager
+ * @brief Owns a registry of commands and provides access to them.
  */
-class CommandFactory
+class CommandManager
 {
 public:
-    CommandFactory() = default;
+    CommandManager() = default;
 
     /**
-     * @brief Creates a command by name.
+     * @brief Provides access to a command by name.
      * @param CommandName The name of the command.
      * @return A pointer to the created command.
      */
-    std::unique_ptr<Command> CreateCommand(std::string_view CommandName);
+    static Command* GetCommand(std::string_view CommandName);
 
     /**
      * @brief Registers a command with the factory.
      * @param CommandName The name of the command.
-     * @param CreateFn The function that creates the command.
+     * @param CommandInstance Pointer to the created command.
      */
-    static void RegisterCommand(std::string_view CommandName, std::function<std::unique_ptr<Command>()> CreateFn);
+    static void RegisterCommand(std::string_view CommandName, std::unique_ptr<Command> CommandInstance);
 
     /**
      * @brief Gets the names of all registered commands.
      * @return A vector of command names.
      */
     static std::vector<std::string> GetRegisteredCommandNames();
-    
+
 private:
-    using FactoryMap = std::unordered_map<std::string, std::function<std::unique_ptr<Command>()>>;
+    using FactoryMap = std::unordered_map<std::string, std::unique_ptr<Command>>;
     static FactoryMap& GetRegistry();
 };
 

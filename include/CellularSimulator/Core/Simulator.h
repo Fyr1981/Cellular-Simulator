@@ -2,8 +2,7 @@
 #include <list>
 #include <vector>
 #include <cstdint>
-
-#include "CommandFactory.h"
+#include "CommandManager.h"
 
 namespace CellularSimulator::Core
 {
@@ -95,7 +94,7 @@ private:
     std::vector<GridTile> Grid;
     std::list<Cell> AllCells;
 
-    CommandFactory CmdFactory;
+    CommandManager CmdManager;
 
     int32_t GenomeLength = 16;
 };

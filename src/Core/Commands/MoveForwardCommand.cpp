@@ -21,5 +21,5 @@ void MoveForwardCommand::Execute(Simulator& Sim, Cell& Agent)
 
 namespace
 {
-const CommandRegistrar Registrar("MoveForward", MakeCommandCreator<MoveForwardCommand>());
+const CommandRegistrar<MoveForwardCommand> Registrar("MoveForward");
 }

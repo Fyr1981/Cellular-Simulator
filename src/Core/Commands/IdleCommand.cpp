@@ -9,5 +9,5 @@ void IdleCommand::Execute(Simulator& Sim, Cell& Agent)
 
 namespace
 {
-const CommandRegistrar Registrar("IdleCommand", CellularSimulator::Core::MakeCommandCreator<IdleCommand>());
+const CommandRegistrar<IdleCommand> Registrar("Idle");
 }
