@@ -3,6 +3,13 @@
 #include <vector>
 #include <cstdint>
 
+#include "CommandFactory.h"
+
+namespace CellularSimulator::Core
+{
+enum class EDirection;
+}
+
 namespace CellularSimulator
 {
 namespace Core
@@ -41,7 +48,7 @@ public:
     * @param Y The y-coordinate of the tile.
     * @return A const pointer to the Tile, or nullptr if coordinates are out of bounds.
     */
-    [[nodiscard]] const GridTile* GetTile(int32_t X, int32_t Y) const;
+    [[nodiscard]] GridTile* GetTile(int32_t X, int32_t Y);
 
     /**
      * @brief Gets the width of the simulation grid.
@@ -55,11 +62,42 @@ public:
      */
     [[nodiscard]] int32_t GetHeight() const;
 
+    /**
+     * @brief Checks if the specified tile is valid and empty.
+     * @param X The x-coordinate of the tile.
+     * @param Y The y-coordinate of the tile.
+     * @return True if the tile is valid and empty, false otherwise.
+     */
+    [[nodiscard]] bool IsTileValidAndEmpty(int32_t X, int32_t Y) const;
+
+    /**
+     * @brief Moves a cell to a new location if the tile is valid and empty.
+     * @param Agent The cell to move.
+     * @param NewX The new x-coordinate of the cell.
+     * @param NewY The new y-coordinate of the cell.
+     */
+    void MoveCell(Cell* Agent, int32_t NewX, int32_t NewY);
+
+    /**
+     * @brief Spawns a new cell at the specified location.
+     * @param X The x-coordinate of the cell.
+     * @param Y The y-coordinate of the cell.
+     * @param Direction The initial direction of the cell.
+     * @param Genome The genome of the cell.
+     * @param Energy The initial energy of the cell.
+     * @return A pointer to the newly spawned cell, or nullptr if the tile is not valid or occupied.
+     */
+    Cell* SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<std::string> Genome, float Energy);
+
 private:
     int32_t Width = 256;
     int32_t Height = 256;
     std::vector<GridTile> Grid;
     std::list<Cell> AllCells;
+
+    CommandFactory CmdFactory;
+
+    int32_t GenomeLength = 16;
 };
 } // namespace Core
 } // namespace CellularSimulator

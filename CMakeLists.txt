@@ -25,11 +25,31 @@ set(CORE_HEADERS
     include/CellularSimulator/Core/Cell.h
     include/CellularSimulator/Core/GridTile.h
     include/CellularSimulator/Core/Simulator.h
+    include/CellularSimulator/Core/CellSimulatorTypes.h
+    include/CellularSimulator/Core/Command.h
+    include/CellularSimulator/Core/CommandFactory.h
+    include/CellularSimulator/Core/CommandRegistry.h
+    include/CellularSimulator/Core/Commands/IdleCommand.h
+    include/CellularSimulator/Core/Commands/PhotosynthesisCommand.h
+    include/CellularSimulator/Core/Commands/MoveForwardCommand.h
+    include/CellularSimulator/Core/Commands/TurnRightCommand.h
+    include/CellularSimulator/Core/Commands/TurnLeftCommand.h
+    include/CellularSimulator/Core/Commands/EatForwardCommand.h
+    include/CellularSimulator/Core/Commands/DivideCommand.h
 )
+
 set(CORE_SOURCES
     src/Core/Cell.cpp
     src/Core/GridTile.cpp
     src/Core/Simulator.cpp
+    src/Core/CommandFactory.cpp
+    src/Core/Commands/IdleCommand.cpp
+    src/Core/Commands/PhotosynthesisCommand.cpp
+    src/Core/Commands/MoveForwardCommand.cpp
+    src/Core/Commands/TurnRightCommand.cpp
+    src/Core/Commands/TurnLeftCommand.cpp
+    src/Core/Commands/EatForwardCommand.cpp
+    src/Core/Commands/DivideCommand.cpp
 )
 
 add_executable(CellularSimulator src/main.cpp)
