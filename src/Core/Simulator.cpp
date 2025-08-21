@@ -37,7 +37,7 @@ void Simulator::Update()
 
     for (auto& Agent : AllCells)
     {
-        Agent.ConsumeEnergy(0);
+        Agent.ConsumeEnergy(10);
     }
 
     for (auto it = AllCells.begin(); it != AllCells.end(); )
@@ -66,12 +66,12 @@ void Simulator::Randomize(float Density)
     {
         tile.SetCell(nullptr);
     }
-    const std::vector<std::string> availableCommands = CommandFactory::GetRegisteredCommandNames();
-   // if (availableCommands.empty()) return;
+    const std::vector<std::string> AvailableCommands = CommandFactory::GetRegisteredCommandNames();
+    if (AvailableCommands.empty()) return;
 
     std::mt19937 Rng(std::random_device{}());
     std::uniform_real_distribution<float> Dist(0.0f, 1.0f);
-    std::uniform_int_distribution<size_t> CommandIndexDist(0, availableCommands.size() - 1);
+    std::uniform_int_distribution<size_t> CommandIndexDist(0, AvailableCommands.size() - 1);
 
     for (int32_t Y = 0; Y < Height; ++Y)
     {
@@ -80,11 +80,11 @@ void Simulator::Randomize(float Density)
             if (Dist(Rng) < Density)
             {
                 std::vector<std::string> RandomGenome;
-              /*  RandomGenome.reserve(GenomeLength);
+                RandomGenome.reserve(GenomeLength);
                 for (int i = 0; i < GenomeLength; ++i)
                 {
-                    RandomGenome.push_back(availableCommands[CommandIndexDist(Rng)]);
-                }*/
+                    RandomGenome.push_back(AvailableCommands[CommandIndexDist(Rng)]);
+                }
                 SpawnCell(X, Y, EDirection::North, std::move(RandomGenome), 50);
             }
         }

@@ -8,7 +8,7 @@ Cell::Cell(int32_t InX, int32_t InY, EDirection InDirection, std::vector<std::st
     X(InX),
     Y(InY),
     Direction(InDirection),
-    Genome(std::move(InGenome))
+    Genome(InGenome)
 {
     SetEnergy(InEnergy);
 }
@@ -16,11 +16,9 @@ Cell::Cell(int32_t InX, int32_t InY, EDirection InDirection, std::vector<std::st
 std::string Cell::DecideNextCommand()
 {
     if (Genome.empty()) return "None";
-    if (Genome.size() < GenomePointer)
-    {
-        GenomePointer = 0;
-    }
-    return Genome[++GenomePointer];
+    const std::string& CommandName = Genome[GenomePointer];
+    GenomePointer = (GenomePointer + 1) % Genome.size();
+    return CommandName;
 }
 
 int32_t Cell::GetX() const
