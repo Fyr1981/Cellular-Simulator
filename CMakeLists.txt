@@ -31,6 +31,7 @@ set(CORE_HEADERS
     include/CellularSimulator/Core/CommandRegistry.h
     include/CellularSimulator/Core/Commands/IdleCommand.h
     include/CellularSimulator/Core/Commands/PhotosynthesisCommand.h
+    include/CellularSimulator/Core/Commands/MoveForwardCommand.h
 )
 set(CORE_SOURCES
     src/Core/Cell.cpp
@@ -39,6 +40,7 @@ set(CORE_SOURCES
     src/Core/CommandFactory.cpp
     src/Core/Commands/IdleCommand.cpp
     src/Core/Commands/PhotosynthesisCommand.cpp
+    src/Core/Commands/MoveForwardCommand.cpp
 )
 
 add_executable(CellularSimulator src/main.cpp)
