@@ -13,10 +13,10 @@ Cell::Cell(int32_t InX, int32_t InY, EDirection InDirection, std::vector<std::st
     SetEnergy(InEnergy);
 }
 
-std::string Cell::DecideNextCommand()
+std::string_view Cell::DecideNextCommand()
 {
     if (Genome.empty()) return "None";
-    const std::string& CommandName = Genome[GenomePointer];
+    std::string_view CommandName = Genome[GenomePointer];
     GenomePointer = (GenomePointer + 1) % Genome.size();
     return CommandName;
 }

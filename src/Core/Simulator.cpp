@@ -1,4 +1,6 @@
 #include "CellularSimulator/Core/Simulator.h"
+
+#include <execution>
 #include <random>
 #include "CellularSimulator/Core/GridTile.h"
 #include "CellularSimulator/Core/Cell.h"
@@ -13,17 +15,22 @@ Simulator::Simulator(int32_t InWidth, int32_t InHeight) : Width(InWidth), Height
 
 void Simulator::Update()
 {
+    std::vector<Cell*> AgentPtrs;
+    AgentPtrs.reserve(AllCells.size());
+    for (auto& Agent : AllCells)
+    {
+        AgentPtrs.push_back(&Agent);
+    }
+
     struct ActionRequest
     {
         Cell* Agent;
-        std::string CommandName;
+        std::string_view CommandName;
     };
-    std::vector<ActionRequest> Requests;
-    Requests.reserve(AllCells.size());
-    for (auto& Agent : AllCells)
-    {
-        Requests.push_back({&Agent, Agent.DecideNextCommand()});
-    }
+    std::vector<ActionRequest> Requests(AgentPtrs.size());
+
+    std::transform(std::execution::par, AgentPtrs.begin(), AgentPtrs.end(), Requests.begin(),
+        [](Cell* Agent) -> ActionRequest { return {Agent, Agent->DecideNextCommand()}; });
 
     for (const auto& Request : Requests)
     {
@@ -35,10 +42,7 @@ void Simulator::Update()
         }
     }
 
-    for (auto& Agent : AllCells)
-    {
-        Agent.ConsumeEnergy(10);
-    }
+    std::for_each(std::execution::par, AgentPtrs.begin(), AgentPtrs.end(), [](Cell* Agent) { Agent->ConsumeEnergy(1.0f); });
 
     for (auto it = AllCells.begin(); it != AllCells.end();)
     {

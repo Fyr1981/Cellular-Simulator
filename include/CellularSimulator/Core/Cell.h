@@ -35,7 +35,7 @@ public:
      * @brief Decides the next command for the cell.
      * @return The name of the current command from the genome or "None" if the genome is empty.
      */
-    std::string DecideNextCommand();
+    std::string_view DecideNextCommand();
 
     /**
      * @brief Gets the x-coordinate of the cell.
