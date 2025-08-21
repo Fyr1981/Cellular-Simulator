@@ -36,6 +36,7 @@ private:
 
     bool bIsPaused = false;
     int32_t UpdatesPerSecond = 10;
+    int32_t MaxUpdatesPerFrame = 50;
     float TimeSinceLastUpdate = 0.0;
 
     Camera2D WorldCamera;

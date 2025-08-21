@@ -89,11 +89,12 @@ void Application::Update()
 
     TimeSinceLastUpdate += GetFrameTime();
     float TimeBetweenUpdates = 1.0 / UpdatesPerSecond;
-
-    while (TimeSinceLastUpdate >= TimeBetweenUpdates)
+    int32_t UpdatesThisFrame = 0;
+    while (TimeSinceLastUpdate >= TimeBetweenUpdates && UpdatesThisFrame < MaxUpdatesPerFrame)
     {
         Sim->Update();
         TimeSinceLastUpdate -= TimeBetweenUpdates;
+        UpdatesThisFrame++;
     }
 }
 
