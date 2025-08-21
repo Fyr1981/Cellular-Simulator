@@ -23,10 +23,10 @@ public:
 
     /**
      * @brief Provides access to a command by name.
-     * @param CommandName The name of the command.
+     * @param CommandNameHash The hash of the command name.
      * @return A pointer to the created command.
      */
-    static Command* GetCommand(std::string_view CommandName);
+    static Command* GetCommand(size_t CommandNameHash);
 
     /**
      * @brief Registers a command with the factory.
@@ -39,10 +39,10 @@ public:
      * @brief Gets the names of all registered commands.
      * @return A vector of command names.
      */
-    static std::vector<std::string> GetRegisteredCommandNames();
+    static std::vector<size_t> GetRegisteredCommandNamesHashes();
 
 private:
-    using FactoryMap = std::unordered_map<std::string, std::unique_ptr<Command>>;
+    using FactoryMap = std::unordered_map<size_t, std::unique_ptr<Command>>;
     static FactoryMap& GetRegistry();
 };
 

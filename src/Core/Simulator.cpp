@@ -1,5 +1,4 @@
 #include "CellularSimulator/Core/Simulator.h"
-
 #include <execution>
 #include <random>
 #include "CellularSimulator/Core/GridTile.h"
@@ -11,81 +10,89 @@ using namespace CellularSimulator::Core;
 Simulator::Simulator(int32_t InWidth, int32_t InHeight) : Width(InWidth), Height(InHeight)
 {
     Grid.resize(static_cast<size_t>(Width) * Height);
+    const size_t MaxPopulation = static_cast<size_t>(Width) * Height;
+    CellPool.resize(MaxPopulation);
 }
 
 void Simulator::Update()
 {
-    std::vector<Cell*> AgentPtrs;
-    AgentPtrs.reserve(AllCells.size());
-    for (auto& Agent : AllCells)
+    for (auto& Tile : Grid)
     {
-        AgentPtrs.push_back(&Agent);
+        Tile.SetCell(nullptr);
     }
-
+    for (size_t i = 0; i < ActiveCellCount; ++i)
+    {
+        Cell& cell = CellPool[i];
+        GetTile(cell.GetX(), cell.GetY())->SetCell(&cell);
+    }
+    
     struct ActionRequest
     {
         Cell* Agent;
-        std::string_view CommandName;
+        size_t CommandNameHash;
     };
-    std::vector<ActionRequest> Requests(AgentPtrs.size());
 
-    std::transform(std::execution::par, AgentPtrs.begin(), AgentPtrs.end(), Requests.begin(),
-        [](Cell* Agent) -> ActionRequest { return {Agent, Agent->DecideNextCommand()}; });
+    auto FirstCellIt = CellPool.begin();
+    auto LastCellIt = CellPool.begin() + ActiveCellCount;
+
+    std::vector<ActionRequest> Requests(ActiveCellCount);
+    std::transform(std::execution::par,
+        CellPool.begin(),
+        LastCellIt,
+        Requests.begin(),
+        [](Cell& Agent) -> ActionRequest { return {&Agent, Agent.DecideNextCommand()}; });
 
     for (const auto& Request : Requests)
     {
         Cell* Agent = Request.Agent;
-        Command* Cmd = CmdManager.GetCommand(Request.CommandName);
+        Command* Cmd = CommandManager::GetCommand(Request.CommandNameHash);
         if (Cmd)
         {
             Cmd->Execute(*this, *Agent);
         }
     }
 
-    std::for_each(std::execution::par, AgentPtrs.begin(), AgentPtrs.end(), [](Cell* Agent) { Agent->ConsumeEnergy(1.0f); });
+    std::for_each(std::execution::par,
+        FirstCellIt,
+        LastCellIt,
+        [](Cell& Agent) { Agent.ConsumeEnergy(10.0f); });
 
-    for (auto it = AllCells.begin(); it != AllCells.end();)
+    for (size_t i = 0; i < ActiveCellCount; ++i)
     {
-        if (!it->IsAlive())
+        if (CellPool[i].GetEnergy() <= 0.0f)
         {
-            GetTile(it->GetX(), it->GetY())->SetCell(nullptr);
-            it = AllCells.erase(it);
-        }
-        else
-        {
-            ++it;
+            CellPool[i].SetInObjectPool(true);
         }
     }
+    auto FirstDead = std::partition(CellPool.begin(),
+        CellPool.begin() + ActiveCellCount,
+        [](const Cell& c) { return c.IsAlive(); });
+    ActiveCellCount = std::distance(CellPool.begin(), FirstDead);
 }
 
 void Simulator::Randomize(float Density)
 {
-    AllCells.clear();
-    for (auto& tile : Grid)
+    for (auto& Tile : Grid)
     {
-        tile.SetCell(nullptr);
+        Tile.SetCell(nullptr);
     }
-    const std::vector<std::string> AvailableCommands = CommandManager::GetRegisteredCommandNames();
+    const std::vector<size_t> AvailableCommands = CommandManager::GetRegisteredCommandNamesHashes();
     if (AvailableCommands.empty()) return;
-
     std::mt19937 Rng(std::random_device{}());
     std::uniform_real_distribution<float> Dist(0.0f, 1.0f);
     std::uniform_int_distribution<size_t> CommandIndexDist(0, AvailableCommands.size() - 1);
-
     for (int32_t Y = 0; Y < Height; ++Y)
     {
         for (int32_t X = 0; X < Width; ++X)
         {
-            if (Dist(Rng) < Density)
+            if (Dist(Rng) > Density) continue;
+            std::vector<std::size_t> RandomGenome;
+            RandomGenome.reserve(GenomeLength);
+            for (int i = 0; i < GenomeLength; ++i)
             {
-                std::vector<std::string> RandomGenome;
-                RandomGenome.reserve(GenomeLength);
-                for (int i = 0; i < GenomeLength; ++i)
-                {
-                    RandomGenome.push_back(AvailableCommands[CommandIndexDist(Rng)]);
-                }
-                SpawnCell(X, Y, EDirection::North, std::move(RandomGenome), 50);
+                RandomGenome.push_back(AvailableCommands[CommandIndexDist(Rng)]);
             }
+            SpawnCell(X, Y, EDirection::North, std::move(RandomGenome), 50);
         }
     }
 }
@@ -126,11 +133,12 @@ void Simulator::MoveCell(Cell* Agent, int32_t NewX, int32_t NewY)
     Agent->SetY(NewY);
 }
 
-Cell* Simulator::SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<std::string> Genome, float Energy)
+Cell* Simulator::SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, float Energy)
 {
-    if (!IsTileValidAndEmpty(X, Y)) return nullptr;
-    Cell* NewCell = new Cell(X, Y, Direction, std::move(Genome), Energy);
-    GetTile(X, Y)->SetCell(NewCell);
-    AllCells.push_back(*NewCell);
-    return NewCell;
+    if (!IsTileValidAndEmpty(X, Y) || ActiveCellCount >= CellPool.size()) return nullptr;
+    Cell& NewCell = CellPool[ActiveCellCount];
+    GetTile(X, Y)->SetCell(&NewCell);
+    NewCell.Initialize(X, Y, Direction, std::move(Genome), Energy, false);
+    ++ActiveCellCount;
+    return &NewCell;
 }

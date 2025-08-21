@@ -1,24 +1,29 @@
 #include <utility>
-
 #include "CellularSimulator/Core/Cell.h"
 
 using namespace CellularSimulator::Core;
 
-Cell::Cell(int32_t InX, int32_t InY, EDirection InDirection, std::vector<std::string> InGenome, float InEnergy) :
-    X(InX),
-    Y(InY),
-    Direction(InDirection),
-    Genome(InGenome)
+Cell::Cell(int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, float InEnergy, bool InInObjectPool)
 {
-    SetEnergy(InEnergy);
+    Initialize(InX, InY, InDirection, std::move(InGenome), InEnergy, InInObjectPool);
 }
 
-std::string_view Cell::DecideNextCommand()
+void Cell::Initialize(int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, float InEnergy, bool InInObjectPool)
 {
-    if (Genome.empty()) return "None";
-    std::string_view CommandName = Genome[GenomePointer];
+    SetX(InX);
+    SetY(InY);
+    SetDirection(InDirection);
+    SetGenome(std::move(InGenome));
+    SetEnergy(InEnergy);
+    SetInObjectPool(InInObjectPool);
+}
+
+size_t Cell::DecideNextCommand()
+{
+    if (Genome.empty()) return 0;
+    size_t CommandHash = Genome[GenomePointer];
     GenomePointer = (GenomePointer + 1) % Genome.size();
-    return CommandName;
+    return CommandHash;
 }
 
 int32_t Cell::GetX() const
@@ -46,7 +51,12 @@ bool Cell::IsAlive() const
     return Energy > 0.0f;
 }
 
-void Cell::GetGenome(std::vector<std::string>& OutGenome) const
+bool Cell::IsInObjectPool() const
+{
+    return bInsideObjectPool;
+}
+
+void Cell::GetGenome(std::vector<size_t>& OutGenome) const
 {
     OutGenome = Genome;
 }
@@ -81,4 +91,14 @@ void Cell::ConsumeEnergy(float Amount)
 void Cell::SetEnergy(float InEnergy)
 {
     Energy = std::max(0.0f, std::min(MaxEnergy, InEnergy));
+}
+
+void Cell::SetGenome(std::vector<size_t> InGenome)
+{
+    Genome = std::move(InGenome);
+}
+
+void Cell::SetInObjectPool(bool bInObjectPool)
+{
+    bInsideObjectPool = bInObjectPool;
 }

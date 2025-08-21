@@ -86,13 +86,14 @@ public:
      * @param Energy The initial energy of the cell.
      * @return A pointer to the newly spawned cell, or nullptr if the tile is not valid or occupied.
      */
-    Cell* SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<std::string> Genome, float Energy);
+    Cell* SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, float Energy);
 
 private:
     int32_t Width = 256;
     int32_t Height = 256;
     std::vector<GridTile> Grid;
-    std::list<Cell> AllCells;
+    std::vector<Cell> CellPool;
+    size_t ActiveCellCount = 0;
 
     CommandManager CmdManager;
 

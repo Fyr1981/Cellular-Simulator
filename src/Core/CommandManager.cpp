@@ -1,13 +1,14 @@
 ﻿#include "CellularSimulator/Core/CommandManager.h"
 #include "CellularSimulator/Core/Command.h"
+#include "CellularSimulator/Core/StringInterner.h"
 
 using namespace CellularSimulator::Core;
 
-Command* CommandManager::GetCommand(std::string_view CommandName)
+Command* CommandManager::GetCommand(size_t CommandNameHash)
 {
-    auto& registry = GetRegistry();
-    auto it = registry.find(std::string(CommandName));
-    if (it != registry.end())
+    auto& Registry = GetRegistry();
+    auto it = Registry.find(CommandNameHash);
+    if (it != Registry.end())
     {
         return it->second.get();
     }
@@ -16,21 +17,22 @@ Command* CommandManager::GetCommand(std::string_view CommandName)
 
 void CommandManager::RegisterCommand(std::string_view CommandName, std::unique_ptr<Command> CommandInstance)
 {
-    if (GetRegistry().find(std::string(CommandName)) == GetRegistry().end())
+    size_t Hash = StringInterner::GetInstance().Intern(CommandName);
+    if (GetRegistry().find(Hash) == GetRegistry().end())
     {
-        GetRegistry()[std::string(CommandName)] = std::move(CommandInstance);
+        GetRegistry()[Hash] = std::move(CommandInstance);
     }
 }
 
-std::vector<std::string> CommandManager::GetRegisteredCommandNames()
+std::vector<size_t> CommandManager::GetRegisteredCommandNamesHashes()
 {
-    std::vector<std::string> names;
-    names.reserve(GetRegistry().size());
+    std::vector<std::size_t> Hashes;
+    Hashes.reserve(GetRegistry().size());
     for (const auto& pair : GetRegistry())
     {
-        names.push_back(pair.first);
+        Hashes.push_back(pair.first);
     }
-    return names;
+    return Hashes;
 }
 
 CommandManager::FactoryMap& CommandManager::GetRegistry()
