@@ -22,7 +22,11 @@ size_t Cell::DecideNextCommand()
 {
     if (Genome.empty()) return 0;
     size_t CommandHash = Genome[GenomePointer];
-    GenomePointer = (GenomePointer + 1) % Genome.size();
+    GenomePointer++;
+    if (GenomePointer >= Genome.size())
+    {
+        GenomePointer = 0;
+    }
     return CommandHash;
 }
 
