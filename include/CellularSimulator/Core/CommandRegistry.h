@@ -12,8 +12,11 @@ namespace Core
 template <typename TCommand>
 std::function<std::unique_ptr<Command>()> MakeCommandCreator()
 {
-    static_assert(std::is_base_of_v<Command, TCommand>, "TCommand must derive from Command");
-    return [] { return std::make_unique<TCommand>(); };
+    static_assert(std::is_base_of_v<Command, TCommand>, "TCommand must derive from ICommand");
+    return []()
+    {
+        return std::unique_ptr<Command>(new TCommand());
+    };
 }
 
 class CommandRegistrar

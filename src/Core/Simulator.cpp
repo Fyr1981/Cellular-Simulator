@@ -35,6 +35,24 @@ void Simulator::Update()
         }
     }
 
+    for (auto& Agent : AllCells)
+    {
+        Agent.ConsumeEnergy(0);
+    }
+
+    for (auto it = AllCells.begin(); it != AllCells.end(); )
+    {
+        if (!it->IsAlive())
+        {
+            GetTile(it->GetX(), it->GetY())->SetCell(nullptr);
+            it = AllCells.erase(it);
+        }
+        else
+        {
+            ++it;
+        }
+    }
+
     /*for (GridTile CurrentTile : Grid)
     {
         CurrentTile.Update();
@@ -67,7 +85,7 @@ void Simulator::Randomize(float Density)
                 {
                     RandomGenome.push_back(availableCommands[CommandIndexDist(Rng)]);
                 }*/
-                SpawnCell(X, Y, EDirection::North, std::move(RandomGenome));
+                SpawnCell(X, Y, EDirection::North, std::move(RandomGenome), 50);
             }
         }
     }
@@ -109,10 +127,10 @@ void Simulator::MoveCell(Cell* Agent, int32_t NewX, int32_t NewY)
     Agent->SetY(NewY);
 }
 
-Cell* Simulator::SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<std::string> Genome)
+Cell* Simulator::SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<std::string> Genome, float Energy)
 {
     if (!IsTileValidAndEmpty(X, Y)) return nullptr;
-    Cell* NewCell = new Cell(X, Y, Direction, std::move(Genome));
+    Cell* NewCell = new Cell(X, Y, Direction, std::move(Genome), Energy);
     GetTile(X, Y)->SetCell(NewCell);
     AllCells.push_back(*NewCell);
     return NewCell;
