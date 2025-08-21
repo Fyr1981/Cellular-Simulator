@@ -15,5 +15,6 @@ class DivideCommand : public Command
 public:
     void Execute(Simulator& Sim, Cell& Agent) override;
 };
-} // namespace Core
-} // namespace CellularSimulator
+
+}  // namespace Core
+}  // namespace CellularSimulator

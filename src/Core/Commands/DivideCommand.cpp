@@ -17,8 +17,8 @@ void DivideCommand::Execute(Simulator& Sim, Cell& Agent)
     if (!Sim.IsTileValidAndEmpty(NextX, NextY)) return;
     std::vector<size_t> NewGenome;
     Agent.GetGenome(NewGenome);
-    std::mt19937 Rng(std::random_device{}());
     std::uniform_real_distribution<float> MutationChance(0.0f, 1.0f);
+    std::mt19937& Rng = Sim.GetRNG(); 
     if (MutationChance(Rng) < 0.05f)
     {
         const auto AvailableCommands = CommandManager::GetRegisteredCommandNamesHashes();

@@ -25,7 +25,7 @@ void Simulator::Update()
         Cell& cell = CellPool[i];
         GetTile(cell.GetX(), cell.GetY())->SetCell(&cell);
     }
-    
+
     struct ActionRequest
     {
         Cell* Agent;
@@ -36,10 +36,7 @@ void Simulator::Update()
     auto LastCellIt = CellPool.begin() + ActiveCellCount;
 
     std::vector<ActionRequest> Requests(ActiveCellCount);
-    std::transform(std::execution::par,
-        CellPool.begin(),
-        LastCellIt,
-        Requests.begin(),
+    std::transform(std::execution::par, CellPool.begin(), LastCellIt, Requests.begin(),
         [](Cell& Agent) -> ActionRequest { return {&Agent, Agent.DecideNextCommand()}; });
 
     for (const auto& Request : Requests)
@@ -52,10 +49,7 @@ void Simulator::Update()
         }
     }
 
-    std::for_each(std::execution::par,
-        FirstCellIt,
-        LastCellIt,
-        [](Cell& Agent) { Agent.ConsumeEnergy(10.0f); });
+    std::for_each(std::execution::par, FirstCellIt, LastCellIt, [](Cell& Agent) { Agent.ConsumeEnergy(10.0f); });
 
     for (size_t i = 0; i < ActiveCellCount; ++i)
     {
@@ -64,9 +58,7 @@ void Simulator::Update()
             CellPool[i].SetInObjectPool(true);
         }
     }
-    auto FirstDead = std::partition(CellPool.begin(),
-        CellPool.begin() + ActiveCellCount,
-        [](const Cell& c) { return c.IsAlive(); });
+    auto FirstDead = std::partition(CellPool.begin(), CellPool.begin() + ActiveCellCount, [](const Cell& c) { return c.IsAlive(); });
     ActiveCellCount = std::distance(CellPool.begin(), FirstDead);
 }
 
@@ -78,7 +70,7 @@ void Simulator::Randomize(float Density)
     }
     const std::vector<size_t> AvailableCommands = CommandManager::GetRegisteredCommandNamesHashes();
     if (AvailableCommands.empty()) return;
-    std::mt19937 Rng(std::random_device{}());
+    std::mt19937 Rng = GetRNG();
     std::uniform_real_distribution<float> Dist(0.0f, 1.0f);
     std::uniform_int_distribution<size_t> CommandIndexDist(0, AvailableCommands.size() - 1);
     for (int32_t Y = 0; Y < Height; ++Y)
@@ -141,4 +133,9 @@ Cell* Simulator::SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vect
     NewCell.Initialize(X, Y, Direction, std::move(Genome), Energy, false);
     ++ActiveCellCount;
     return &NewCell;
+}
+
+std::mt19937& Simulator::GetRNG()
+{
+    return RandomGenerator;
 }

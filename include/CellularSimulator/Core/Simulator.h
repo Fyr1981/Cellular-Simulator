@@ -2,6 +2,8 @@
 #include <list>
 #include <vector>
 #include <cstdint>
+#include <random>
+
 #include "CommandManager.h"
 
 namespace CellularSimulator::Core
@@ -42,11 +44,11 @@ public:
     void Randomize(float Density);
 
     /**
-    * @brief Provides read-only access to a specific tile on the grid.
-    * @param X The x-coordinate of the tile.
-    * @param Y The y-coordinate of the tile.
-    * @return A const pointer to the Tile, or nullptr if coordinates are out of bounds.
-    */
+     * @brief Provides read-only access to a specific tile on the grid.
+     * @param X The x-coordinate of the tile.
+     * @param Y The y-coordinate of the tile.
+     * @return A const pointer to the Tile, or nullptr if coordinates are out of bounds.
+     */
     [[nodiscard]] GridTile* GetTile(int32_t X, int32_t Y);
 
     /**
@@ -88,6 +90,8 @@ public:
      */
     Cell* SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, float Energy);
 
+    std::mt19937& GetRNG();
+
 private:
     int32_t Width = 256;
     int32_t Height = 256;
@@ -98,6 +102,8 @@ private:
     CommandManager CmdManager;
 
     int32_t GenomeLength = 16;
+
+    std::mt19937 RandomGenerator;
 };
-} // namespace Core
-} // namespace CellularSimulator
+}  // namespace Core
+}  // namespace CellularSimulator
