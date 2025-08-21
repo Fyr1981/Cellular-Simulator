@@ -19,4 +19,7 @@ void EatForwardCommand::Execute(Simulator& Sim, Cell& Agent)
     Agent.AddEnergy(EnergySteal);
 }
 
-const CommandRegistrar Registrar("EatForward", MakeCommandCreator<EatForwardCommand>());
+namespace
+{
+const CommandRegistrar<EatForwardCommand> Registrar("EatForward");
+}

@@ -6,10 +6,10 @@ using namespace CellularSimulator::Core;
 
 void PhotosynthesisCommand::Execute(Simulator& Sim, Cell& Agent)
 {
-    Agent.AddEnergy(20.0f); 
+    Agent.AddEnergy(20.0f);
 }
 
 namespace
 {
-const CommandRegistrar Registrar("Photosynthesis", MakeCommandCreator<PhotosynthesisCommand>());
+const CommandRegistrar<PhotosynthesisCommand> Registrar("Photosynthesis");
 }
