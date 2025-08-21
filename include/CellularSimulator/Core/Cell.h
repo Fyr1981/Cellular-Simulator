@@ -68,6 +68,12 @@ public:
     [[nodiscard]] bool IsAlive() const;
 
     /**
+     * @brief Gets the genome of the cell.
+     * @param OutGenome The genome of the cell.
+     */
+    void GetGenome(std::vector<std::string>& OutGenome) const;
+
+    /**
      * @brief Sets the x-coordinate of the cell.
      * @param InX The x-coordinate of the cell.
      */

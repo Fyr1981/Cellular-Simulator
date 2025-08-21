@@ -46,6 +46,11 @@ bool Cell::IsAlive() const
     return Energy > 0.0f;
 }
 
+void Cell::GetGenome(std::vector<std::string>& OutGenome) const
+{
+    OutGenome = Genome;
+}
+
 void Cell::SetX(int32_t InX)
 {
     X = InX;

@@ -35,6 +35,7 @@ set(CORE_HEADERS
     include/CellularSimulator/Core/Commands/TurnRightCommand.h
     include/CellularSimulator/Core/Commands/TurnLeftCommand.h
     include/CellularSimulator/Core/Commands/EatForwardCommand.h
+    include/CellularSimulator/Core/Commands/DivideCommand.h
 )
 
 set(CORE_SOURCES
@@ -48,6 +49,7 @@ set(CORE_SOURCES
     src/Core/Commands/TurnRightCommand.cpp
     src/Core/Commands/TurnLeftCommand.cpp
     src/Core/Commands/EatForwardCommand.cpp
+    src/Core/Commands/DivideCommand.cpp
 )
 
 add_executable(CellularSimulator src/main.cpp)
