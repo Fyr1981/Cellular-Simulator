@@ -34,7 +34,9 @@ set(CORE_HEADERS
     include/CellularSimulator/Core/Commands/MoveForwardCommand.h
     include/CellularSimulator/Core/Commands/TurnRightCommand.h
     include/CellularSimulator/Core/Commands/TurnLeftCommand.h
+    include/CellularSimulator/Core/Commands/EatForwardCommand.h
 )
+
 set(CORE_SOURCES
     src/Core/Cell.cpp
     src/Core/GridTile.cpp
@@ -45,6 +47,7 @@ set(CORE_SOURCES
     src/Core/Commands/MoveForwardCommand.cpp
     src/Core/Commands/TurnRightCommand.cpp
     src/Core/Commands/TurnLeftCommand.cpp
+    src/Core/Commands/EatForwardCommand.cpp
 )
 
 add_executable(CellularSimulator src/main.cpp)

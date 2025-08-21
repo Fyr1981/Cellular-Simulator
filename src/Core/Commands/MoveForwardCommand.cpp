@@ -9,25 +9,10 @@ using namespace CellularSimulator::Core;
 
 void MoveForwardCommand::Execute(Simulator& Sim, Cell& Agent)
 {
-    const int32_t CurrentX = Agent.GetX();
-    const int32_t CurrentY = Agent.GetY();
     const EDirection Direction = Agent.GetDirection();
-
-    int32_t NextX = CurrentX;
-    int32_t NextY = CurrentY;
-
-    switch (Direction)
-    {
-        case EDirection::North: NextY--;
-            break;
-        case EDirection::East: NextX++;
-            break;
-        case EDirection::South: NextY++;
-            break;
-        case EDirection::West: NextX--;
-            break;
-        case EDirection::None: break;
-    }
+    int32_t NextX;
+    int32_t NextY;
+    GetForwardXY(Direction, NextX, NextY, Agent.GetX(), Agent.GetY());
     if (Sim.IsTileValidAndEmpty(NextX, NextY))
     {
         Sim.MoveCell(&Agent, NextX, NextY);

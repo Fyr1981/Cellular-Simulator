@@ -54,5 +54,24 @@ inline EDirection TurnLeft(EDirection Direction)
     return EDirection::None;
 }
 
+inline void GetForwardXY(EDirection Direction, int32_t& OutX, int32_t& OutY, int32_t CurrentX, int32_t CurrentY)
+{
+    OutX = CurrentX;
+    OutY = CurrentY;
+
+    switch (Direction)
+    {
+        case EDirection::North: OutY--;
+        break;
+        case EDirection::East: OutX++;
+        break;
+        case EDirection::South: OutY++;
+        break;
+        case EDirection::West: OutX--;
+        break;
+        case EDirection::None: break;
+    }
+}
+
 } // namespace Core
 } // namespace CellularSimulator
