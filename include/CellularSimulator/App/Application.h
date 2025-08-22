@@ -43,6 +43,10 @@ private:
     Camera2D WorldCamera;
 
     std::unique_ptr<Core::Simulator> Sim;
+
+    std::vector<size_t> SelectedCellGenome;
+
+    bool bShouldDisplaySelectedCellGenome = false;
 };
 } // namespace App
 } // namespace CellularSimulator

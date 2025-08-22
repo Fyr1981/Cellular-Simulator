@@ -13,7 +13,6 @@ using namespace CellularSimulator::App;
 Application::Application()
 {
     InitWindow(WindowWidth, WindowHeight, "Cellular Simulator");
-    ToggleFullscreen();
     SetTargetFPS(60);
     int32_t SimWidth = 300;
     int32_t SimHeight = 300;
@@ -78,6 +77,29 @@ void Application::ProcessInput()
         WorldCamera.target = Vector2Add(WorldCamera.target, MouseDelta);
     }
 
+    if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
+    {
+        Vector2 MouseScreenPos = GetMousePosition();
+        Vector2 MouseWorldPos = GetScreenToWorld2D(MouseScreenPos, WorldCamera);
+        int32_t TileX = static_cast<int32_t>(MouseWorldPos.x / CellSize);
+        int32_t TileY = static_cast<int32_t>(MouseWorldPos.y / CellSize);
+
+        Core::GridTile* Tile = Sim->GetTile(TileX, TileY);
+        if (Tile)
+        {
+            Core::Cell* Cell = Tile->GetCell();
+            if (Cell)
+            {
+                SelectedCellGenome = Tile->GetCell()->GetGenome();
+                bShouldDisplaySelectedCellGenome = true;
+            }
+        }
+        else
+        {
+            bShouldDisplaySelectedCellGenome = false;
+        }
+    }
+
     float WheelMove = GetMouseWheelMove();
     if (WheelMove)
     {
@@ -121,6 +143,15 @@ void Application::Draw()
     }
     EndMode2D();
 
+    if (bShouldDisplaySelectedCellGenome)
+    {
+        for (size_t i = 0; i < SelectedCellGenome.size(); ++i)
+        {
+            size_t GeneHash = SelectedCellGenome[i];
+            std::string_view GeneName = Core::StringInterner::GetInstance().Resolve(GeneHash);
+            DrawText(GeneName.data(), 10, 30 + (i * 20), 20, LIME);
+        }
+    }
     std::string statusText = bIsPaused ? "PAUSED" : "RUNNING";
     statusText += " | UPS: " + std::to_string(UpdatesPerSecond);
     DrawText(statusText.c_str(), 10, 10, 20, LIME);
