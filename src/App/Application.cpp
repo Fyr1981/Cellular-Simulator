@@ -13,9 +13,9 @@ using namespace CellularSimulator::App;
 Application::Application()
 {
     InitWindow(WindowWidth, WindowHeight, "Cellular Simulator");
+    ToggleFullscreen();
     SetTargetFPS(60);
-
-    int32_t SimWidth = 400;
+    int32_t SimWidth = 300;
     int32_t SimHeight = 300;
     Sim = std::make_unique<Core::Simulator>(SimWidth, SimHeight);
     Sim->Randomize(0.5f);
@@ -57,6 +57,11 @@ void Application::Run()
 
 void Application::ProcessInput()
 {
+    if (IsKeyPressed(KEY_F11))
+    {
+        ToggleFullscreen();
+    }
+
     if (IsKeyPressed(KEY_SPACE))
     {
         bIsPaused = !bIsPaused;
