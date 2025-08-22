@@ -29,6 +29,7 @@ private:
     void Draw();
     
     static Color GetTileColor(const Core::GridTile* Tile);
+    static Color GetCellColor(const Core::Cell* InCell);
 
     int32_t WindowWidth = 1280;
     int32_t WindowHeight = 720;

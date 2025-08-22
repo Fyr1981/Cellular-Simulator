@@ -15,8 +15,7 @@ void DivideCommand::Execute(Simulator& Sim, Cell& Agent)
     int32_t NextY;
     GetForwardXY(Direction, NextX, NextY, Agent.GetX(), Agent.GetY());
     if (!Sim.IsTileValidAndEmpty(NextX, NextY)) return;
-    std::vector<size_t> NewGenome;
-    Agent.GetGenome(NewGenome);
+    std::vector<size_t> NewGenome = Agent.GetGenome();
     std::uniform_real_distribution<float> MutationChance(0.0f, 1.0f);
     std::mt19937& Rng = Sim.GetRNG(); 
     if (MutationChance(Rng) < 0.05f)

@@ -6,6 +6,7 @@
 #include <thread>
 #include "raylib.h"
 #include "raymath.h"
+#include "CellularSimulator/Core/StringInterner.h"
 
 using namespace CellularSimulator::App;
 
@@ -36,6 +37,7 @@ Application::Application()
         WorldWidthPx / 2.0f,
         WorldHeightPx / 2.0f
     };
+    Core::StringInterner::GetInstance().InitializeGeneColors();
 };
 
 Application::~Application()
@@ -124,6 +126,37 @@ void Application::Draw()
 Color Application::GetTileColor(const Core::GridTile* Tile)
 {
     if (!Tile) return BLACK;
-    if (Tile->HasCell()) return BLUE;
-    return WHITE;
+    return GetCellColor(Tile->GetCell());
+}
+
+size_t HashVector(const std::vector<size_t>& vec)
+{
+    size_t seed = vec.size();
+    for (size_t h : vec)
+    {
+        seed ^= h + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+    }
+    return seed;
+}
+
+Color Application::GetCellColor(const Core::Cell* InCell)
+{
+    if (!InCell) return WHITE;
+    std::vector<size_t> Genome = InCell->GetGenome();
+    const size_t GenomeSize = Genome.size();
+    if (GenomeSize == 0) return DARKGRAY;
+    float TotalR = 0, TotalG = 0, TotalB = 0;
+    for (size_t i = 0; i < GenomeSize; ++i)
+    {
+        size_t GeneHash = Genome[i];
+        float Weight = 1.0f - (static_cast<float>(i) / GenomeSize);
+        Color GeneColor = Core::StringInterner::GetInstance().GetGeneColor(GeneHash);
+        TotalR += GeneColor.r * Weight;
+        TotalG += GeneColor.g * Weight;
+        TotalB += GeneColor.b * Weight;
+    }
+    unsigned char FinalR = static_cast<unsigned char>(TotalR / GenomeSize);
+    unsigned char FinalG = static_cast<unsigned char>(TotalG / GenomeSize);
+    unsigned char FinalB = static_cast<unsigned char>(TotalB / GenomeSize);
+    return {FinalR, FinalG, FinalB, 255};
 }
