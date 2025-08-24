@@ -4,7 +4,6 @@
 #include <vector>
 #include "raylib.h"
 
-
 namespace CellularSimulator
 {
 namespace App
@@ -27,12 +26,12 @@ struct SimulationState
 {
     std::vector<TileRenderData> Tiles;
     InspectorData Inspector;
-    void Swap(SimulationState& other) noexcept
+    void UpdateFromBuffer(SimulationState& Other) noexcept
     {
-        Tiles.swap(other.Tiles);
-        std::swap(Inspector, other.Inspector);
+        Tiles.swap(Other.Tiles);
+        Inspector = Other.Inspector;
     }
 };
 
-} // namespace App
-} // namespace CellularSimulator
+}  // namespace App
+}  // namespace CellularSimulator

@@ -28,16 +28,10 @@ Application::Application()
 
     const float InitialZoom = std::min(XRatio, YRatio);
 
-    WorldCamera.offset = {
-        static_cast<float>(WindowWidth) / 2.0f,
-        static_cast<float>(WindowHeight) / 2.0f
-    };
+    WorldCamera.offset = {static_cast<float>(WindowWidth) / 2.0f, static_cast<float>(WindowHeight) / 2.0f};
     WorldCamera.rotation = 0.0f;
     WorldCamera.zoom = InitialZoom;
-    WorldCamera.target = {
-        WorldWidthPx / 2.0f,
-        WorldHeightPx / 2.0f
-    };
+    WorldCamera.target = {WorldWidthPx / 2.0f, WorldHeightPx / 2.0f};
 
     Core::StringInterner::GetInstance().InitializeGeneColors();
 
@@ -69,12 +63,36 @@ void Application::UpdateLoop()
 
     while (bIsRunning.load())
     {
+        if (bInputUpdated.load())
+        {
+            std::pair<int32_t, int32_t> InspectingAt;
+            {
+                std::lock_guard<std::mutex> Lock(InputMutex);
+                InspectingAt = InspectingPos;
+            }
+            bInputUpdated.store(false);
+            const Core::GridTile* Tile = Sim->GetTile(InspectingAt.first, InspectingAt.second);
+            if (Tile)
+            {
+                const Core::Cell* Cell = Tile->GetCell();
+                if (Cell)
+                {
+                    BackState.Inspector.Genome = Core::StringInterner::GetInstance().ResolveGenome(Cell->GetGenome());
+                    BackState.Inspector.bShouldDisplayGenome = true;
+                }
+            }
+            else
+            {
+                BackState.Inspector.bShouldDisplayGenome = false;
+            }
+        }
+
         auto CurrentTime = high_resolution_clock::now();
         duration<double> DeltaTime = CurrentTime - LastTime;
         LastTime = CurrentTime;
         if (bIsPaused.load())
         {
-            std::this_thread::sleep_for(milliseconds(100));
+            std::this_thread::sleep_for(milliseconds(10));
             continue;
         }
         TimeAccumulator += DeltaTime.count();
@@ -93,17 +111,13 @@ void Application::UpdateLoop()
                 const Core::GridTile* TileInProcess = Sim->GetTile(i, j);
                 if (TileInProcess)
                 {
-                    BackState.Tiles.push_back({
-                        i,
-                        j,
-                        GetTileColor(TileInProcess)
-                    });
+                    BackState.Tiles.push_back({i, j, GetTileColor(TileInProcess)});
                 }
             }
         }
         {
             std::lock_guard<std::mutex> Lock(StateMutex);
-            FrontState.Swap(BackState);
+            FrontState.UpdateFromBuffer(BackState);
         }
 
         std::this_thread::sleep_for(milliseconds(1));
@@ -152,6 +166,18 @@ void Application::ProcessInput()
         const float ZoomIncrement = 0.125f;
         WorldCamera.zoom += (WheelMove * ZoomIncrement);
         if (WorldCamera.zoom < ZoomIncrement) WorldCamera.zoom = ZoomIncrement;
+    }
+    if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
+    {
+        const Vector2 MouseScreenPos = GetMousePosition();
+        const Vector2 MouseWorldPos = GetScreenToWorld2D(MouseScreenPos, WorldCamera);
+        const int32_t TileX = static_cast<int32_t>(MouseWorldPos.x / TileSize);
+        const int32_t TileY = static_cast<int32_t>(MouseWorldPos.y / TileSize);
+        {
+            std::lock_guard<std::mutex> Lock(InputMutex);
+            InspectingPos = {TileX, TileY};
+        }
+        bInputUpdated.store(true);
     }
 }
 

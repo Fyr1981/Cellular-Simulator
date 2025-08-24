@@ -44,7 +44,7 @@ private:
     int32_t WindowHeight = 720;
     int32_t TileSize = 10;
     Camera2D WorldCamera{};
-    
+
     std::atomic<bool> bIsPaused = false;
     std::atomic<int32_t> UpdatesPerSecond = 10;
 
@@ -56,6 +56,10 @@ private:
 
     std::thread UpdateThread;
     std::atomic<bool> bIsRunning;
+
+    std::pair<int32_t, int32_t> InspectingPos = {0, 0};
+    std::atomic<bool> bInputUpdated = false;
+    std::mutex InputMutex;
 };
 } // namespace App
 } // namespace CellularSimulator
