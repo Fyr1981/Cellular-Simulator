@@ -1,4 +1,5 @@
 #include "CellularSimulator/App/Application.h"
+#include <chrono>
 #include "CellularSimulator/Core/GridTile.h"
 #include "CellularSimulator/Core/Cell.h"
 #include <iostream>
@@ -16,10 +17,11 @@ Application::Application()
     SetTargetFPS(60);
     int32_t SimWidth = 300;
     int32_t SimHeight = 300;
-    Sim = std::make_unique<Core::Simulator>(SimWidth, SimHeight);
+    Sim = std::make_unique<Core::Simulator>(300, 300);
     Sim->Randomize(0.5f);
-    const float WorldWidthPx = static_cast<float>(SimWidth * CellSize);
-    const float WorldHeightPx = static_cast<float>(SimHeight * CellSize);
+
+    const float WorldWidthPx = static_cast<float>(SimWidth * TileSize);
+    const float WorldHeightPx = static_cast<float>(SimHeight * TileSize);
 
     const float XRatio = static_cast<float>(WindowWidth) / WorldWidthPx;
     const float YRatio = static_cast<float>(WindowHeight) / WorldHeightPx;
@@ -36,126 +38,154 @@ Application::Application()
         WorldWidthPx / 2.0f,
         WorldHeightPx / 2.0f
     };
+
     Core::StringInterner::GetInstance().InitializeGeneColors();
+
+    bIsRunning = true;
+    UpdateThread = std::thread(&Application::UpdateLoop, this);
 };
 
 Application::~Application()
 {
+    bIsRunning = false;
+    if (UpdateThread.joinable())
+    {
+        UpdateThread.join();
+    }
     CloseWindow();
 }
 
 void Application::Run()
 {
+    RenderLoop();
+}
+
+void Application::UpdateLoop()
+{
+    using namespace std::chrono;
+
+    auto LastTime = high_resolution_clock::now();
+    double TimeAccumulator = 0.0;
+
+    while (bIsRunning.load())
+    {
+        auto CurrentTime = high_resolution_clock::now();
+        duration<double> DeltaTime = CurrentTime - LastTime;
+        LastTime = CurrentTime;
+        if (bIsPaused.load())
+        {
+            std::this_thread::sleep_for(milliseconds(100));
+            continue;
+        }
+        TimeAccumulator += DeltaTime.count();
+        const double TimeBetweenUpdates = 1.0 / UpdatesPerSecond.load();
+        while (TimeAccumulator >= TimeBetweenUpdates)
+        {
+            Sim->Update();
+            TimeAccumulator -= TimeBetweenUpdates;
+        }
+        BackState.Tiles.clear();
+        BackState.Tiles.reserve(Sim->GetActiveCellCount());
+        for (int32_t i = 0; i < Sim->GetWidth(); ++i)
+        {
+            for (int32_t j = 0; j < Sim->GetHeight(); ++j)
+            {
+                const Core::GridTile* TileInProcess = Sim->GetTile(i, j);
+                if (TileInProcess)
+                {
+                    BackState.Tiles.push_back({
+                        i,
+                        j,
+                        GetTileColor(TileInProcess)
+                    });
+                }
+            }
+        }
+        {
+            std::lock_guard<std::mutex> Lock(StateMutex);
+            FrontState.Swap(BackState);
+        }
+
+        std::this_thread::sleep_for(milliseconds(1));
+    }
+}
+
+void Application::RenderLoop()
+{
     while (!WindowShouldClose())
     {
         ProcessInput();
-        Update();
         Draw();
     }
 }
 
 void Application::ProcessInput()
 {
+    // Fullscreen
     if (IsKeyPressed(KEY_F11))
     {
         ToggleFullscreen();
     }
-
+    // Pause
     if (IsKeyPressed(KEY_SPACE))
     {
         bIsPaused = !bIsPaused;
     }
-
+    // Simulation speed
     if (IsKeyPressed(KEY_RIGHT)) UpdatesPerSecond += 5;
     if (IsKeyPressed(KEY_LEFT)) UpdatesPerSecond -= 5;
     if (UpdatesPerSecond < 0) UpdatesPerSecond = 0;
-
+    // Camera movement
     if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
     {
         Vector2 MouseDelta = GetMouseDelta();
         MouseDelta = Vector2Scale(MouseDelta, -1.0f / WorldCamera.zoom);
         WorldCamera.target = Vector2Add(WorldCamera.target, MouseDelta);
     }
-
-    if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
-    {
-        Vector2 MouseScreenPos = GetMousePosition();
-        Vector2 MouseWorldPos = GetScreenToWorld2D(MouseScreenPos, WorldCamera);
-        int32_t TileX = static_cast<int32_t>(MouseWorldPos.x / CellSize);
-        int32_t TileY = static_cast<int32_t>(MouseWorldPos.y / CellSize);
-
-        Core::GridTile* Tile = Sim->GetTile(TileX, TileY);
-        if (Tile)
-        {
-            Core::Cell* Cell = Tile->GetCell();
-            if (Cell)
-            {
-                SelectedCellGenome = Tile->GetCell()->GetGenome();
-                bShouldDisplaySelectedCellGenome = true;
-            }
-        }
-        else
-        {
-            bShouldDisplaySelectedCellGenome = false;
-        }
-    }
-
-    float WheelMove = GetMouseWheelMove();
+    // Camera zoom
+    const float WheelMove = GetMouseWheelMove();
     if (WheelMove)
     {
-        Vector2 mouseWorldPos = GetScreenToWorld2D(GetMousePosition(), WorldCamera);
+        Vector2 MouseWorldPos = GetScreenToWorld2D(GetMousePosition(), WorldCamera);
         WorldCamera.offset = GetMousePosition();
-        WorldCamera.target = mouseWorldPos;
+        WorldCamera.target = MouseWorldPos;
         const float ZoomIncrement = 0.125f;
         WorldCamera.zoom += (WheelMove * ZoomIncrement);
         if (WorldCamera.zoom < ZoomIncrement) WorldCamera.zoom = ZoomIncrement;
     }
 }
 
-void Application::Update()
-{
-    if (bIsPaused) return;
-
-    TimeSinceLastUpdate += GetFrameTime();
-    float TimeBetweenUpdates = 1.0 / UpdatesPerSecond;
-    int32_t UpdatesThisFrame = 0;
-    while (TimeSinceLastUpdate >= TimeBetweenUpdates && UpdatesThisFrame < MaxUpdatesPerFrame)
-    {
-        Sim->Update();
-        TimeSinceLastUpdate -= TimeBetweenUpdates;
-        UpdatesThisFrame++;
-    }
-}
-
 void Application::Draw()
 {
+    SimulationState StateToDraw;
+    {
+        std::lock_guard<std::mutex> Lock(StateMutex);
+        StateToDraw = FrontState;
+    }
+
     BeginDrawing();
     ClearBackground(DARKGRAY);
     BeginMode2D(WorldCamera);
 
-    for (int32_t y = 0; y < Sim->GetHeight(); ++y)
+    for (const auto& TileData : StateToDraw.Tiles)
     {
-        for (int32_t x = 0; x < Sim->GetWidth(); ++x)
-        {
-            const Core::GridTile* Tile = Sim->GetTile(x, y);
-            DrawRectangle(x * CellSize, y * CellSize, CellSize, CellSize, GetTileColor(Tile));
-        }
+        DrawRectangle(TileData.X * TileSize, TileData.Y * TileSize, TileSize, TileSize, TileData.TileColor);
     }
+
     EndMode2D();
 
-    if (bShouldDisplaySelectedCellGenome)
+    if (StateToDraw.Inspector.bShouldDisplayGenome)
     {
-        for (size_t i = 0; i < SelectedCellGenome.size(); ++i)
+        for (size_t i = 0; i < StateToDraw.Inspector.Genome.size(); ++i)
         {
-            size_t GeneHash = SelectedCellGenome[i];
-            std::string_view GeneName = Core::StringInterner::GetInstance().Resolve(GeneHash);
-            DrawText(GeneName.data(), 10, 30 + (i * 20), 20, LIME);
+            DrawText(StateToDraw.Inspector.Genome[i].c_str(), 10, 30 + (i * 20), 20, LIME);
         }
     }
-    std::string statusText = bIsPaused ? "PAUSED" : "RUNNING";
-    statusText += " | UPS: " + std::to_string(UpdatesPerSecond);
-    DrawText(statusText.c_str(), 10, 10, 20, LIME);
 
+    std::string StatusText = bIsPaused.load() ? "PAUSED" : "RUNNING";
+    StatusText += " | UPS: " + std::to_string(UpdatesPerSecond.load());
+    DrawText(StatusText.c_str(), 10, 10, 20, LIME);
+    DrawFPS(WindowWidth - 100, 10);
     EndDrawing();
 }
 
@@ -163,16 +193,6 @@ Color Application::GetTileColor(const Core::GridTile* Tile)
 {
     if (!Tile) return BLACK;
     return GetCellColor(Tile->GetCell());
-}
-
-size_t HashVector(const std::vector<size_t>& vec)
-{
-    size_t seed = vec.size();
-    for (size_t h : vec)
-    {
-        seed ^= h + 0x9e3779b9 + (seed << 6) + (seed >> 2);
-    }
-    return seed;
 }
 
 Color Application::GetCellColor(const Core::Cell* InCell)

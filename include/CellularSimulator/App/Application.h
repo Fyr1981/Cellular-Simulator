@@ -1,10 +1,14 @@
 #pragma once
 
 #include <memory>
+#include <mutex>
+#include <optional>
+
 #include "raylib.h"
 #include "CellularSimulator/Core/Simulator.h"
+#include "RenderData.h"
 
-struct Color; 
+struct Color;
 struct Camera2D;
 
 class CellularSimulator::Core::GridTile;
@@ -20,33 +24,38 @@ class Application
 public:
     Application();
     ~Application();
-    
+
+    Application(const Application&) = delete;
+    Application& operator=(const Application&) = delete;
+
     void Run();
 
 private:
+    void UpdateLoop();
+    void RenderLoop();
+
     void ProcessInput();
-    void Update();
     void Draw();
-    
+
     static Color GetTileColor(const Core::GridTile* Tile);
     static Color GetCellColor(const Core::Cell* InCell);
 
     int32_t WindowWidth = 1280;
     int32_t WindowHeight = 720;
-    int32_t CellSize = 10;
-
-    bool bIsPaused = false;
-    int32_t UpdatesPerSecond = 10;
-    int32_t MaxUpdatesPerFrame = 50;
-    float TimeSinceLastUpdate = 0.0;
-
-    Camera2D WorldCamera;
+    int32_t TileSize = 10;
+    Camera2D WorldCamera{};
+    
+    std::atomic<bool> bIsPaused = false;
+    std::atomic<int32_t> UpdatesPerSecond = 10;
 
     std::unique_ptr<Core::Simulator> Sim;
 
-    std::vector<size_t> SelectedCellGenome;
+    SimulationState FrontState;
+    SimulationState BackState;
+    std::mutex StateMutex;
 
-    bool bShouldDisplaySelectedCellGenome = false;
+    std::thread UpdateThread;
+    std::atomic<bool> bIsRunning;
 };
 } // namespace App
 } // namespace CellularSimulator

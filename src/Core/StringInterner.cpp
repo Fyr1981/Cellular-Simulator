@@ -47,6 +47,16 @@ std::string_view StringInterner::Resolve(size_t Hash) const
     return "UNKNOWN_HASH";
 }
 
+std::vector<std::string> StringInterner::ResolveGenome(const std::vector<size_t>& Genome) const
+{
+    std::vector<std::string> ResolvedGenome(Genome.size());
+    for (size_t i = 0; i < Genome.size(); ++i)
+    {
+        ResolvedGenome[i] = Resolve(Genome[i]);
+    }
+    return ResolvedGenome;
+}
+
 Color StringInterner::GetGeneColor(size_t Hash) const
 {
     if (GeneColorMap.find(Hash) != GeneColorMap.end()) return GeneColorMap.at(Hash);

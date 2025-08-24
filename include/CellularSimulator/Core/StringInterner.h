@@ -46,6 +46,13 @@ public:
     std::string_view Resolve(size_t Hash) const;
 
     /**
+     * @brief Resolves a vector of hash values to their original strings
+     * @param Genome The vector of hash values to resolve
+     * @return The vector of original strings associated with the hash values
+     */
+    std::vector<std::string> ResolveGenome(const std::vector<size_t>& Genome) const;
+
+    /**
      * @brief Retrieves the color associated with a gene hash value
      * @param Hash The hash value of the gene
      * @return The color associated with the gene hash value
