@@ -90,18 +90,21 @@ void Application::UpdateLoop()
         auto CurrentTime = high_resolution_clock::now();
         duration<double> DeltaTime = CurrentTime - LastTime;
         LastTime = CurrentTime;
-        if (bIsPaused.load())
+        if (!bIsPaused.load())
         {
-            std::this_thread::sleep_for(milliseconds(10));
-            continue;
+            TimeAccumulator += DeltaTime.count();
+            const double TimeBetweenUpdates = 1.0 / UpdatesPerSecond.load();
+            while (TimeAccumulator >= TimeBetweenUpdates)
+            {
+                Sim->Update();
+                TimeAccumulator -= TimeBetweenUpdates;
+            }
         }
-        TimeAccumulator += DeltaTime.count();
-        const double TimeBetweenUpdates = 1.0 / UpdatesPerSecond.load();
-        while (TimeAccumulator >= TimeBetweenUpdates)
+        else
         {
-            Sim->Update();
-            TimeAccumulator -= TimeBetweenUpdates;
+            TimeAccumulator = 0.f;
         }
+
         BackState.Tiles.clear();
         BackState.Tiles.reserve(Sim->GetActiveCellCount());
         for (int32_t i = 0; i < Sim->GetWidth(); ++i)
@@ -119,8 +122,6 @@ void Application::UpdateLoop()
             std::lock_guard<std::mutex> Lock(StateMutex);
             FrontState.UpdateFromBuffer(BackState);
         }
-
-        std::this_thread::sleep_for(milliseconds(1));
     }
 }
 

@@ -52,6 +52,7 @@ private:
 
     SimulationState FrontState;
     SimulationState BackState;
+    
     std::mutex StateMutex;
 
     std::thread UpdateThread;
