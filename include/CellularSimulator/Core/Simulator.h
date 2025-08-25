@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <cstdint>
+#include <mutex>
 #include <random>
 #include "CommandManager.h"
 #include "raylib.h"
@@ -121,17 +122,19 @@ public:
     Cell* GetActiveCellByIndex(size_t Index);
 
 private:
+    void ProcessAgent(Cell& Agent);
+
     int32_t Width = 256;
     int32_t Height = 256;
     std::vector<GridTile> Grid;
     std::vector<Cell> CellPool;
     size_t ActiveCellCount = 0;
 
-    CommandManager CmdManager;
-
     int32_t GenomeLength = 16;
 
     std::mt19937 RandomGenerator;
+
+    std::mutex CellPoolMutex;
 };
 } // namespace Core
 } // namespace CellularSimulator
