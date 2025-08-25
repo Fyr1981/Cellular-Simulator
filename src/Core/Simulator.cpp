@@ -7,11 +7,12 @@
 
 using namespace CellularSimulator::Core;
 
-Simulator::Simulator(int32_t InWidth, int32_t InHeight) : Width(InWidth), Height(InHeight)
+Simulator::Simulator(int32_t InWidth, int32_t InHeight, int32_t SimulationSeed) : Width(InWidth), Height(InHeight)
 {
     Grid.resize(static_cast<size_t>(Width) * Height);
     const size_t MaxPopulation = static_cast<size_t>(Width) * Height;
     CellPool.resize(MaxPopulation);
+    RandomGenerator.seed(SimulationSeed);
 }
 
 void Simulator::Update()

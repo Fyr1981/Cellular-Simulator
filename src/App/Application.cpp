@@ -19,7 +19,8 @@ Application::Application()
     SetTargetFPS(FramesPerSecond);
     int32_t SimWidth = 300;
     int32_t SimHeight = 300;
-    Sim = std::make_unique<Core::Simulator>(300, 300);
+    int32_t TimeSeed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
+    Sim = std::make_unique<Core::Simulator>(300, 300, TimeSeed);
     Sim->Randomize(0.5f);
 
     const float WorldWidthPx = static_cast<float>(SimWidth * TileSize);
