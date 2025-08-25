@@ -19,7 +19,8 @@ Application::Application()
     SetTargetFPS(FramesPerSecond);
     int32_t SimWidth = 300;
     int32_t SimHeight = 300;
-    Sim = std::make_unique<Core::Simulator>(300, 300);
+    int32_t TimeSeed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
+    Sim = std::make_unique<Core::Simulator>(300, 300, TimeSeed);
     Sim->Randomize(0.5f);
 
     const float WorldWidthPx = static_cast<float>(SimWidth * TileSize);
@@ -34,8 +35,6 @@ Application::Application()
     WorldCamera.rotation = 0.0f;
     WorldCamera.zoom = InitialZoom;
     WorldCamera.target = {WorldWidthPx / 2.0f, WorldHeightPx / 2.0f};
-
-    Core::StringInterner::GetInstance().InitializeGeneColors();
 
     bIsRunning = true;
     UpdateThread = std::thread(&Application::UpdateLoop, this);
@@ -231,21 +230,5 @@ Color Application::GetTileColor(const Core::GridTile* Tile)
 Color Application::GetCellColor(const Core::Cell* InCell)
 {
     if (!InCell) return WHITE;
-    std::vector<size_t> Genome = InCell->GetGenome();
-    const size_t GenomeSize = Genome.size();
-    if (GenomeSize == 0) return DARKGRAY;
-    float TotalR = 0, TotalG = 0, TotalB = 0;
-    for (size_t i = 0; i < GenomeSize; ++i)
-    {
-        size_t GeneHash = Genome[i];
-        float Weight = 1.0f - (static_cast<float>(i) / GenomeSize);
-        Color GeneColor = Core::StringInterner::GetInstance().GetGeneColor(GeneHash);
-        TotalR += GeneColor.r * Weight;
-        TotalG += GeneColor.g * Weight;
-        TotalB += GeneColor.b * Weight;
-    }
-    unsigned char FinalR = static_cast<unsigned char>(TotalR / GenomeSize);
-    unsigned char FinalG = static_cast<unsigned char>(TotalG / GenomeSize);
-    unsigned char FinalB = static_cast<unsigned char>(TotalB / GenomeSize);
-    return {FinalR, FinalG, FinalB, 255};
+    return InCell->GetColor();
 }

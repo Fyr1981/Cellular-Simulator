@@ -21,5 +21,5 @@ void EatForwardCommand::Execute(Simulator& Sim, Cell& Agent)
 
 namespace
 {
-const CommandRegistrar<EatForwardCommand> Registrar("EatForward");
+const CommandRegistrar<EatForwardCommand> Registrar("EatForward", RED);
 }

@@ -22,10 +22,6 @@ public:
     StringInterner& operator=(const StringInterner&) = delete;
 
     /**
-     * @brief Initializes the gene color map. Should be called once at the start
-     */
-    void InitializeGeneColors();
-    /**
      * @brief Retrieves the singleton instance
      * @return The singleton instance
      */
@@ -37,6 +33,13 @@ public:
      * @return The hash value of the interned string
      */
     size_t Intern(std::string_view String);
+
+    /**
+     * @brief Registers a gene color for a specific hash value
+     * @param Hash The hash value of the gene
+     * @param Color The color to associate with the hash value
+     */
+    void RegisterGeneColor(size_t Hash, Color Color);
 
     /**
      * @brief Resolves a hash value to its original string

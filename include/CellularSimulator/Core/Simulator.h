@@ -1,10 +1,10 @@
 #pragma once
-#include <list>
 #include <vector>
 #include <cstdint>
+#include <mutex>
 #include <random>
-
 #include "CommandManager.h"
+#include "raylib.h"
 
 namespace CellularSimulator::Core
 {
@@ -30,7 +30,7 @@ public:
      * @param InWidth The width of the grid.
      * @param InHeight The height of the grid.
      */
-    explicit Simulator(int32_t InWidth, int32_t InHeight);
+    explicit Simulator(int32_t InWidth, int32_t InHeight, int32_t SimulationSeed);
 
     /**
      * @brief Advances the entire simulation by one step.
@@ -91,6 +91,18 @@ public:
     Cell* SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, float Energy);
 
     /**
+     * @brief Spawns a new cell at the specified location.
+     * @param X The x-coordinate of the cell.
+     * @param Y The y-coordinate of the cell.
+     * @param Direction The initial direction of the cell.
+     * @param Genome The genome of the cell.
+     * @param Energy The initial energy of the cell.
+     * @param CellColor The color of the cell for rendering purposes.
+     * @return A pointer to the newly spawned cell, or nullptr if the tile is not valid or occupied.
+     */
+    Cell* SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, float Energy, Color CellColor);
+
+    /**
      * @brief Returns a reference to the random number generator used by the simulator.
      * @return A reference to the random number generator.
      */
@@ -110,17 +122,19 @@ public:
     Cell* GetActiveCellByIndex(size_t Index);
 
 private:
+    void ProcessAgent(Cell& Agent);
+
     int32_t Width = 256;
     int32_t Height = 256;
     std::vector<GridTile> Grid;
     std::vector<Cell> CellPool;
     size_t ActiveCellCount = 0;
 
-    CommandManager CmdManager;
-
     int32_t GenomeLength = 16;
 
     std::mt19937 RandomGenerator;
+
+    std::mutex CellPoolMutex;
 };
 } // namespace Core
 } // namespace CellularSimulator

@@ -1,9 +1,8 @@
 ﻿#pragma once
 #include <memory>
 #include <unordered_map>
-#include <functional>
-#include <string>
 #include <string_view>
+#include "raylib.h"
 
 namespace CellularSimulator
 {
@@ -32,8 +31,9 @@ public:
      * @brief Registers a command with the factory.
      * @param CommandName The name of the command.
      * @param CommandInstance Pointer to the created command.
+     * @param CommandColor The color of the command.
      */
-    static void RegisterCommand(std::string_view CommandName, std::unique_ptr<Command> CommandInstance);
+    static void RegisterCommand(std::string_view CommandName, std::unique_ptr<Command> CommandInstance, Color CommandColor);
 
     /**
      * @brief Gets the names of all registered commands.

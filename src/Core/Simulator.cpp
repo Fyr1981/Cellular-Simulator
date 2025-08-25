@@ -7,58 +7,48 @@
 
 using namespace CellularSimulator::Core;
 
-Simulator::Simulator(int32_t InWidth, int32_t InHeight) : Width(InWidth), Height(InHeight)
+Simulator::Simulator(int32_t InWidth, int32_t InHeight, int32_t SimulationSeed) : Width(InWidth), Height(InHeight)
 {
     Grid.resize(static_cast<size_t>(Width) * Height);
     const size_t MaxPopulation = static_cast<size_t>(Width) * Height;
     CellPool.resize(MaxPopulation);
+    RandomGenerator.seed(SimulationSeed);
 }
 
 void Simulator::Update()
 {
-    for (auto& Tile : Grid)
+    // Tile cleanup
+    std::for_each(std::execution::par, Grid.begin(), Grid.end(), [](GridTile& Tile)
     {
         Tile.SetCell(nullptr);
-    }
-    for (size_t i = 0; i < ActiveCellCount; ++i)
+    });
+    // Active cell pool
+    const auto FirstCellIt = CellPool.begin();
+    const auto LastCellIt = CellPool.begin() + ActiveCellCount;
+    // Tile reassignment
+    std::for_each(std::execution::par, FirstCellIt, LastCellIt, [&](Cell& Agent)
     {
-        Cell& cell = CellPool[i];
-        GetTile(cell.GetX(), cell.GetY())->SetCell(&cell);
-    }
-
-    struct ActionRequest
+        GetTile(Agent.GetX(), Agent.GetY())->SetCell(&Agent);
+    });
+    // Cell actions, energy consumption and death
+    // Process per 2 lines to avoid data race
+    std::for_each(std::execution::par, FirstCellIt, LastCellIt, [&](Cell& Agent)
     {
-        Cell* Agent;
-        size_t CommandNameHash;
-    };
-
-    auto FirstCellIt = CellPool.begin();
-    auto LastCellIt = CellPool.begin() + ActiveCellCount;
-
-    std::vector<ActionRequest> Requests(ActiveCellCount);
-    std::transform(std::execution::par, CellPool.begin(), LastCellIt, Requests.begin(),
-        [](Cell& Agent) -> ActionRequest { return {&Agent, Agent.DecideNextCommand()}; });
-
-    for (const auto& Request : Requests)
-    {
-        Cell* Agent = Request.Agent;
-        Command* Cmd = CommandManager::GetCommand(Request.CommandNameHash);
-        if (Cmd)
+        if (Agent.GetY() % 4 < 2)
         {
-            Cmd->Execute(*this, *Agent);
+            ProcessAgent(Agent);
         }
-    }
-
-    std::for_each(std::execution::par, FirstCellIt, LastCellIt, [](Cell& Agent) { Agent.ConsumeEnergy(10.0f); });
-
-    for (size_t i = 0; i < ActiveCellCount; ++i)
+    });
+    std::for_each(std::execution::par, FirstCellIt, LastCellIt, [&](Cell& Agent)
     {
-        if (CellPool[i].GetEnergy() <= 0.0f)
+        if (Agent.GetY() % 4 >= 2)
         {
-            CellPool[i].SetInObjectPool(true);
+            ProcessAgent(Agent);
         }
-    }
-    auto FirstDead = std::partition(CellPool.begin(), CellPool.begin() + ActiveCellCount, [](const Cell& c) { return c.IsAlive(); });
+    });
+    // Dead cells cleanup
+    auto FirstDead = std::partition(CellPool.begin(), CellPool.begin() + ActiveCellCount,
+        [](const Cell& Agent) { return Agent.IsAlive(); });
     ActiveCellCount = std::distance(CellPool.begin(), FirstDead);
 }
 
@@ -128,9 +118,21 @@ void Simulator::MoveCell(Cell* Agent, int32_t NewX, int32_t NewY)
 Cell* Simulator::SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, float Energy)
 {
     if (!IsTileValidAndEmpty(X, Y) || ActiveCellCount >= CellPool.size()) return nullptr;
+    std::lock_guard<std::mutex> Lock(CellPoolMutex);
     Cell& NewCell = CellPool[ActiveCellCount];
     GetTile(X, Y)->SetCell(&NewCell);
     NewCell.Initialize(X, Y, Direction, std::move(Genome), Energy, false);
+    ++ActiveCellCount;
+    return &NewCell;
+}
+
+Cell* Simulator::SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, float Energy, Color CellColor)
+{
+    if (!IsTileValidAndEmpty(X, Y) || ActiveCellCount >= CellPool.size()) return nullptr;
+    std::lock_guard<std::mutex> Lock(CellPoolMutex);
+    Cell& NewCell = CellPool[ActiveCellCount];
+    GetTile(X, Y)->SetCell(&NewCell);
+    NewCell.Initialize(X, Y, Direction, std::move(Genome), Energy, false, CellColor);
     ++ActiveCellCount;
     return &NewCell;
 }
@@ -144,4 +146,17 @@ Cell* Simulator::GetActiveCellByIndex(size_t Index)
 {
     if (Index >= ActiveCellCount) return nullptr;
     return &CellPool[Index];
+}
+
+void Simulator::ProcessAgent(Cell& Agent)
+{
+    if (Command* Cmd = CommandManager::GetCommand(Agent.DecideNextCommand()))
+    {
+        Cmd->Execute(*this, Agent);
+    }
+    Agent.ConsumeEnergy(10.0f);
+    if (Agent.GetEnergy() <= 0.0f)
+    {
+        Agent.SetInObjectPool(true);
+    }
 }

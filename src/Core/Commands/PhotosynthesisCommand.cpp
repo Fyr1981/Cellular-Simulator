@@ -11,5 +11,5 @@ void PhotosynthesisCommand::Execute(Simulator& Sim, Cell& Agent)
 
 namespace
 {
-const CommandRegistrar<PhotosynthesisCommand> Registrar("Photosynthesis");
+const CommandRegistrar<PhotosynthesisCommand> Registrar("Photosynthesis", GREEN);
 }
