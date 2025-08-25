@@ -24,7 +24,7 @@ public:
      * @brief Default constructor for creating an empty cell in the object pool.
      */
     Cell() = default;
-    
+
     /**
      * @brief Constructs a cell with the specified parameters.
      * @param InX The x-coordinate of the cell.
@@ -91,9 +91,9 @@ public:
 
     /**
      * @brief Gets the genome of the cell.
-     * @param OutGenome The genome of the cell.
+     * @return The genome of the cell.
      */
-    void GetGenome(std::vector<size_t>& OutGenome) const;
+    [[nodiscard]] const std::vector<size_t>& GetGenome() const;
 
     /**
      * @brief Sets the x-coordinate of the cell.

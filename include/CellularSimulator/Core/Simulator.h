@@ -90,7 +90,24 @@ public:
      */
     Cell* SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, float Energy);
 
+    /**
+     * @brief Returns a reference to the random number generator used by the simulator.
+     * @return A reference to the random number generator.
+     */
     std::mt19937& GetRNG();
+
+    /**
+     * @brief Returns the number of active cells in the simulation.
+     * @return The number of active cells.
+     */
+    size_t GetActiveCellCount() const { return ActiveCellCount; }
+
+    /**
+     * @brief Returns a pointer to the cell at the specified index.
+     * @param Index The index of the cell.
+     * @return A pointer to the cell, or nullptr if the index is out of bounds.
+     */
+    Cell* GetActiveCellByIndex(size_t Index);
 
 private:
     int32_t Width = 256;
@@ -105,5 +122,5 @@ private:
 
     std::mt19937 RandomGenerator;
 };
-}  // namespace Core
-}  // namespace CellularSimulator
+} // namespace Core
+} // namespace CellularSimulator

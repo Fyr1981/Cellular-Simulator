@@ -139,3 +139,9 @@ std::mt19937& Simulator::GetRNG()
 {
     return RandomGenerator;
 }
+
+Cell* Simulator::GetActiveCellByIndex(size_t Index)
+{
+    if (Index >= ActiveCellCount) return nullptr;
+    return &CellPool[Index];
+}

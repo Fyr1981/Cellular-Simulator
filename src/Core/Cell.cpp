@@ -60,9 +60,9 @@ bool Cell::IsInObjectPool() const
     return bInsideObjectPool;
 }
 
-void Cell::GetGenome(std::vector<size_t>& OutGenome) const
+const std::vector<size_t>& Cell::GetGenome() const
 {
-    OutGenome = Genome;
+    return Genome;
 }
 
 void Cell::SetX(int32_t InX)

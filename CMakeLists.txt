@@ -16,6 +16,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(APP_HEADERS
     include/CellularSimulator/App/Application.h
+    include/CellularSimulator/App/RenderData.h
 )
 set(APP_SOURCES
     src/App/Application.cpp
