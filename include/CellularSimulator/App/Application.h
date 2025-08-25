@@ -19,6 +19,10 @@ namespace CellularSimulator
 namespace App
 {
 
+/**
+ * @class Application
+ * @brief Manages the main application loop, rendering, and user input for the cellular simulator.
+*/
 class Application
 {
 public:
@@ -28,6 +32,9 @@ public:
     Application(const Application&) = delete;
     Application& operator=(const Application&) = delete;
 
+    /**
+     * @brief Starts the main application loop, handling rendering and input.
+    */
     void Run();
 
 private:
@@ -47,13 +54,14 @@ private:
 
     std::atomic<bool> bIsPaused = false;
     std::atomic<int32_t> UpdatesPerSecond = 10;
+    int32_t FramesPerSecond = 30;
 
     std::unique_ptr<Core::Simulator> Sim;
-
-    SimulationState FrontState;
-    SimulationState BackState;
     
-    std::mutex StateMutex;
+    SimulationState SimState;  
+    SimulationState RenderState;
+    SimulationState SharedState;
+    std::mutex SharedStateMutex;
 
     std::thread UpdateThread;
     std::atomic<bool> bIsRunning;

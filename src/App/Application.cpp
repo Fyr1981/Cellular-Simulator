@@ -1,8 +1,10 @@
 #include "CellularSimulator/App/Application.h"
 #include <chrono>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
 #include "CellularSimulator/Core/GridTile.h"
 #include "CellularSimulator/Core/Cell.h"
-#include <iostream>
 #include <string>
 #include <thread>
 #include "raylib.h"
@@ -14,7 +16,7 @@ using namespace CellularSimulator::App;
 Application::Application()
 {
     InitWindow(WindowWidth, WindowHeight, "Cellular Simulator");
-    SetTargetFPS(60);
+    SetTargetFPS(FramesPerSecond);
     int32_t SimWidth = 300;
     int32_t SimHeight = 300;
     Sim = std::make_unique<Core::Simulator>(300, 300);
@@ -56,13 +58,14 @@ void Application::Run()
 
 void Application::UpdateLoop()
 {
-    using namespace std::chrono;
-
-    auto LastTime = high_resolution_clock::now();
+    auto LastTime = std::chrono::high_resolution_clock::now();
     double TimeAccumulator = 0.0;
 
     while (bIsRunning.load())
     {
+        auto FrameStartTime = std::chrono::high_resolution_clock::now();
+
+        // Input from main thread
         if (bInputUpdated.load())
         {
             std::pair<int32_t, int32_t> InspectingAt;
@@ -77,18 +80,18 @@ void Application::UpdateLoop()
                 const Core::Cell* Cell = Tile->GetCell();
                 if (Cell)
                 {
-                    BackState.Inspector.Genome = Core::StringInterner::GetInstance().ResolveGenome(Cell->GetGenome());
-                    BackState.Inspector.bShouldDisplayGenome = true;
+                    SimState.Inspector.Genome = Core::StringInterner::GetInstance().ResolveGenome(Cell->GetGenome());
+                    SimState.Inspector.bShouldDisplayGenome = true;
                 }
             }
             else
             {
-                BackState.Inspector.bShouldDisplayGenome = false;
+                SimState.Inspector.bShouldDisplayGenome = false;
             }
         }
 
-        auto CurrentTime = high_resolution_clock::now();
-        duration<double> DeltaTime = CurrentTime - LastTime;
+        auto CurrentTime = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> DeltaTime = CurrentTime - LastTime;
         LastTime = CurrentTime;
         if (!bIsPaused.load())
         {
@@ -105,8 +108,8 @@ void Application::UpdateLoop()
             TimeAccumulator = 0.f;
         }
 
-        BackState.Tiles.clear();
-        BackState.Tiles.reserve(Sim->GetActiveCellCount());
+        SimState.Tiles.clear();
+        SimState.Tiles.reserve(Sim->GetActiveCellCount());
         for (int32_t i = 0; i < Sim->GetWidth(); ++i)
         {
             for (int32_t j = 0; j < Sim->GetHeight(); ++j)
@@ -114,13 +117,22 @@ void Application::UpdateLoop()
                 const Core::GridTile* TileInProcess = Sim->GetTile(i, j);
                 if (TileInProcess)
                 {
-                    BackState.Tiles.push_back({i, j, GetTileColor(TileInProcess)});
+                    SimState.Tiles.push_back({i, j, GetTileColor(TileInProcess)});
                 }
             }
         }
+        if (UpdatesPerSecond < FramesPerSecond)
         {
-            std::lock_guard<std::mutex> Lock(StateMutex);
-            FrontState.UpdateFromBuffer(BackState);
+            std::lock_guard<std::mutex> Lock(SharedStateMutex);
+            SharedState.UpdateFromBuffer(SimState);
+        }
+        else
+        {
+            if (SharedStateMutex.try_lock())
+            {
+                SharedState.UpdateFromBuffer(SimState);
+                SharedStateMutex.unlock();
+            }
         }
     }
 }
@@ -129,6 +141,10 @@ void Application::RenderLoop()
 {
     while (!WindowShouldClose())
     {
+        {
+            std::lock_guard<std::mutex> lock(SharedStateMutex);
+            RenderState = SharedState;
+        }
         ProcessInput();
         Draw();
     }
@@ -184,31 +200,21 @@ void Application::ProcessInput()
 
 void Application::Draw()
 {
-    SimulationState StateToDraw;
-    {
-        std::lock_guard<std::mutex> Lock(StateMutex);
-        StateToDraw = FrontState;
-    }
-
     BeginDrawing();
     ClearBackground(DARKGRAY);
     BeginMode2D(WorldCamera);
-
-    for (const auto& TileData : StateToDraw.Tiles)
+    for (const auto& TileData : RenderState.Tiles)
     {
         DrawRectangle(TileData.X * TileSize, TileData.Y * TileSize, TileSize, TileSize, TileData.TileColor);
     }
-
     EndMode2D();
-
-    if (StateToDraw.Inspector.bShouldDisplayGenome)
+    if (RenderState.Inspector.bShouldDisplayGenome)
     {
-        for (size_t i = 0; i < StateToDraw.Inspector.Genome.size(); ++i)
+        for (size_t i = 0; i < RenderState.Inspector.Genome.size(); ++i)
         {
-            DrawText(StateToDraw.Inspector.Genome[i].c_str(), 10, 30 + (i * 20), 20, LIME);
+            DrawText(RenderState.Inspector.Genome[i].c_str(), 10, 30 + (i * 20), 20, LIME);
         }
     }
-
     std::string StatusText = bIsPaused.load() ? "PAUSED" : "RUNNING";
     StatusText += " | UPS: " + std::to_string(UpdatesPerSecond.load());
     DrawText(StatusText.c_str(), 10, 10, 20, LIME);
