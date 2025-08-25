@@ -17,29 +17,30 @@ Simulator::Simulator(int32_t InWidth, int32_t InHeight, int32_t SimulationSeed) 
 
 void Simulator::Update()
 {
-    for (auto& Tile : Grid)
+    // Tile cleanup and reassignment
+    std::for_each(std::execution::par, Grid.begin(), Grid.end(), [](GridTile& Tile)
     {
         Tile.SetCell(nullptr);
-    }
+    });
     for (size_t i = 0; i < ActiveCellCount; ++i)
     {
-        Cell& cell = CellPool[i];
-        GetTile(cell.GetX(), cell.GetY())->SetCell(&cell);
+        Cell& ActiveCell = CellPool[i];
+        GetTile(ActiveCell.GetX(), ActiveCell.GetY())->SetCell(&ActiveCell);
     }
-
+    
+    // Active cell pool
+    auto FirstCellIt = CellPool.begin();
+    auto LastCellIt = CellPool.begin() + ActiveCellCount;
+    
+    // Cell actions
     struct ActionRequest
     {
         Cell* Agent;
         size_t CommandNameHash;
     };
-
-    auto FirstCellIt = CellPool.begin();
-    auto LastCellIt = CellPool.begin() + ActiveCellCount;
-
     std::vector<ActionRequest> Requests(ActiveCellCount);
     std::transform(std::execution::par, CellPool.begin(), LastCellIt, Requests.begin(),
         [](Cell& Agent) -> ActionRequest { return {&Agent, Agent.DecideNextCommand()}; });
-
     for (const auto& Request : Requests)
     {
         Cell* Agent = Request.Agent;
@@ -50,15 +51,15 @@ void Simulator::Update()
         }
     }
 
-    std::for_each(std::execution::par, FirstCellIt, LastCellIt, [](Cell& Agent) { Agent.ConsumeEnergy(10.0f); });
-
-    for (size_t i = 0; i < ActiveCellCount; ++i)
+    // Energy consumption and cell death
+    std::for_each(std::execution::par, FirstCellIt, LastCellIt, [](Cell& Agent)
     {
-        if (CellPool[i].GetEnergy() <= 0.0f)
+        Agent.ConsumeEnergy(10.0f);
+        if (Agent.GetEnergy() <= 0.0f)
         {
-            CellPool[i].SetInObjectPool(true);
+            Agent.SetInObjectPool(true);
         }
-    }
+    });
     auto FirstDead = std::partition(CellPool.begin(), CellPool.begin() + ActiveCellCount, [](const Cell& c) { return c.IsAlive(); });
     ActiveCellCount = std::distance(CellPool.begin(), FirstDead);
 }
