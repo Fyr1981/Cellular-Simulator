@@ -15,9 +15,10 @@ Command* CommandManager::GetCommand(size_t CommandNameHash)
     return nullptr;
 }
 
-void CommandManager::RegisterCommand(std::string_view CommandName, std::unique_ptr<Command> CommandInstance)
+void CommandManager::RegisterCommand(std::string_view CommandName, std::unique_ptr<Command> CommandInstance, Color CommandColor)
 {
-    size_t Hash = StringInterner::GetInstance().Intern(CommandName);
+    const size_t Hash = StringInterner::GetInstance().Intern(CommandName);
+    StringInterner::GetInstance().RegisterGeneColor(Hash, CommandColor);
     if (GetRegistry().find(Hash) == GetRegistry().end())
     {
         GetRegistry()[Hash] = std::move(CommandInstance);

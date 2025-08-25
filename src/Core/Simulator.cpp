@@ -136,6 +136,17 @@ Cell* Simulator::SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vect
     return &NewCell;
 }
 
+Cell* CellularSimulator::Core::Simulator::SpawnCell(
+    int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, float Energy, Color CellColor)
+{
+    if (!IsTileValidAndEmpty(X, Y) || ActiveCellCount >= CellPool.size()) return nullptr;
+    Cell& NewCell = CellPool[ActiveCellCount];
+    GetTile(X, Y)->SetCell(&NewCell);
+    NewCell.Initialize(X, Y, Direction, std::move(Genome), Energy, false, CellColor);
+    ++ActiveCellCount;
+    return &NewCell;
+}
+
 std::mt19937& Simulator::GetRNG()
 {
     return RandomGenerator;

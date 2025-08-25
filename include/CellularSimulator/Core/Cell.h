@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "CellSimulatorTypes.h"
+#include <raylib.h>
 
 namespace CellularSimulator
 {
@@ -32,9 +33,23 @@ public:
      * @param InDirection The direction of the cell.
      * @param InGenome The genome of the cell.
      * @param InEnergy The energy of the cell.
+     * @param InInObjectPool Whether the cell is in the object pool or active in the simulation.
+     * @note The color of the cell will be automatically calculated based on its genome.
      */
     Cell(int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, float InEnergy, bool InInObjectPool);
 
+    /**
+     * @brief Constructs a cell with the specified parameters.
+     * @param InX The x-coordinate of the cell.
+     * @param InY The y-coordinate of the cell.
+     * @param InDirection The direction of the cell.
+     * @param InGenome The genome of the cell.
+     * @param InEnergy The energy of the cell.
+     * @param InInObjectPool Whether the cell is in the object pool or active in the simulation.
+     * @param InColor The color of the cell for rendering purposes.
+     */
+    Cell(
+        int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, float InEnergy, bool InInObjectPool, Color InColor);
 
     /**
      * @brief Initializes the cell with all the parameters.
@@ -43,9 +58,24 @@ public:
      * @param InDirection The direction of the cell.
      * @param InGenome The genome of the cell.
      * @param InEnergy The energy of the cell.
-     * @param InInObjectPool
+     * @param InInObjectPool Whether the cell is in the object pool or active in the simulation.
+     * @param InColor The color of the cell for rendering purposes.
+     * @note The color of the cell will be automatically calculated based on its genome.
      */
     void Initialize(int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, float InEnergy, bool InInObjectPool);
+
+    /**
+     * @brief Initializes the cell with all the parameters.
+     * @param InX The x-coordinate of the cell.
+     * @param InY The y-coordinate of the cell.
+     * @param InDirection The direction of the cell.
+     * @param InGenome The genome of the cell.
+     * @param InEnergy The energy of the cell.
+     * @param InInObjectPool Whether the cell is in the object pool or active in the simulation.
+     * @param InColor The color of the cell for rendering purposes.
+     */
+    void Initialize(
+        int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, float InEnergy, bool InInObjectPool, Color InColor);
 
     /**
      * @brief Decides the next command for the cell.
@@ -96,6 +126,12 @@ public:
     [[nodiscard]] const std::vector<size_t>& GetGenome() const;
 
     /**
+     * @brief Gets the color of the cell for rendering purposes.
+     * @return The color of the cell.
+     */
+    [[nodiscard]] Color GetColor() const;
+
+    /**
      * @brief Sets the x-coordinate of the cell.
      * @param InX The x-coordinate of the cell.
      */
@@ -143,7 +179,15 @@ public:
      */
     void SetInObjectPool(bool bInObjectPool);
 
+    /**
+     * @brief Sets the color of the cell for rendering purposes.
+     * @param InColor The color to set.
+     */
+    void SetColor(Color InColor);
+
 private:
+    void CalculateColor();
+
     int32_t X;
     int32_t Y;
     EDirection Direction;
@@ -152,6 +196,7 @@ private:
     size_t GenomePointer = 0;
     float MaxEnergy = 100.0f;
     bool bInsideObjectPool = true;
+    Color CellColor = DARKGRAY;
 };
-} // namespace Core
-} // namespace CellularSimulator
+}  // namespace Core
+}  // namespace CellularSimulator

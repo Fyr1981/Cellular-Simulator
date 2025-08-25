@@ -11,5 +11,5 @@ void TurnLeftCommand::Execute(Simulator& Sim, Cell& Agent)
 
 namespace
 {
-const CommandRegistrar<TurnLeftCommand> Registrar("TurnLeft");
+const CommandRegistrar<TurnLeftCommand> Registrar("TurnLeft", BLANK);
 }

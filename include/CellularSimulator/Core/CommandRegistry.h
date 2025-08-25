@@ -22,10 +22,10 @@ public:
      * @brief Constructor for registering a command
      * @param CommandName Name of the command to register
      */
-    explicit CommandRegistrar(std::string_view CommandName)
+    explicit CommandRegistrar(std::string_view CommandName, Color CommandColor)
     {
         static_assert(std::is_base_of_v<Command, TCommand>, "TCommand must derive from ICommand");
-        CommandManager::RegisterCommand(CommandName, std::make_unique<TCommand>());
+        CommandManager::RegisterCommand(CommandName, std::make_unique<TCommand>(), CommandColor);
     }
 };
 

@@ -1,10 +1,9 @@
 #pragma once
-#include <list>
 #include <vector>
 #include <cstdint>
 #include <random>
-
 #include "CommandManager.h"
+#include "raylib.h"
 
 namespace CellularSimulator::Core
 {
@@ -89,6 +88,18 @@ public:
      * @return A pointer to the newly spawned cell, or nullptr if the tile is not valid or occupied.
      */
     Cell* SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, float Energy);
+
+    /**
+     * @brief Spawns a new cell at the specified location.
+     * @param X The x-coordinate of the cell.
+     * @param Y The y-coordinate of the cell.
+     * @param Direction The initial direction of the cell.
+     * @param Genome The genome of the cell.
+     * @param Energy The initial energy of the cell.
+     * @param CellColor The color of the cell for rendering purposes.
+     * @return A pointer to the newly spawned cell, or nullptr if the tile is not valid or occupied.
+     */
+    Cell* SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, float Energy, Color CellColor);
 
     /**
      * @brief Returns a reference to the random number generator used by the simulator.

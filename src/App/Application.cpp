@@ -36,8 +36,6 @@ Application::Application()
     WorldCamera.zoom = InitialZoom;
     WorldCamera.target = {WorldWidthPx / 2.0f, WorldHeightPx / 2.0f};
 
-    Core::StringInterner::GetInstance().InitializeGeneColors();
-
     bIsRunning = true;
     UpdateThread = std::thread(&Application::UpdateLoop, this);
 };
@@ -232,21 +230,5 @@ Color Application::GetTileColor(const Core::GridTile* Tile)
 Color Application::GetCellColor(const Core::Cell* InCell)
 {
     if (!InCell) return WHITE;
-    std::vector<size_t> Genome = InCell->GetGenome();
-    const size_t GenomeSize = Genome.size();
-    if (GenomeSize == 0) return DARKGRAY;
-    float TotalR = 0, TotalG = 0, TotalB = 0;
-    for (size_t i = 0; i < GenomeSize; ++i)
-    {
-        size_t GeneHash = Genome[i];
-        float Weight = 1.0f - (static_cast<float>(i) / GenomeSize);
-        Color GeneColor = Core::StringInterner::GetInstance().GetGeneColor(GeneHash);
-        TotalR += GeneColor.r * Weight;
-        TotalG += GeneColor.g * Weight;
-        TotalB += GeneColor.b * Weight;
-    }
-    unsigned char FinalR = static_cast<unsigned char>(TotalR / GenomeSize);
-    unsigned char FinalG = static_cast<unsigned char>(TotalG / GenomeSize);
-    unsigned char FinalB = static_cast<unsigned char>(TotalB / GenomeSize);
-    return {FinalR, FinalG, FinalB, 255};
+    return InCell->GetColor();
 }

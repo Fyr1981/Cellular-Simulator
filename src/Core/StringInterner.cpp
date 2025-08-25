@@ -5,17 +5,6 @@
 
 using namespace CellularSimulator::Core;
 
-void StringInterner::InitializeGeneColors()
-{
-    GeneColorMap[Intern("Photosynthesis")] = LIME;
-    GeneColorMap[Intern("MoveForward")] = BLUE;
-    GeneColorMap[Intern("EatForward")] = RED;
-    GeneColorMap[Intern("TurnRight")] = WHITE;
-    GeneColorMap[Intern("TurnLeft")] = WHITE;
-    GeneColorMap[Intern("Divide")] = GOLD;
-    GeneColorMap[Intern("Idle")] = GRAY;
-}
-
 StringInterner& StringInterner::GetInstance()
 {
     static StringInterner Instance;
@@ -35,6 +24,11 @@ size_t StringInterner::Intern(std::string_view String)
     StringToHash[NewString] = Hash;
     HashToString[Hash] = NewString;
     return Hash;
+}
+
+void StringInterner::RegisterGeneColor(size_t Hash, Color Color)
+{
+    GeneColorMap.try_emplace(Hash, Color);
 }
 
 std::string_view StringInterner::Resolve(size_t Hash) const

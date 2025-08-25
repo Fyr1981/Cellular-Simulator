@@ -17,7 +17,7 @@ void DivideCommand::Execute(Simulator& Sim, Cell& Agent)
     if (!Sim.IsTileValidAndEmpty(NextX, NextY)) return;
     std::vector<size_t> NewGenome = Agent.GetGenome();
     std::uniform_real_distribution<float> MutationChance(0.0f, 1.0f);
-    std::mt19937& Rng = Sim.GetRNG(); 
+    std::mt19937& Rng = Sim.GetRNG();
     if (MutationChance(Rng) < 0.05f)
     {
         const auto AvailableCommands = CommandManager::GetRegisteredCommandNamesHashes();
@@ -25,15 +25,18 @@ void DivideCommand::Execute(Simulator& Sim, Cell& Agent)
         {
             std::uniform_int_distribution<size_t> CmdIndex(0, AvailableCommands.size() - 1);
             std::uniform_int_distribution<size_t> GeneIndex(0, NewGenome.size() - 1);
-
             NewGenome[GeneIndex(Rng)] = AvailableCommands[CmdIndex(Rng)];
         }
+        Sim.SpawnCell(NextX, NextY, Agent.GetDirection(), NewGenome, Agent.GetEnergy() / 2.f);
     }
-    Sim.SpawnCell(NextX, NextY, Agent.GetDirection(), NewGenome, Agent.GetEnergy() / 2.f);
+    else
+    {
+        Sim.SpawnCell(NextX, NextY, Agent.GetDirection(), NewGenome, Agent.GetEnergy() / 2.f, Agent.GetColor());
+    }
     Agent.ConsumeEnergy(Agent.GetEnergy() / 2.f);
 }
 
 namespace
 {
-const CommandRegistrar<DivideCommand> Registrar("Divide");
+const CommandRegistrar<DivideCommand> Registrar("Divide", GOLD);
 }
