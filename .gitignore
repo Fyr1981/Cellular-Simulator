@@ -630,3 +630,6 @@ FodyWeavers.xsd
 
 ### Project files folder ###
 .idea/
+
+### Doxygen documentation output ###
+/docs/
