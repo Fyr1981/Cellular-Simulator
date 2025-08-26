@@ -6,7 +6,7 @@
 
 A high-performance, multithreaded artificial life simulation built from scratch in modern C++. Watch simple rules give rise to complex, evolving ecosystems.
 
-![Simulation Showcase GIF](showcase.gif)
+![Simulation Showcase GIF](Showcase.gif)
 
 ## Key Features
 
