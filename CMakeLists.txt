@@ -93,3 +93,15 @@ target_link_libraries(CellularSimulator
 target_include_directories(CellularSimulator PRIVATE ${PROJECT_SOURCE_DIR}/include)
 
 message(STATUS "'${PROJECT_NAME}' project has been built successfully!")
+
+find_package(Doxygen)
+if(DOXYGEN_FOUND)
+    add_custom_target(doxygen-docs
+        COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_SOURCE_DIR}/Doxyfile
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        COMMENT "Generating API documentation with Doxygen..."
+        VERBATIM
+    )
+    set_target_properties(doxygen-docs PROPERTIES FOLDER "Documentation")
+    message(STATUS "Doxygen target 'doxygen-docs' has been added.")
+endif()
