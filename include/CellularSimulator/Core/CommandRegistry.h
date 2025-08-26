@@ -21,6 +21,8 @@ public:
     /**
      * @brief Constructor for registering a command
      * @param CommandName Name of the command to register
+     * @param CommandColor Color of the command to register. Used for cell visualization
+     * @note TCommand must derive from CellularSimulator::Core::Command class
      */
     explicit CommandRegistrar(std::string_view CommandName, Color CommandColor)
     {

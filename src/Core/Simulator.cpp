@@ -4,6 +4,7 @@
 #include "CellularSimulator/Core/GridTile.h"
 #include "CellularSimulator/Core/Cell.h"
 #include "CellularSimulator/Core/Command.h"
+#include "CellularSimulator/Core/CommandManager.h"
 
 using namespace CellularSimulator::Core;
 

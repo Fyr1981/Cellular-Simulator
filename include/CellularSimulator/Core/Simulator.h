@@ -3,7 +3,6 @@
 #include <cstdint>
 #include <mutex>
 #include <random>
-#include "CommandManager.h"
 #include "raylib.h"
 
 namespace CellularSimulator::Core
