@@ -55,6 +55,9 @@ private:
     int32_t FramesPerSecond;
 
     std::unique_ptr<Core::Simulator> Sim;
+    float MaxUpdateTime;
+
+    int32_t PauseSleepTimeMs = 50;
     
     SimulationState SimState;  
     SimulationState RenderState;

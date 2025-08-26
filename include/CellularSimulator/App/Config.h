@@ -22,6 +22,7 @@ struct Config
     int32_t SimHeight = 300;
     float InitialDensity = 0.5f;
     int32_t UpdatesPerSecond = 60;
+    float MaxUpdateTime = 0.25f;
 
     int32_t Seed = 0;
 

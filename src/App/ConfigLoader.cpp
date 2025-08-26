@@ -32,6 +32,7 @@ std::optional<Config> ConfigLoader::LoadConfigFromFile(const std::string& FilePa
         Cfg.InitialDensity = Data["simulation"].value("density", Cfg.InitialDensity);
         Cfg.UpdatesPerSecond = Data["simulation"].value("ups", Cfg.UpdatesPerSecond);
         Cfg.Seed = Data["simulation"].value("seed", Cfg.Seed);
+        Cfg.MaxUpdateTime = Data["simulation"].value("max_update_time", Cfg.MaxUpdateTime);
     }
     if (Data.contains("cell")) {
         Cfg.GenomeLength = Data["cell"].value("genome_length", Cfg.GenomeLength);

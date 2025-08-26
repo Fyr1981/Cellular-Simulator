@@ -44,6 +44,7 @@ Application::Application()
     Sim = std::make_unique<Core::Simulator>(SimWidth, SimHeight, Seed);
     Sim->Randomize(AppConfig.InitialDensity, AppConfig.GenomeLength, AppConfig.InitialEnergy);
     UpdatesPerSecond = AppConfig.UpdatesPerSecond;
+    MaxUpdateTime = AppConfig.MaxUpdateTime;
 
     const float WorldWidthPx = static_cast<float>(SimWidth * TileSize);
     const float WorldHeightPx = static_cast<float>(SimHeight * TileSize);
@@ -89,8 +90,6 @@ void Application::UpdateLoop()
 
     while (bIsRunning.load())
     {
-        auto FrameStartTime = std::chrono::high_resolution_clock::now();
-
         // Input from main thread
         if (bInputUpdated.load())
         {
@@ -117,11 +116,15 @@ void Application::UpdateLoop()
         }
 
         auto CurrentTime = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> DeltaTime = CurrentTime - LastTime;
+        std::chrono::duration<float> DeltaTime = CurrentTime - LastTime;
         LastTime = CurrentTime;
         if (!bIsPaused.load())
         {
             TimeAccumulator += DeltaTime.count();
+            if (TimeAccumulator > MaxUpdateTime)
+            {
+                TimeAccumulator = MaxUpdateTime;
+            }
             const double TimeBetweenUpdates = 1.0 / UpdatesPerSecond.load();
             while (TimeAccumulator >= TimeBetweenUpdates)
             {
@@ -132,6 +135,7 @@ void Application::UpdateLoop()
         else
         {
             TimeAccumulator = 0.f;
+            std::this_thread::sleep_for(std::chrono::milliseconds(PauseSleepTimeMs));
         }
 
         SimState.Tiles.clear();
