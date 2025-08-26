@@ -1,0 +1,7 @@
+<map id="CellularSimulator::Core::TurnLeftCommand::Execute" name="CellularSimulator::Core::TurnLeftCommand::Execute">
+<area shape="rect" id="Node000001" title="Executes the turn left command to rotate the cell counterclockwise." alt="" coords="5,30,184,85"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#a617acb8c7004c86bfebeaf527adead34" title="Gets the direction of the cell." alt="" coords="232,5,407,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,42,218,37,219,42,185,47"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1Cell.html#a843027646478c664d6305a5a2d82167c" title="Sets the direction of the cell." alt="" coords="233,69,406,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="185,67,219,72,219,78,184,73"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="CellularSimulator::Core::MoveForwardCommand" name="CellularSimulator::Core::MoveForwardCommand">
+<area shape="rect" id="Node000001" title="Move the agent forward by one cell by looking at the direction it is facing." alt="" coords="5,153,212,233"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Command.html" title="Base class for commands that can be executed on the simulator for the cell." alt="" coords="41,5,176,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,119,111,153,106,153,106,119"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="CellularSimulator::Core::CommandRegistrar::CommandRegistrar" name="CellularSimulator::Core::CommandRegistrar::CommandRegistrar">
+<area shape="rect" id="Node000001" title="Constructor for registering a command." alt="" coords="5,84,192,139"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1CommandManager.html#a20a2e46905f3787f4e4a3467f8250054" title="Registers a command with the factory." alt="" coords="240,84,424,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,109,226,109,226,114,192,114"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1StringInterner.html#a8ccc3a479554381b426972028aa3bc59" title="Retrieves the singleton instance." alt="" coords="473,5,623,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="407,81,460,62,462,67,409,86"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1StringInterner.html#aff14bee910bcce99423f776819528c54" title="Interns a string and returns its hash value." alt="" coords="473,84,623,139"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="424,109,460,109,460,114,424,114"/>
+<area shape="rect" id="Node000005" href="$classCellularSimulator_1_1Core_1_1StringInterner.html#a9a7882407c30781a5708a17bc7217a46" title="Registers a gene color for a specific hash value." alt="" coords="472,163,624,217"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="409,136,460,155,459,160,407,141"/>
+</map>

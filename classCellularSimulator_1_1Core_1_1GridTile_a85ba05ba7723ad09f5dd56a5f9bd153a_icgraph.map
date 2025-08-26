@@ -1,0 +1,5 @@
+<map id="CellularSimulator::Core::GridTile::HasCell" name="CellularSimulator::Core::GridTile::HasCell">
+<area shape="rect" id="Node000001" title="Checks if the tile contains a cell." alt="" coords="253,13,423,53"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1EatForwardCommand.html#aff3121b308adcd49605f4375cb161a10" title="Executes the eat forward command to steal energy from target cell." alt="" coords="5,5,205,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="239,35,206,35,206,30,239,30"/>
+</map>

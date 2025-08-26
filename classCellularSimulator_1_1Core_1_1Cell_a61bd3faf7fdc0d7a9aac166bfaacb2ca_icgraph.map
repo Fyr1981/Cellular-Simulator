@@ -1,0 +1,5 @@
+<map id="CellularSimulator::Core::Cell::GetGenome" name="CellularSimulator::Core::Cell::GetGenome">
+<area shape="rect" id="Node000001" title="Gets the genome of the cell." alt="" coords="223,13,393,53"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1DivideCommand.html#a02a42ca34a301c5d0ecf41f478d5a3ac" title="Executes the divide command to create offspring cell." alt="" coords="5,5,175,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="209,35,175,35,175,30,209,30"/>
+</map>

@@ -1,0 +1,3 @@
+<map id="CellularSimulator::Core::CommandManager" name="CellularSimulator::Core::CommandManager">
+<area shape="rect" id="Node000001" title="Owns a registry of commands and provides access to them." alt="" coords="5,5,240,160"/>
+</map>

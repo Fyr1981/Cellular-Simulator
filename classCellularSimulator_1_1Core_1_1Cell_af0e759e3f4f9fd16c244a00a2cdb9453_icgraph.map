@@ -1,0 +1,7 @@
+<map id="CellularSimulator::Core::Cell::AddEnergy" name="CellularSimulator::Core::Cell::AddEnergy">
+<area shape="rect" id="Node000001" title="Adds energy to the cell." alt="" coords="280,53,443,93"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1EatForwardCommand.html#aff3121b308adcd49605f4375cb161a10" title="Executes the eat forward command to steal energy from target cell." alt="" coords="19,5,219,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="266,60,219,52,219,47,267,54"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1PhotosynthesisCommand.html#add31b33c99bd263d25c1f7fd5e5e299d" title="Executes the photosynthesis command to generate energy." alt="" coords="5,84,232,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="267,90,233,96,232,91,266,85"/>
+</map>

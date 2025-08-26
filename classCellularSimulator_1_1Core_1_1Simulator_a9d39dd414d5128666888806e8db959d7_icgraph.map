@@ -1,0 +1,5 @@
+<map id="CellularSimulator::Core::Simulator::MoveCell" name="CellularSimulator::Core::Simulator::MoveCell">
+<area shape="rect" id="Node000001" title="Moves a cell to a new location if the tile is valid and empty." alt="" coords="268,13,460,53"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1MoveForwardCommand.html#a6648710a33a4b06f23f2d8a94f13016e" title="Executes the move forward command to relocate the cell." alt="" coords="5,5,220,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="255,35,220,35,220,30,255,30"/>
+</map>

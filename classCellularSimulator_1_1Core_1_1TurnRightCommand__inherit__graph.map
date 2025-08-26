@@ -1,0 +1,5 @@
+<map id="CellularSimulator::Core::TurnRightCommand" name="CellularSimulator::Core::TurnRightCommand">
+<area shape="rect" id="Node000001" title="Turn the agent 90 degrees to the right." alt="" coords="5,153,185,233"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Command.html" title="Base class for commands that can be executed on the simulator for the cell." alt="" coords="28,5,163,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,119,98,153,93,153,93,119"/>
+</map>

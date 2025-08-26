@@ -1,0 +1,5 @@
+<map id="CellularSimulator::Core::PhotosynthesisCommand::Execute" name="CellularSimulator::Core::PhotosynthesisCommand::Execute">
+<area shape="rect" id="Node000001" title="Executes the photosynthesis command to generate energy." alt="" coords="5,5,232,60"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#af0e759e3f4f9fd16c244a00a2cdb9453" title="Adds energy to the cell." alt="" coords="280,13,443,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,30,266,30,266,35,232,35"/>
+</map>

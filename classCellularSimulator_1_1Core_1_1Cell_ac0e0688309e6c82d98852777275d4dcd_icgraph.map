@@ -1,0 +1,5 @@
+<map id="CellularSimulator::Core::Cell::SetEnergy" name="CellularSimulator::Core::Cell::SetEnergy">
+<area shape="rect" id="Node000001" title="Sets the energy of the cell." alt="" coords="203,5,361,45"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#a02df375b4b8d5bf4e924bd519dde628a" title="Initializes the cell with all the parameters." alt="" coords="5,5,155,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,28,155,28,155,23,189,23"/>
+</map>

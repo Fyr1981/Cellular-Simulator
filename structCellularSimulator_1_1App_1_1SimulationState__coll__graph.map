@@ -1,0 +1,5 @@
+<map id="CellularSimulator::App::SimulationState" name="CellularSimulator::App::SimulationState">
+<area shape="rect" id="Node000001" title="Encapsulates the entire state of the simulation for rendering purposes, including tile data and inspe..." alt="" coords="19,168,177,248"/>
+<area shape="rect" id="Node000002" href="$structCellularSimulator_1_1App_1_1InspectorData.html" title="Holds data for the inspector panel, including whether to display genome information and the genome it..." alt="" coords="5,5,191,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,105,101,151,95,151,95,105"/>
+</map>

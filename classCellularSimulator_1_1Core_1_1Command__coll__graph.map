@@ -1,0 +1,3 @@
+<map id="CellularSimulator::Core::Command" name="CellularSimulator::Core::Command">
+<area shape="rect" id="Node000001" title="Base class for commands that can be executed on the simulator for the cell." alt="" coords="5,5,140,105"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="CellularSimulator::Core::Simulator::SpawnCell" name="CellularSimulator::Core::Simulator::SpawnCell">
+<area shape="rect" id="Node000001" title="Spawns a new cell at the specified location." alt="" coords="5,105,204,145"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Simulator.html#ad3afd94104794164379d6ec9151b0647" title="Provides read&#45;only access to a specific tile on the grid." alt="" coords="262,5,441,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,103,251,55,271,47,273,52,253,60,147,108"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1Cell.html#a727d113dc425177d62d27847a57477c1" title="Initializes the cell with all the parameters." alt="" coords="277,69,426,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="204,108,262,100,263,105,205,113"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a904d7147da803a472d383ee006009568" title="Checks if the specified tile is valid and empty." alt="" coords="252,134,451,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="205,137,239,142,238,147,204,142"/>
+<area shape="rect" id="Node000006" href="$classCellularSimulator_1_1Core_1_1GridTile.html#a6b55be1f58b6b11b68fc83c988b84db9" title="Sets or clears the cell pointer for this tile." alt="" coords="269,213,434,253"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="143,143,253,198,275,206,273,211,251,202,141,148"/>
+<area shape="rect" id="Node000005" href="$classCellularSimulator_1_1Core_1_1GridTile.html#adff5627736a9f6927b4c48671d7f4e85" title="Provides read&#45;write access to the Cell." alt="" coords="499,141,665,181"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="451,159,485,159,485,164,451,164"/>
+</map>

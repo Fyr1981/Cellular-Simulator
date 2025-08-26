@@ -1,0 +1,9 @@
+<map id="CellularSimulator::Core::Cell::SetDirection" name="CellularSimulator::Core::Cell::SetDirection">
+<area shape="rect" id="Node000001" title="Sets the direction of the cell." alt="" coords="241,91,415,131"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1TurnLeftCommand.html#a09f70e59fdeaada7c4f6d1945324570a" title="Executes the turn left command to rotate the cell counterclockwise." alt="" coords="10,5,189,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="255,89,179,63,180,58,257,84"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1TurnRightCommand.html#acce7396b93f5ce62888fff49ba7660d4" title="Executes the turn right command to rotate the cell clockwise." alt="" coords="5,84,193,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="228,114,193,114,193,109,228,109"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1Cell.html#a02df375b4b8d5bf4e924bd519dde628a" title="Initializes the cell with all the parameters." alt="" coords="25,163,174,203"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="252,138,164,166,163,161,250,133"/>
+</map>

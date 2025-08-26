@@ -1,0 +1,5 @@
+<map id="CellularSimulator::Core::Cell::SetColor" name="CellularSimulator::Core::Cell::SetColor">
+<area shape="rect" id="Node000001" title="Sets the color of the cell for rendering purposes." alt="" coords="203,5,351,45"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#a02df375b4b8d5bf4e924bd519dde628a" title="Initializes the cell with all the parameters." alt="" coords="5,5,155,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,28,155,28,155,23,189,23"/>
+</map>

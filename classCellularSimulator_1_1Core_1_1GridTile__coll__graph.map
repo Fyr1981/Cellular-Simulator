@@ -1,0 +1,3 @@
+<map id="CellularSimulator::Core::GridTile" name="CellularSimulator::Core::GridTile">
+<area shape="rect" id="Node000001" title="Represents a single t in the grid." alt="" coords="5,5,140,165"/>
+</map>

@@ -1,0 +1,3 @@
+<map id="CellularSimulator::App::ConfigLoader" name="CellularSimulator::App::ConfigLoader">
+<area shape="rect" id="Node000001" title="Loads the configuration from a JSON file." alt="" coords="5,5,172,85"/>
+</map>

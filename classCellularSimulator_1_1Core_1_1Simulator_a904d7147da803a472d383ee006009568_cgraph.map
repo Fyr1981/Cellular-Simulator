@@ -1,0 +1,5 @@
+<map id="CellularSimulator::Core::Simulator::IsTileValidAndEmpty" name="CellularSimulator::Core::Simulator::IsTileValidAndEmpty">
+<area shape="rect" id="Node000001" title="Checks if the specified tile is valid and empty." alt="" coords="5,5,204,60"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1GridTile.html#adff5627736a9f6927b4c48671d7f4e85" title="Provides read&#45;write access to the Cell." alt="" coords="252,13,419,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,30,238,30,238,35,204,35"/>
+</map>

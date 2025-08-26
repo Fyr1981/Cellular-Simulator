@@ -1,0 +1,17 @@
+<map id="CellularSimulator::Core::Simulator::MoveCell" name="CellularSimulator::Core::Simulator::MoveCell">
+<area shape="rect" id="Node000001" title="Moves a cell to a new location if the tile is valid and empty." alt="" coords="5,177,197,217"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#aeafd0257f9886d01395131e00af0a164" title="Gets the x&#45;coordinate of the cell." alt="" coords="273,5,416,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,175,169,116,204,84,244,55,259,47,262,52,247,60,208,88,172,120,120,179"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1Cell.html#a564c417a378482634bdf896d63a3c9dd" title="Gets the y&#45;coordinate of the cell." alt="" coords="273,69,416,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="135,175,186,147,244,119,263,112,265,117,246,124,188,152,138,180"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a904d7147da803a472d383ee006009568" title="Checks if the specified tile is valid and empty." alt="" coords="245,134,444,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="197,181,231,175,232,181,198,186"/>
+<area shape="rect" id="Node000006" href="$classCellularSimulator_1_1Core_1_1GridTile.html#a6b55be1f58b6b11b68fc83c988b84db9" title="Sets or clears the cell pointer for this tile." alt="" coords="262,213,427,253"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="198,209,249,217,248,222,197,214"/>
+<area shape="rect" id="Node000007" href="$classCellularSimulator_1_1Core_1_1Cell.html#aca333a7e1b6411313f73ecbb001c21ba" title="Sets the x&#45;coordinate of the cell." alt="" coords="273,277,416,317"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="143,215,246,263,266,270,264,275,244,268,140,220"/>
+<area shape="rect" id="Node000008" href="$classCellularSimulator_1_1Core_1_1Cell.html#afa11deb3fb7c6f3358490a705f24d6fc" title="Sets the y&#45;coordinate of the cell." alt="" coords="273,341,416,381"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="121,216,174,271,209,301,247,327,262,335,259,340,244,332,206,305,170,275,118,220"/>
+<area shape="rect" id="Node000005" href="$classCellularSimulator_1_1Core_1_1GridTile.html#adff5627736a9f6927b4c48671d7f4e85" title="Provides read&#45;write access to the Cell." alt="" coords="492,141,659,181"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="444,159,478,159,478,164,444,164"/>
+</map>

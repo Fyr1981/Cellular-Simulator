@@ -1,0 +1,17 @@
+<map id="CellularSimulator::Core::Simulator::IsTileValidAndEmpty" name="CellularSimulator::Core::Simulator::IsTileValidAndEmpty">
+<area shape="rect" id="Node000001" title="Checks if the specified tile is valid and empty." alt="" coords="515,101,713,156"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1DivideCommand.html#a02a42ca34a301c5d0ecf41f478d5a3ac" title="Executes the divide command to create offspring cell." alt="" coords="28,101,197,156"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="500,131,197,131,197,126,500,126"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1MoveForwardCommand.html#a6648710a33a4b06f23f2d8a94f13016e" title="Executes the move forward command to relocate the cell." alt="" coords="5,5,220,60"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="567,95,520,65,466,42,404,28,340,22,278,21,220,23,220,18,278,15,340,17,405,23,467,37,522,60,570,91"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a9d39dd414d5128666888806e8db959d7" title="Moves a cell to a new location if the tile is valid and empty." alt="" coords="271,51,463,91"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="501,105,453,94,455,89,502,100"/>
+<area shape="rect" id="Node000005" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a78c057ec4d6e325a09c4d6ab6d636cf1" title="Spawns a new cell at the specified location." alt="" coords="268,166,467,206"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="502,157,455,169,453,163,501,152"/>
+<area shape="rect" id="Node000007" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a6df9f36da810eaf940debe3939227ecc" title="Spawns a new cell at the specified location." alt="" coords="268,230,467,270"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="563,166,518,194,468,220,438,232,436,228,466,216,515,190,561,161"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="257,57,220,52,221,46,258,52"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="264,166,197,150,198,145,265,160"/>
+<area shape="rect" id="Node000006" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a08f0d0837fa8248ad79b36537eb3b862" title="Clears the grid and populates it with a random distribution of cells." alt="" coords="11,181,215,221"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="254,195,215,197,215,192,254,190"/>
+</map>
