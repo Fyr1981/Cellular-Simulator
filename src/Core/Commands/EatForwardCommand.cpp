@@ -14,7 +14,7 @@ void EatForwardCommand::Execute(Simulator& Sim, Cell& Agent)
     if (!TargetTile || !TargetTile->HasCell()) return;
     Cell* Victim = TargetTile->GetCell();
     if (!Victim) return;
-    const float EnergySteal = std::min(20.f, Victim->GetEnergy());
+    const int32_t EnergySteal = std::min(20, Victim->GetEnergy());
     Victim->ConsumeEnergy(EnergySteal);
     Agent.AddEnergy(EnergySteal);
 }

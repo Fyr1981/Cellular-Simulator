@@ -10,6 +10,14 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(raylib)
 
+FetchContent_Declare(
+    nlohmann_json
+    GIT_REPOSITORY https://github.com/nlohmann/json.git
+    GIT_TAG v3.11.2
+)
+
+FetchContent_MakeAvailable(nlohmann_json)
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -17,9 +25,12 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(APP_HEADERS
     include/CellularSimulator/App/Application.h
     include/CellularSimulator/App/RenderData.h
+    include/CellularSimulator/App/Config.h
+    include/CellularSimulator/App/ConfigLoader.h
 )
 set(APP_SOURCES
     src/App/Application.cpp
+    src/App/ConfigLoader.cpp
 )
 
 set(CORE_HEADERS
@@ -57,6 +68,14 @@ set(CORE_SOURCES
 
 add_executable(CellularSimulator src/main.cpp)
 
+add_custom_command(
+    TARGET CellularSimulator POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${CMAKE_SOURCE_DIR}/config.json"
+            "$<TARGET_FILE_DIR:CellularSimulator>/config.json"
+    COMMENT "Copying config.json to output directory..."
+)
+
 target_sources(CellularSimulator
     PRIVATE
         ${APP_HEADERS}
@@ -65,7 +84,11 @@ target_sources(CellularSimulator
         ${CORE_SOURCES}
 )
 
-target_link_libraries(CellularSimulator PRIVATE raylib)
+target_link_libraries(CellularSimulator
+    PRIVATE
+        raylib
+        nlohmann_json::nlohmann_json
+)
 
 target_include_directories(CellularSimulator PRIVATE ${PROJECT_SOURCE_DIR}/include)
 

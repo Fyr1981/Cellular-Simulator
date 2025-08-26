@@ -27,13 +27,13 @@ void DivideCommand::Execute(Simulator& Sim, Cell& Agent)
             std::uniform_int_distribution<size_t> GeneIndex(0, NewGenome.size() - 1);
             NewGenome[GeneIndex(Rng)] = AvailableCommands[CmdIndex(Rng)];
         }
-        Sim.SpawnCell(NextX, NextY, Agent.GetDirection(), NewGenome, Agent.GetEnergy() / 2.f);
+        Sim.SpawnCell(NextX, NextY, Agent.GetDirection(), NewGenome, Agent.GetEnergy() / 2);
     }
     else
     {
-        Sim.SpawnCell(NextX, NextY, Agent.GetDirection(), NewGenome, Agent.GetEnergy() / 2.f, Agent.GetColor());
+        Sim.SpawnCell(NextX, NextY, Agent.GetDirection(), NewGenome, Agent.GetEnergy() / 2, Agent.GetColor());
     }
-    Agent.ConsumeEnergy(Agent.GetEnergy() / 2.f);
+    Agent.ConsumeEnergy(Agent.GetEnergy() / 2);
 }
 
 namespace

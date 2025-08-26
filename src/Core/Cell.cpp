@@ -6,19 +6,19 @@
 
 using namespace CellularSimulator::Core;
 
-Cell::Cell(int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, float InEnergy, bool InInObjectPool)
+Cell::Cell(int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, int32_t InEnergy, bool InInObjectPool)
 {
     Initialize(InX, InY, InDirection, std::move(InGenome), InEnergy, InInObjectPool);
 }
 
 Cell::Cell(
-    int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, float InEnergy, bool InInObjectPool, Color InColor)
+    int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, int32_t InEnergy, bool InInObjectPool, Color InColor)
 {
     Initialize(InX, InY, InDirection, std::move(InGenome), InEnergy, InInObjectPool, InColor);
 }
 
 void CellularSimulator::Core::Cell::Initialize(
-    int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, float InEnergy, bool InInObjectPool)
+    int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, int32_t InEnergy, bool InInObjectPool)
 {
     SetX(InX);
     SetY(InY);
@@ -30,7 +30,7 @@ void CellularSimulator::Core::Cell::Initialize(
 }
 
 void Cell::Initialize(
-    int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, float InEnergy, bool InInObjectPool, Color InColor)
+    int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, int32_t InEnergy, bool InInObjectPool, Color InColor)
 {
     SetX(InX);
     SetY(InY);
@@ -68,14 +68,14 @@ EDirection Cell::GetDirection() const
     return Direction;
 }
 
-float Cell::GetEnergy() const
+int32_t Cell::GetEnergy() const
 {
     return Energy;
 }
 
 bool Cell::IsAlive() const
 {
-    return Energy > 0.0f;
+    return Energy > 0;
 }
 
 bool Cell::IsInObjectPool() const
@@ -108,21 +108,21 @@ void Cell::SetDirection(EDirection InDirection)
     Direction = InDirection;
 }
 
-void Cell::AddEnergy(float Amount)
+void Cell::AddEnergy(int32_t Amount)
 {
-    if (Amount < 0.0f) return;
+    if (Amount < 0) return;
     Energy = std::min(MaxEnergy, Energy + Amount);
 }
 
-void Cell::ConsumeEnergy(float Amount)
+void Cell::ConsumeEnergy(int32_t Amount)
 {
-    if (Amount < 0.0f) return;
-    Energy = std::max(0.0f, Energy - Amount);
+    if (Amount < 0) return;
+    Energy = std::max(0, Energy - Amount);
 }
 
-void Cell::SetEnergy(float InEnergy)
+void Cell::SetEnergy(int32_t InEnergy)
 {
-    Energy = std::max(0.0f, std::min(MaxEnergy, InEnergy));
+    Energy = std::max(0, std::min(MaxEnergy, InEnergy));
 }
 
 void Cell::SetGenome(std::vector<size_t> InGenome)

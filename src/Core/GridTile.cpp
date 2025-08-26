@@ -3,10 +3,6 @@
 
 using namespace CellularSimulator::Core;
 
-void GridTile::Update()
-{
-}
-
 bool GridTile::HasCell() const
 {
     return HostedCell;

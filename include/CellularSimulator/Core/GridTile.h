@@ -19,11 +19,6 @@ public:
     GridTile() = default;
 
     /**
-     *  @brief Updates the internal state of the tile for one simulation step.
-     */
-    void Update();
-
-    /**
      * @brief Checks if the tile contains a cell.
      * @return True if the tile contains a cell, false otherwise.
      */
