@@ -1,0 +1,20 @@
+﻿{
+  "window": {
+    "width": 1280,
+    "height": 720,
+    "fullscreen": false,
+    "fps": 60
+  },
+  "simulation": {
+    "width": 200,
+    "height": 200,
+    "density": 0.5,
+    "ups": 10,
+    "seed": 1,
+    "max_update_time": 0.1
+  },
+  "cell": {
+    "genome_length": 16,
+    "initial_energy": 100.0
+  }
+}

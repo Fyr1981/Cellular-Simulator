@@ -2,8 +2,7 @@
 
 #include <memory>
 #include <mutex>
-#include <optional>
-
+#include "Config.h"
 #include "raylib.h"
 #include "CellularSimulator/Core/Simulator.h"
 #include "RenderData.h"
@@ -47,16 +46,18 @@ private:
     static Color GetTileColor(const Core::GridTile* Tile);
     static Color GetCellColor(const Core::Cell* InCell);
 
-    int32_t WindowWidth = 1280;
-    int32_t WindowHeight = 720;
+    Config AppConfig;
     int32_t TileSize = 10;
     Camera2D WorldCamera{};
 
     std::atomic<bool> bIsPaused = false;
-    std::atomic<int32_t> UpdatesPerSecond = 10;
-    int32_t FramesPerSecond = 30;
+    std::atomic<int32_t> UpdatesPerSecond;
+    int32_t FramesPerSecond;
 
     std::unique_ptr<Core::Simulator> Sim;
+    float MaxUpdateTime;
+
+    int32_t PauseSleepTimeMs = 50;
     
     SimulationState SimState;  
     SimulationState RenderState;

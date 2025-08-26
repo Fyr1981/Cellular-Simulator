@@ -36,7 +36,7 @@ public:
      * @param InInObjectPool Whether the cell is in the object pool or active in the simulation.
      * @note The color of the cell will be automatically calculated based on its genome.
      */
-    Cell(int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, float InEnergy, bool InInObjectPool);
+    Cell(int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, int32_t InEnergy, bool InInObjectPool);
 
     /**
      * @brief Constructs a cell with the specified parameters.
@@ -49,7 +49,8 @@ public:
      * @param InColor The color of the cell for rendering purposes.
      */
     Cell(
-        int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, float InEnergy, bool InInObjectPool, Color InColor);
+        int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, int32_t InEnergy, bool InInObjectPool,
+        Color InColor);
 
     /**
      * @brief Initializes the cell with all the parameters.
@@ -62,7 +63,7 @@ public:
      * @param InColor The color of the cell for rendering purposes.
      * @note The color of the cell will be automatically calculated based on its genome.
      */
-    void Initialize(int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, float InEnergy, bool InInObjectPool);
+    void Initialize(int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, int32_t InEnergy, bool InInObjectPool);
 
     /**
      * @brief Initializes the cell with all the parameters.
@@ -75,7 +76,8 @@ public:
      * @param InColor The color of the cell for rendering purposes.
      */
     void Initialize(
-        int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, float InEnergy, bool InInObjectPool, Color InColor);
+        int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, int32_t InEnergy, bool InInObjectPool,
+        Color InColor);
 
     /**
      * @brief Decides the next command for the cell.
@@ -105,7 +107,7 @@ public:
      * @brief Gets the energy of the cell.
      * @return The energy of the cell.
      */
-    [[nodiscard]] float GetEnergy() const;
+    [[nodiscard]] int32_t GetEnergy() const;
 
     /**
      * @brief Checks if the energy of the cell is positive so the cell is alive.
@@ -153,19 +155,19 @@ public:
      * @brief Adds energy to the cell.
      * @param Amount The amount of energy to add.
      */
-    void AddEnergy(float Amount);
+    void AddEnergy(int32_t Amount);
 
     /**
      * @brief Consumes energy from the cell.
      * @param Amount The amount of energy to consume.
      */
-    void ConsumeEnergy(float Amount);
+    void ConsumeEnergy(int32_t Amount);
 
     /**
      * @brief Sets the energy of the cell.
      * @param InEnergy The energy of the cell.
      */
-    void SetEnergy(float InEnergy);
+    void SetEnergy(int32_t InEnergy);
 
     /**
      * @brief Sets the genome of the cell.
@@ -191,12 +193,12 @@ private:
     int32_t X;
     int32_t Y;
     EDirection Direction;
-    float Energy;
+    int32_t Energy;
+    int32_t MaxEnergy = 100.0f;
     std::vector<size_t> Genome;
     size_t GenomePointer = 0;
-    float MaxEnergy = 100.0f;
     bool bInsideObjectPool = true;
     Color CellColor = DARKGRAY;
 };
-}  // namespace Core
-}  // namespace CellularSimulator
+} // namespace Core
+} // namespace CellularSimulator

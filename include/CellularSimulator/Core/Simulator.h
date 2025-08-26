@@ -29,6 +29,7 @@ public:
      * @brief Construct the simulator with a grid of the specified size.
      * @param InWidth The width of the grid.
      * @param InHeight The height of the grid.
+     * @param SimulationSeed The seed for the random number generator.
      */
     explicit Simulator(int32_t InWidth, int32_t InHeight, int32_t SimulationSeed);
 
@@ -40,8 +41,10 @@ public:
     /**
      * @brief Clears the grid and populates it with a random distribution of cells.
      * @param Density The probability (0.0 to 1.0) for any tile to contain a cell.
+     * @param GenomeLength Num of genes in the genome.
+     * @param Energy Initial energy of the cell.
      */
-    void Randomize(float Density);
+    void Randomize(float Density, int32_t GenomeLength, int32_t Energy);
 
     /**
      * @brief Provides read-only access to a specific tile on the grid.
@@ -88,7 +91,7 @@ public:
      * @param Energy The initial energy of the cell.
      * @return A pointer to the newly spawned cell, or nullptr if the tile is not valid or occupied.
      */
-    Cell* SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, float Energy);
+    Cell* SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, int32_t Energy);
 
     /**
      * @brief Spawns a new cell at the specified location.
@@ -100,7 +103,7 @@ public:
      * @param CellColor The color of the cell for rendering purposes.
      * @return A pointer to the newly spawned cell, or nullptr if the tile is not valid or occupied.
      */
-    Cell* SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, float Energy, Color CellColor);
+    Cell* SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, int32_t Energy, Color CellColor);
 
     /**
      * @brief Returns a reference to the random number generator used by the simulator.
@@ -129,8 +132,6 @@ private:
     std::vector<GridTile> Grid;
     std::vector<Cell> CellPool;
     size_t ActiveCellCount = 0;
-
-    int32_t GenomeLength = 16;
 
     std::mt19937 RandomGenerator;
 

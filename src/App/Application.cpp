@@ -2,7 +2,7 @@
 #include <chrono>
 #include <iomanip>
 #include <iostream>
-#include <sstream>
+#include "CellularSimulator/App/ConfigLoader.h"
 #include "CellularSimulator/Core/GridTile.h"
 #include "CellularSimulator/Core/Cell.h"
 #include <string>
@@ -15,13 +15,36 @@ using namespace CellularSimulator::App;
 
 Application::Application()
 {
+    auto LoadedConfig = ConfigLoader::LoadConfigFromFile("config.json");
+    if (LoadedConfig)
+    {
+        AppConfig = *LoadedConfig;
+        std::cout << "CellularSimulator config loaded from config.json" << '\n';
+    }
+    else
+    {
+        std::cout << "config.json for CellularSimulator not found or invalid. Using default settings." << '\n';
+    }
+
+    const int32_t WindowHeight = AppConfig.WindowHeight;
+    const int32_t WindowWidth = AppConfig.WindowWidth;
     InitWindow(WindowWidth, WindowHeight, "Cellular Simulator");
+    FramesPerSecond = AppConfig.FramesPerSecond;
     SetTargetFPS(FramesPerSecond);
-    int32_t SimWidth = 300;
-    int32_t SimHeight = 300;
-    int32_t TimeSeed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
-    Sim = std::make_unique<Core::Simulator>(300, 300, TimeSeed);
-    Sim->Randomize(0.5f);
+    unsigned int WindowFlags = FLAG_WINDOW_RESIZABLE;
+    SetWindowState(WindowFlags);
+
+    const int32_t SimWidth = AppConfig.SimWidth;
+    const int32_t SimHeight = AppConfig.SimHeight;
+    int32_t Seed = AppConfig.Seed;
+    if (Seed == 0)
+    {
+        Seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
+    }
+    Sim = std::make_unique<Core::Simulator>(SimWidth, SimHeight, Seed);
+    Sim->Randomize(AppConfig.InitialDensity, AppConfig.GenomeLength, AppConfig.InitialEnergy);
+    UpdatesPerSecond = AppConfig.UpdatesPerSecond;
+    MaxUpdateTime = AppConfig.MaxUpdateTime;
 
     const float WorldWidthPx = static_cast<float>(SimWidth * TileSize);
     const float WorldHeightPx = static_cast<float>(SimHeight * TileSize);
@@ -36,8 +59,12 @@ Application::Application()
     WorldCamera.zoom = InitialZoom;
     WorldCamera.target = {WorldWidthPx / 2.0f, WorldHeightPx / 2.0f};
 
+    if(AppConfig.bStartFullscreen)
+    {
+        ToggleFullscreen();
+    }
+
     bIsRunning = true;
-    UpdateThread = std::thread(&Application::UpdateLoop, this);
 };
 
 Application::~Application()
@@ -52,6 +79,7 @@ Application::~Application()
 
 void Application::Run()
 {
+    UpdateThread = std::thread(&Application::UpdateLoop, this);
     RenderLoop();
 }
 
@@ -62,8 +90,6 @@ void Application::UpdateLoop()
 
     while (bIsRunning.load())
     {
-        auto FrameStartTime = std::chrono::high_resolution_clock::now();
-
         // Input from main thread
         if (bInputUpdated.load())
         {
@@ -90,11 +116,15 @@ void Application::UpdateLoop()
         }
 
         auto CurrentTime = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> DeltaTime = CurrentTime - LastTime;
+        std::chrono::duration<float> DeltaTime = CurrentTime - LastTime;
         LastTime = CurrentTime;
         if (!bIsPaused.load())
         {
             TimeAccumulator += DeltaTime.count();
+            if (TimeAccumulator > MaxUpdateTime)
+            {
+                TimeAccumulator = MaxUpdateTime;
+            }
             const double TimeBetweenUpdates = 1.0 / UpdatesPerSecond.load();
             while (TimeAccumulator >= TimeBetweenUpdates)
             {
@@ -105,6 +135,7 @@ void Application::UpdateLoop()
         else
         {
             TimeAccumulator = 0.f;
+            std::this_thread::sleep_for(std::chrono::milliseconds(PauseSleepTimeMs));
         }
 
         SimState.Tiles.clear();
@@ -217,7 +248,7 @@ void Application::Draw()
     std::string StatusText = bIsPaused.load() ? "PAUSED" : "RUNNING";
     StatusText += " | UPS: " + std::to_string(UpdatesPerSecond.load());
     DrawText(StatusText.c_str(), 10, 10, 20, LIME);
-    DrawFPS(WindowWidth - 100, 10);
+    DrawFPS(GetScreenWidth() - 100, 10);
     EndDrawing();
 }
 

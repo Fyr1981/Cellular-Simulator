@@ -52,7 +52,7 @@ void Simulator::Update()
     ActiveCellCount = std::distance(CellPool.begin(), FirstDead);
 }
 
-void Simulator::Randomize(float Density)
+void Simulator::Randomize(float Density, int32_t GenomeLength, int32_t Energy)
 {
     for (auto& Tile : Grid)
     {
@@ -74,7 +74,7 @@ void Simulator::Randomize(float Density)
             {
                 RandomGenome.push_back(AvailableCommands[CommandIndexDist(Rng)]);
             }
-            SpawnCell(X, Y, EDirection::North, std::move(RandomGenome), 50);
+            SpawnCell(X, Y, EDirection::North, std::move(RandomGenome), Energy);
         }
     }
 }
@@ -115,7 +115,7 @@ void Simulator::MoveCell(Cell* Agent, int32_t NewX, int32_t NewY)
     Agent->SetY(NewY);
 }
 
-Cell* Simulator::SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, float Energy)
+Cell* Simulator::SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, int32_t Energy)
 {
     if (!IsTileValidAndEmpty(X, Y) || ActiveCellCount >= CellPool.size()) return nullptr;
     std::lock_guard<std::mutex> Lock(CellPoolMutex);
@@ -126,7 +126,7 @@ Cell* Simulator::SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vect
     return &NewCell;
 }
 
-Cell* Simulator::SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, float Energy, Color CellColor)
+Cell* Simulator::SpawnCell(int32_t X, int32_t Y, EDirection Direction, std::vector<size_t> Genome, int32_t Energy, Color CellColor)
 {
     if (!IsTileValidAndEmpty(X, Y) || ActiveCellCount >= CellPool.size()) return nullptr;
     std::lock_guard<std::mutex> Lock(CellPoolMutex);
@@ -155,7 +155,7 @@ void Simulator::ProcessAgent(Cell& Agent)
         Cmd->Execute(*this, Agent);
     }
     Agent.ConsumeEnergy(10.0f);
-    if (Agent.GetEnergy() <= 0.0f)
+    if (Agent.GetEnergy() <= 0)
     {
         Agent.SetInObjectPool(true);
     }
