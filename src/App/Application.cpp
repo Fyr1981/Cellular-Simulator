@@ -42,7 +42,27 @@ Application::Application()
         Seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
     }
     Sim = std::make_unique<Core::Simulator>(SimWidth, SimHeight, Seed);
-    Sim->Randomize(AppConfig.InitialDensity, AppConfig.GenomeLength, AppConfig.InitialEnergy);
+    //Sim->Randomize(AppConfig.InitialDensity, AppConfig.GenomeLength, AppConfig.InitialEnergy);
+    std::vector<size_t> Genome;
+    Genome = {
+        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
+        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
+        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
+        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
+        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
+        Core::StringInterner::GetInstance().Intern("Divide"),
+        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
+        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
+        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
+        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
+        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
+        Core::StringInterner::GetInstance().Intern("Divide"),
+        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
+        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
+        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
+        Core::StringInterner::GetInstance().Intern("Divide"),
+    };
+    Sim->Populate(AppConfig.InitialDensity, Genome, AppConfig.InitialEnergy);
     UpdatesPerSecond = AppConfig.UpdatesPerSecond;
     MaxUpdateTime = AppConfig.MaxUpdateTime;
 
@@ -59,7 +79,7 @@ Application::Application()
     WorldCamera.zoom = InitialZoom;
     WorldCamera.target = {WorldWidthPx / 2.0f, WorldHeightPx / 2.0f};
 
-    if(AppConfig.bStartFullscreen)
+    if (AppConfig.bStartFullscreen)
     {
         ToggleFullscreen();
     }

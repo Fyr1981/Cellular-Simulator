@@ -11,7 +11,7 @@ namespace Core
 
 /**
  * @class CommandRegistrar
- * @brief Registers a command with the command factory by its class and name
+ * @brief Registers a command in CommandManager with the command factory by its class and name and color
  * @tparam TCommand Command type to create that must derive from CellularSimulator::Core::Command class
  */
 template <typename TCommand>
@@ -19,7 +19,7 @@ class CommandRegistrar
 {
 public:
     /**
-     * @brief Constructor for registering a command
+     * @brief Constructor for registering a command in CommandManager
      * @param CommandName Name of the command to register
      * @param CommandColor Color of the command to register. Used for cell visualization
      * @note TCommand must derive from CellularSimulator::Core::Command class

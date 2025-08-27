@@ -1,10 +1,17 @@
 ﻿#include "CellularSimulator/Core/Commands/EatForwardCommand.h"
+
+#include <string>
+
 #include "CellularSimulator/Core/Cell.h"
 #include "CellularSimulator/Core/CommandRegistry.h"
 #include "CellularSimulator/Core/GridTile.h"
 #include "CellularSimulator/Core/Simulator.h"
 
 using namespace CellularSimulator::Core;
+
+EatForwardCommand::EatForwardCommand(int32_t EnergyToSteal): EnergySteal(EnergyToSteal)
+{
+}
 
 void EatForwardCommand::Execute(Simulator& Sim, Cell& Agent)
 {
@@ -14,12 +21,25 @@ void EatForwardCommand::Execute(Simulator& Sim, Cell& Agent)
     if (!TargetTile || !TargetTile->HasCell()) return;
     Cell* Victim = TargetTile->GetCell();
     if (!Victim) return;
-    const int32_t EnergySteal = std::min(20, Victim->GetEnergy());
-    Victim->ConsumeEnergy(EnergySteal);
-    Agent.AddEnergy(EnergySteal);
+    const int32_t Steal = std::min(EnergySteal, Victim->GetEnergy());
+    Victim->ConsumeEnergy(Steal);
+    Agent.AddEnergy(Steal);
 }
 
 namespace
 {
-const CommandRegistrar<EatForwardCommand> Registrar("EatForward", RED);
+struct EatForwardRegistrar
+{
+    EatForwardRegistrar()
+    {
+        for (int32_t i = 1; i <= 100; ++i)
+        {
+            std::string CommandName = "EatForward: " + std::to_string(i);
+            auto CommandInstance = std::make_unique<EatForwardCommand>(i);
+            CommandManager::RegisterCommand(CommandName, std::move(CommandInstance), RED);
+        }
+    }
+};
+
+const EatForwardRegistrar Registrar;
 }

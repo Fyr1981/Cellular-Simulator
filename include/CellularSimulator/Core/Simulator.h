@@ -38,12 +38,20 @@ public:
     void Update();
 
     /**
-     * @brief Clears the grid and populates it with a random distribution of cells.
+     * @brief Clears the grid and populates it with a random distribution of cells with a random genome.
      * @param Density The probability (0.0 to 1.0) for any tile to contain a cell.
      * @param GenomeLength Num of genes in the genome.
      * @param Energy Initial energy of the cell.
      */
     void Randomize(float Density, int32_t GenomeLength, int32_t Energy);
+
+    /**
+    * @brief Clears the grid and populates it with a random distribution of cells with a specified genome.
+    * @param Density The probability (0.0 to 1.0) for any tile to contain a cell.
+    * @param Genome The genome of the cells.
+    * @param Energy Initial energy of the cell.
+    */
+    void Populate(float Density, const std::vector<size_t>& Genome, int32_t Energy);
 
     /**
      * @brief Provides read-only access to a specific tile on the grid.
@@ -125,6 +133,7 @@ public:
 
 private:
     void ProcessAgent(Cell& Agent);
+    void ClearGrid();
 
     int32_t Width = 256;
     int32_t Height = 256;

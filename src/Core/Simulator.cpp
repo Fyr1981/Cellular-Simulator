@@ -19,10 +19,7 @@ Simulator::Simulator(int32_t InWidth, int32_t InHeight, int32_t SimulationSeed) 
 void Simulator::Update()
 {
     // Tile cleanup
-    std::for_each(std::execution::par, Grid.begin(), Grid.end(), [](GridTile& Tile)
-    {
-        Tile.SetCell(nullptr);
-    });
+    ClearGrid();
     // Active cell pool
     const auto FirstCellIt = CellPool.begin();
     const auto LastCellIt = CellPool.begin() + ActiveCellCount;
@@ -55,10 +52,7 @@ void Simulator::Update()
 
 void Simulator::Randomize(float Density, int32_t GenomeLength, int32_t Energy)
 {
-    for (auto& Tile : Grid)
-    {
-        Tile.SetCell(nullptr);
-    }
+    ClearGrid();
     const std::vector<size_t> AvailableCommands = CommandManager::GetRegisteredCommandNamesHashes();
     if (AvailableCommands.empty()) return;
     std::mt19937 Rng = GetRNG();
@@ -76,6 +70,21 @@ void Simulator::Randomize(float Density, int32_t GenomeLength, int32_t Energy)
                 RandomGenome.push_back(AvailableCommands[CommandIndexDist(Rng)]);
             }
             SpawnCell(X, Y, EDirection::North, std::move(RandomGenome), Energy);
+        }
+    }
+}
+
+void Simulator::Populate(float Density, const std::vector<size_t>& Genome, int32_t Energy)
+{
+    ClearGrid();
+    std::mt19937 Rng = GetRNG();
+    std::uniform_real_distribution<float> Dist(0.0f, 1.0f);
+    for (int32_t Y = 0; Y < Height; ++Y)
+    {
+        for (int32_t X = 0; X < Width; ++X)
+        {
+            if (Dist(Rng) > Density) continue;
+            SpawnCell(X, Y, EDirection::North, Genome, Energy);
         }
     }
 }
@@ -160,4 +169,12 @@ void Simulator::ProcessAgent(Cell& Agent)
     {
         Agent.SetInObjectPool(true);
     }
+}
+
+void Simulator::ClearGrid()
+{
+    std::for_each(std::execution::par, Grid.begin(), Grid.end(), [](GridTile& Tile)
+    {
+        Tile.SetCell(nullptr);
+    });
 }
