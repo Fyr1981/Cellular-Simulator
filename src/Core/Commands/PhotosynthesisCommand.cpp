@@ -6,7 +6,7 @@ using namespace CellularSimulator::Core;
 
 void PhotosynthesisCommand::Execute(Simulator& Sim, Cell& Agent)
 {
-    Agent.AddEnergy(20);
+    Agent.AddEnergy(15);
 }
 
 namespace

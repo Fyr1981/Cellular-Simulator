@@ -158,13 +158,13 @@ public:
     void AddEnergy(int32_t Amount);
 
     /**
-     * @brief Consumes energy from the cell.
+     * @brief Consumes energy from the cell. If the cell is defending, it will not consume energy and will remove the defending flag.
      * @param Amount The amount of energy to consume.
      */
     void ConsumeEnergy(int32_t Amount);
 
     /**
-     * @brief Sets the energy of the cell.
+     * @brief Sets the energy of the cell. It also can remove the defending flag if the energy is less than the current energy.
      * @param InEnergy The energy of the cell.
      */
     void SetEnergy(int32_t InEnergy);
@@ -192,6 +192,12 @@ public:
      */
     void MoveToNextCommand();
 
+    /**
+     * @brief Adds defendings to the cell which protects it from energy consumption.
+     * @param Amount The amount of defendings to add.
+     */
+    void AddDefendings(int32_t Amount);
+
 private:
     void CalculateColor();
 
@@ -200,6 +206,8 @@ private:
     EDirection Direction;
     int32_t Energy;
     int32_t MaxEnergy = 100.0f;
+    int32_t Defences = 0;
+    int32_t MaxDefences = 3;
     std::vector<size_t> Genome;
     size_t GenomePointer = 0;
     bool bInsideObjectPool = true;

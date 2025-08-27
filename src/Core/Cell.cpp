@@ -106,18 +106,21 @@ void Cell::SetDirection(EDirection InDirection)
 
 void Cell::AddEnergy(int32_t Amount)
 {
-    if (Amount < 0) return;
-    Energy = std::min(MaxEnergy, Energy + Amount);
+    SetEnergy(Energy + Amount);
 }
 
 void Cell::ConsumeEnergy(int32_t Amount)
 {
-    if (Amount < 0) return;
-    Energy = std::max(0, Energy - Amount);
+    SetEnergy(Energy - Amount);
 }
 
 void Cell::SetEnergy(int32_t InEnergy)
 {
+    if (Defences > 0 && InEnergy < Energy)
+    {
+        Defences--;
+        return;
+    }
     Energy = std::max(0, std::min(MaxEnergy, InEnergy));
 }
 
@@ -142,6 +145,16 @@ void Cell::MoveToNextCommand()
     if (GenomePointer >= Genome.size())
     {
         GenomePointer = 0;
+    }
+}
+
+void Cell::AddDefendings(int32_t Amount)
+{
+    if (Amount < 0) return;
+    Defences += Amount;
+    if (Defences > MaxDefences)
+    {
+        Defences = MaxDefences;
     }
 }
 
