@@ -187,6 +187,11 @@ public:
      */
     void SetColor(Color InColor);
 
+    /**
+     * @brief Moves the gene pointer to the next command.
+     */
+    void MoveToNextCommand();
+
 private:
     void CalculateColor();
 

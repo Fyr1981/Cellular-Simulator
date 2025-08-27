@@ -45,11 +45,7 @@ size_t Cell::DecideNextCommand()
 {
     if (Genome.empty()) return 0;
     size_t CommandHash = Genome[GenomePointer];
-    GenomePointer++;
-    if (GenomePointer >= Genome.size())
-    {
-        GenomePointer = 0;
-    }
+    MoveToNextCommand();
     return CommandHash;
 }
 
@@ -135,12 +131,21 @@ void Cell::SetInObjectPool(bool bInObjectPool)
     bInsideObjectPool = bInObjectPool;
 }
 
-void CellularSimulator::Core::Cell::SetColor(Color InColor)
+void Cell::SetColor(Color InColor)
 {
     CellColor = InColor;
 }
 
-void CellularSimulator::Core::Cell::CalculateColor()
+void Cell::MoveToNextCommand()
+{
+    GenomePointer++;
+    if (GenomePointer >= Genome.size())
+    {
+        GenomePointer = 0;
+    }
+}
+
+void Cell::CalculateColor()
 {
     const size_t GenomeSize = Genome.size();
     if (GenomeSize == 0)
