@@ -69,6 +69,46 @@ auto CreateColorPredicate(int32_t Threshold, bool bSkipIfAbove)
     };
 }
 
+bool IsLookingNorth(Simulator& Sim, Cell& Agent)
+{
+    return Agent.GetDirection() == EDirection::North;
+}
+
+bool IsNotLookingNorth(Simulator& Sim, Cell& Agent)
+{
+    return Agent.GetDirection() != EDirection::North;
+}
+
+bool IsLookingEast(Simulator& Sim, Cell& Agent)
+{
+    return Agent.GetDirection() == EDirection::East;
+}
+
+bool IsNotLookingEast(Simulator& Sim, Cell& Agent)
+{
+    return Agent.GetDirection() != EDirection::East;
+}
+
+bool IsLookingSouth(Simulator& Sim, Cell& Agent)
+{
+    return Agent.GetDirection() == EDirection::South;
+}
+
+bool IsNotLookingSouth(Simulator& Sim, Cell& Agent)
+{
+    return Agent.GetDirection() != EDirection::South;
+}
+
+bool IsLookingWest(Simulator& Sim, Cell& Agent)
+{
+    return Agent.GetDirection() == EDirection::West;
+}
+
+bool IsNotLookingWest(Simulator& Sim, Cell& Agent)
+{
+    return Agent.GetDirection() != EDirection::West;
+}
+
 namespace
 {
 struct ConditionalCommandRegistrar
@@ -92,7 +132,7 @@ struct ConditionalCommandRegistrar
         }
 
         // Color
-        for (int32_t ColorLevel = 1; ColorLevel < 256*4; ColorLevel *= 2)
+        for (int32_t ColorLevel = 1; ColorLevel < 256 * 4; ColorLevel *= 2)
         {
             std::string NameAbove = "SkipIf: ColorDifferenceAbove: " + std::to_string(ColorLevel);
             SkipPredicate PredicateAbove = CreateColorPredicate(ColorLevel, true);
@@ -102,6 +142,16 @@ struct ConditionalCommandRegistrar
             SkipPredicate PredicateBelow = CreateColorPredicate(ColorLevel, false);
             CommandManager::RegisterCommand(NameBelow, std::make_unique<SkipIfCommand>(PredicateBelow), BROWN);
         }
+
+        // Directions
+        CommandManager::RegisterCommand(std::string("SkipIf: LookingNorth"), std::make_unique<SkipIfCommand>(IsLookingNorth), ORANGE);
+        CommandManager::RegisterCommand(std::string("SkipIf: NotLookingNorth"), std::make_unique<SkipIfCommand>(IsNotLookingNorth), ORANGE);
+        CommandManager::RegisterCommand(std::string("SkipIf: LookingEast"), std::make_unique<SkipIfCommand>(IsLookingEast), ORANGE);
+        CommandManager::RegisterCommand(std::string("SkipIf: NotLookingEast"), std::make_unique<SkipIfCommand>(IsNotLookingEast), ORANGE);
+        CommandManager::RegisterCommand(std::string("SkipIf: LookingSouth"), std::make_unique<SkipIfCommand>(IsLookingSouth), ORANGE);
+        CommandManager::RegisterCommand(std::string("SkipIf: NotLookingSouth"), std::make_unique<SkipIfCommand>(IsNotLookingSouth), ORANGE);
+        CommandManager::RegisterCommand(std::string("SkipIf: LookingWest"), std::make_unique<SkipIfCommand>(IsLookingWest), ORANGE);
+        CommandManager::RegisterCommand(std::string("SkipIf: NotLookingWest"), std::make_unique<SkipIfCommand>(IsNotLookingWest), ORANGE);
     }
 };
 
