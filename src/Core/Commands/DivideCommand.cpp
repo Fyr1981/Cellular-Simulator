@@ -26,7 +26,7 @@ void DivideCommand::Execute(Simulator& Sim, Cell& Agent)
     std::vector<size_t> NewGenome = Agent.GetGenome();
     std::uniform_real_distribution<float> Mutation(0.0f, 1.0f);
     std::mt19937& Rng = Sim.GetRNG();
-    if (Mutation(Rng) < MutationChance)
+    if (Mutation(Rng) <= MutationChance)
     {
         const auto AvailableCommands = CommandManager::GetRegisteredCommandNamesHashes();
         if (!AvailableCommands.empty())
@@ -50,7 +50,7 @@ struct DivideRegistrar
 {
     DivideRegistrar()
     {
-        for (float MutationChance = 0.0f; MutationChance <= 1.0f; MutationChance += 0.05f)
+        for (float MutationChance = 0.0f; MutationChance <= 1.0f; MutationChance += 0.01f)
         {
             std::string CommandName = "DivideWithMutationChance: " + std::to_string(MutationChance);
             auto CommandInstance = std::make_unique<DivideCommand>(MutationChance);

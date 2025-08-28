@@ -48,8 +48,7 @@ public:
      * @param InInObjectPool Whether the cell is in the object pool or active in the simulation.
      * @param InColor The color of the cell for rendering purposes.
      */
-    Cell(
-        int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, int32_t InEnergy, bool InInObjectPool,
+    Cell(int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, int32_t InEnergy, bool InInObjectPool,
         Color InColor);
 
     /**

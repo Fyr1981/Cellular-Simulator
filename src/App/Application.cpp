@@ -42,27 +42,22 @@ Application::Application()
         Seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
     }
     Sim = std::make_unique<Core::Simulator>(SimWidth, SimHeight, Seed);
-   // Sim->Randomize(AppConfig.InitialDensity, AppConfig.GenomeLength, AppConfig.InitialEnergy);
-    std::vector<size_t> Genome;
-    Genome = {
-        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
-        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
-        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
-        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
-        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
-        Core::StringInterner::GetInstance().Intern("DivideWithMutationChance: 0.100000"),
-        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
-        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
-        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
-        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
-        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
-        Core::StringInterner::GetInstance().Intern("DivideWithMutationChance: 0.100000"),
-        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
-        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
-        Core::StringInterner::GetInstance().Intern("Photosynthesis"),
-        Core::StringInterner::GetInstance().Intern("DivideWithMutationChance: 0.100000"),
-    };
-    Sim->Populate(AppConfig.InitialDensity, Genome, AppConfig.InitialEnergy);
+    if (AppConfig.bRandomGenome)
+    {
+        Sim->Randomize(AppConfig.InitialDensity, AppConfig.GenomeLength, AppConfig.InitialEnergy);
+    }
+    else
+    {
+        std::vector<size_t> Genome;
+        for (std::string GeneName : AppConfig.InitialPopulationGenome)
+        {
+            Genome.push_back(Core::StringInterner::GetInstance().Intern(GeneName));
+        }
+        Sim->Populate(AppConfig.InitialDensity, Genome, AppConfig.InitialEnergy);
+    }
+    Sim->SetEnergyConsumptionPerStep(AppConfig.EnergyConsumption);
+    Sim->SetIgnoreDefendOnEnergyConsumption(AppConfig.bEnergyConsumptionIgnoreDefence);
+
     UpdatesPerSecond = AppConfig.UpdatesPerSecond;
     MaxUpdateTime = AppConfig.MaxUpdateTime;
 
