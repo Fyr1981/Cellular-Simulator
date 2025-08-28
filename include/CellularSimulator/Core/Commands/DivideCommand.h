@@ -13,7 +13,7 @@ namespace Core
 class DivideCommand : public Command
 {
 public:
-    DivideCommand(float InMutationChance);
+    DivideCommand(double InMutationChance);
     
     /**
      * @brief Executes the divide command to create offspring cell
@@ -33,7 +33,7 @@ public:
     void Execute(Simulator& Sim, Cell& Agent) override;
 
 private:
-    float MutationChance;
+    double MutationChance;
 };
 
 }  // namespace Core
