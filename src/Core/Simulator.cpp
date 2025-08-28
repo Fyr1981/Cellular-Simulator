@@ -90,10 +90,16 @@ void Simulator::Populate(float Density, const std::vector<size_t>& Genome, int32
     }
 }
 
-GridTile* Simulator::GetTile(int32_t X, int32_t Y)
+const GridTile* Simulator::GetTile(int32_t X, int32_t Y) const
 {
     if (X < 0 || X >= Width || Y < 0 || Y >= Height) return nullptr;
     return &Grid[static_cast<size_t>(Y) * Width + X];
+}
+
+GridTile* Simulator::GetTile(int32_t X, int32_t Y)
+{
+    const GridTile* СonstTile = static_cast<const Simulator*>(this)->GetTile(X, Y);
+    return const_cast<GridTile*>(СonstTile);
 }
 
 int32_t Simulator::GetWidth() const

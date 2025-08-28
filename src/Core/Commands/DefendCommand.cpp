@@ -1,6 +1,5 @@
 ﻿#include "CellularSimulator/Core/Commands/DefendCommand.h"
 #include <string>
-
 #include "CellularSimulator/App/Config.h"
 #include "CellularSimulator/App/ConfigLoader.h"
 #include "CellularSimulator/Core/Cell.h"

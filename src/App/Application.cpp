@@ -39,7 +39,7 @@ Application::Application()
     else
     {
         std::vector<size_t> Genome;
-        for (std::string GeneName : AppConfig.InitialPopulationGenome)
+        for (const std::string& GeneName : AppConfig.InitialPopulationGenome)
         {
             Genome.push_back(Core::StringInterner::GetInstance().Intern(GeneName));
         }
@@ -215,9 +215,8 @@ void Application::ProcessInput()
         Vector2 MouseWorldPos = GetScreenToWorld2D(GetMousePosition(), WorldCamera);
         WorldCamera.offset = GetMousePosition();
         WorldCamera.target = MouseWorldPos;
-        const float ZoomIncrement = 0.125f;
-        WorldCamera.zoom += (WheelMove * ZoomIncrement);
-        if (WorldCamera.zoom < ZoomIncrement) WorldCamera.zoom = ZoomIncrement;
+        WorldCamera.zoom += (WheelMove * MouseZoomIncrement);
+        if (WorldCamera.zoom < MouseZoomIncrement) WorldCamera.zoom = MouseZoomIncrement;
     }
     if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
     {

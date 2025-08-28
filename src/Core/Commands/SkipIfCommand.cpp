@@ -10,7 +10,7 @@
 using namespace CellularSimulator::Core;
 
 
-SkipIfCommand::SkipIfCommand(SkipPredicate Predicate): Condition(Predicate)
+SkipIfCommand::SkipIfCommand(SkipPredicate Predicate): Condition(std::move(Predicate))
 {
 }
 
@@ -26,7 +26,11 @@ void SkipIfCommand::Execute(Simulator& Sim, Cell& Agent)
     }
 }
 
-bool IsCellAhead(Simulator& Sim, Cell& Agent)
+/**
+ * @brief Checks if there is a cell in front of the agent
+ * @ingroup ConditionalPredicates
+ */
+bool IsCellAhead(const Simulator& Sim, const Cell& Agent)
 {
     int32_t NextX, NextY;
     GetForwardXY(Agent.GetDirection(), NextX, NextY, Agent.GetX(), Agent.GetY());
@@ -34,14 +38,22 @@ bool IsCellAhead(Simulator& Sim, Cell& Agent)
     return Tile && Tile->HasCell();
 }
 
-bool IsNoCellAhead(Simulator& Sim, Cell& Agent)
+/**
+ * @brief Checks if there is no cell in front of the agent
+ * @ingroup ConditionalPredicates
+ */
+bool IsNoCellAhead(const Simulator& Sim, const Cell& Agent)
 {
     return !IsCellAhead(Sim, Agent);
 }
 
+/**
+ * @brief Creates a predicate that checks if the agent's energy is above or below a threshold
+ * @ingroup ConditionalPredicates
+ */
 auto CreateEnergyPredicate(int32_t Threshold, bool bSkipIfAbove)
 {
-    return [Threshold, bSkipIfAbove](Simulator& Sim, Cell& Agent) -> bool
+    return [Threshold, bSkipIfAbove](const Simulator& Sim, const Cell& Agent) -> bool
     {
         if (bSkipIfAbove)
         {
@@ -51,9 +63,13 @@ auto CreateEnergyPredicate(int32_t Threshold, bool bSkipIfAbove)
     };
 }
 
+/**
+ * @brief Creates a predicate that checks if the agent's color is above or below a threshold
+ * @ingroup ConditionalPredicates
+ */
 auto CreateColorPredicate(int32_t Threshold, bool bSkipIfAbove)
 {
-    return [Threshold, bSkipIfAbove](Simulator& Sim, Cell& Agent) -> bool
+    return [Threshold, bSkipIfAbove](const Simulator& Sim, const Cell& Agent) -> bool
     {
         int32_t NextX, NextY;
         GetForwardXY(Agent.GetDirection(), NextX, NextY, Agent.GetX(), Agent.GetY());
@@ -69,42 +85,74 @@ auto CreateColorPredicate(int32_t Threshold, bool bSkipIfAbove)
     };
 }
 
-bool IsLookingNorth(Simulator& Sim, Cell& Agent)
+/**
+ * @brief Checks if the agent is looking north
+ * @ingroup ConditionalPredicates
+ */
+bool IsLookingNorth(const Simulator& Sim, const Cell& Agent)
 {
     return Agent.GetDirection() == EDirection::North;
 }
 
-bool IsNotLookingNorth(Simulator& Sim, Cell& Agent)
+/**
+ * @brief Checks if the agent is not looking north
+ * @ingroup ConditionalPredicates
+ */
+bool IsNotLookingNorth(const Simulator& Sim, const Cell& Agent)
 {
     return Agent.GetDirection() != EDirection::North;
 }
 
-bool IsLookingEast(Simulator& Sim, Cell& Agent)
+/**
+ * @brief Checks if the agent is looking east
+ * @ingroup ConditionalPredicates
+ */
+bool IsLookingEast(const Simulator& Sim, const Cell& Agent)
 {
     return Agent.GetDirection() == EDirection::East;
 }
 
-bool IsNotLookingEast(Simulator& Sim, Cell& Agent)
+/**
+ * @brief Checks if the agent is not looking east
+ * @ingroup ConditionalPredicates
+ */
+bool IsNotLookingEast(const Simulator& Sim, const Cell& Agent)
 {
     return Agent.GetDirection() != EDirection::East;
 }
 
-bool IsLookingSouth(Simulator& Sim, Cell& Agent)
+/**
+ * @brief Checks if the agent is looking south
+ * @ingroup ConditionalPredicates
+ */
+bool IsLookingSouth(const Simulator& Sim, const Cell& Agent)
 {
     return Agent.GetDirection() == EDirection::South;
 }
 
-bool IsNotLookingSouth(Simulator& Sim, Cell& Agent)
+/**
+ * @brief Checks if the agent is not looking south
+ * @ingroup ConditionalPredicates
+ */
+bool IsNotLookingSouth(const Simulator& Sim, const Cell& Agent)
 {
     return Agent.GetDirection() != EDirection::South;
 }
 
-bool IsLookingWest(Simulator& Sim, Cell& Agent)
+/**
+ * @brief Checks if the agent is looking west
+ * @ingroup ConditionalPredicates
+ */
+bool IsLookingWest(const Simulator& Sim, const Cell& Agent)
 {
     return Agent.GetDirection() == EDirection::West;
 }
 
-bool IsNotLookingWest(Simulator& Sim, Cell& Agent)
+/**
+ * @brief Checks if the agent is not looking west
+ * @ingroup ConditionalPredicates
+ */
+bool IsNotLookingWest(const Simulator& Sim, const Cell& Agent)
 {
     return Agent.GetDirection() != EDirection::West;
 }

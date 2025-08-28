@@ -203,10 +203,22 @@ public:
      */
     void AddDefendings(int32_t Amount);
 
+    /**
+     * @brief Checks if cell already executed this step.
+     * @return True if cell already executed this step, false otherwise.
+     */
     bool IsExecutedThisStep() const;
+    
+    /**
+     * @brief Sets the executed this step flag.
+     * @param bInExecuted The executed this step flag.
+     */
     void SetExecutedThisStep(bool bInExecuted);
 
 private:
+    /**
+     * @brief Calculates the color of the cell based on its genome.
+     */
     void CalculateColor();
 
     int32_t X = 0;

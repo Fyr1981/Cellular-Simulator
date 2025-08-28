@@ -54,6 +54,14 @@ inline EDirection TurnLeft(EDirection Direction)
     return EDirection::None;
 }
 
+/**
+ * @brief Gets the position next to the cell in the given direction
+ * @param Direction The direction to look in
+ * @param OutX The x position of the cell in the given direction
+ * @param OutY The y position of the cell in the given direction
+ * @param CurrentX The current x position of the cell
+ * @param CurrentY The current y position of the cell
+ */
 inline void GetForwardXY(EDirection Direction, int32_t& OutX, int32_t& OutY, int32_t CurrentX, int32_t CurrentY)
 {
     OutX = CurrentX;
@@ -62,13 +70,13 @@ inline void GetForwardXY(EDirection Direction, int32_t& OutX, int32_t& OutY, int
     switch (Direction)
     {
         case EDirection::North: OutY--;
-        break;
+            break;
         case EDirection::East: OutX++;
-        break;
+            break;
         case EDirection::South: OutY++;
-        break;
+            break;
         case EDirection::West: OutX--;
-        break;
+            break;
         case EDirection::None: break;
     }
 }

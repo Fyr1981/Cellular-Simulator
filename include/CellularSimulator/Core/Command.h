@@ -18,13 +18,17 @@ public:
     virtual ~Command() = default;
 
     /**
-     * @brief Executes the command on the given simulator for the specified cell.
+     * @brief Executes the command on the given simulator for the specified cell if overriden.
+     * Spends energy based on the EnergyCost ignoring defences.
      * @param Sim The simulator on which the command is executed.
      * @param Agent The cell for which the command is executed.
      */
     virtual void Execute(Simulator& Sim, Cell& Agent);
 
 protected:
+    /**
+     * @brief Energy cost of the command. Can be overridden by derived classes to define custom energy costs.
+     */
     int32_t EnergyCost = 0;
 };
 } // namespace Core

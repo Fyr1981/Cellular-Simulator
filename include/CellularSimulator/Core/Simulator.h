@@ -59,7 +59,15 @@ public:
      * @param Y The y-coordinate of the tile.
      * @return A const pointer to the Tile, or nullptr if coordinates are out of bounds.
      */
-    [[nodiscard]] GridTile* GetTile(int32_t X, int32_t Y);
+    [[nodiscard]] const GridTile* GetTile(int32_t X, int32_t Y) const;
+
+    /**
+    * @brief Provides read-write access to a specific tile on the grid.
+    * @param X The x-coordinate of the tile.
+    * @param Y The y-coordinate of the tile.
+    * @return A const pointer to the Tile, or nullptr if coordinates are out of bounds.
+    */
+    [[nodiscard]]GridTile* GetTile(int32_t X, int32_t Y);
 
     /**
      * @brief Gets the width of the simulation grid.
