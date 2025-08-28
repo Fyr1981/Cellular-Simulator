@@ -1,12 +1,18 @@
 ﻿#include "CellularSimulator/Core/Commands/DivideCommand.h"
 #include <cstdint>
 #include <random>
+#include <string>
+
 #include "CellularSimulator/Core/Cell.h"
 #include "CellularSimulator/Core/CellSimulatorTypes.h"
 #include "CellularSimulator/Core/CommandRegistry.h"
 #include "CellularSimulator/Core/Simulator.h"
 
 using namespace CellularSimulator::Core;
+
+DivideCommand::DivideCommand(float InMutationChance): MutationChance(InMutationChance)
+{
+}
 
 void DivideCommand::Execute(Simulator& Sim, Cell& Agent)
 {
@@ -18,9 +24,9 @@ void DivideCommand::Execute(Simulator& Sim, Cell& Agent)
     GetForwardXY(Direction, NextX, NextY, Agent.GetX(), Agent.GetY());
     if (!Sim.IsTileValidAndEmpty(NextX, NextY)) return;
     std::vector<size_t> NewGenome = Agent.GetGenome();
-    std::uniform_real_distribution<float> MutationChance(0.0f, 1.0f);
+    std::uniform_real_distribution<float> Mutation(0.0f, 1.0f);
     std::mt19937& Rng = Sim.GetRNG();
-    if (MutationChance(Rng) < 0.05f)
+    if (Mutation(Rng) < MutationChance)
     {
         const auto AvailableCommands = CommandManager::GetRegisteredCommandNamesHashes();
         if (!AvailableCommands.empty())
@@ -40,5 +46,18 @@ void DivideCommand::Execute(Simulator& Sim, Cell& Agent)
 
 namespace
 {
-const CommandRegistrar<DivideCommand> Registrar("Divide", GOLD);
+struct DivideRegistrar
+{
+    DivideRegistrar()
+    {
+        for (float MutationChance = 0.0f; MutationChance <= 1.0f; MutationChance += 0.05f)
+        {
+            std::string CommandName = "DivideWithMutationChance: " + std::to_string(MutationChance);
+            auto CommandInstance = std::make_unique<DivideCommand>(MutationChance);
+            CommandManager::RegisterCommand(CommandName, std::move(CommandInstance), GOLD);
+        }
+    }
+};
+
+const DivideRegistrar Registrar;
 }

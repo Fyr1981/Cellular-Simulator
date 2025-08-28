@@ -131,6 +131,18 @@ public:
      */
     Cell* GetActiveCellByIndex(size_t Index);
 
+    /**
+     * @brief Sets the energy consumption per step for cells.
+     * @param InEnergyConsumptionPerStep The new energy consumption per step.
+     */
+    void SetEnergyConsumptionPerStep(int32_t InEnergyConsumptionPerStep);
+
+    /**
+     * @brief Sets whether to ignore defendings when cells consume energy.
+     * @param bInIgnoreDefendOnEnergyConsumption Whether to ignore defendings when cells consume energy.
+     */
+    void SetIgnoreDefendOnEnergyConsumption(bool bInIgnoreDefendOnEnergyConsumption);
+
 private:
     void ProcessAgent(Cell& Agent);
     void ClearGrid();

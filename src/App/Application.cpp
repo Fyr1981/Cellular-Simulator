@@ -42,7 +42,7 @@ Application::Application()
         Seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
     }
     Sim = std::make_unique<Core::Simulator>(SimWidth, SimHeight, Seed);
-    //Sim->Randomize(AppConfig.InitialDensity, AppConfig.GenomeLength, AppConfig.InitialEnergy);
+   // Sim->Randomize(AppConfig.InitialDensity, AppConfig.GenomeLength, AppConfig.InitialEnergy);
     std::vector<size_t> Genome;
     Genome = {
         Core::StringInterner::GetInstance().Intern("Photosynthesis"),
@@ -50,17 +50,17 @@ Application::Application()
         Core::StringInterner::GetInstance().Intern("Photosynthesis"),
         Core::StringInterner::GetInstance().Intern("Photosynthesis"),
         Core::StringInterner::GetInstance().Intern("Photosynthesis"),
-        Core::StringInterner::GetInstance().Intern("Divide"),
+        Core::StringInterner::GetInstance().Intern("DivideWithMutationChance: 0.100000"),
         Core::StringInterner::GetInstance().Intern("Photosynthesis"),
         Core::StringInterner::GetInstance().Intern("Photosynthesis"),
         Core::StringInterner::GetInstance().Intern("Photosynthesis"),
         Core::StringInterner::GetInstance().Intern("Photosynthesis"),
         Core::StringInterner::GetInstance().Intern("Photosynthesis"),
-        Core::StringInterner::GetInstance().Intern("Divide"),
+        Core::StringInterner::GetInstance().Intern("DivideWithMutationChance: 0.100000"),
         Core::StringInterner::GetInstance().Intern("Photosynthesis"),
         Core::StringInterner::GetInstance().Intern("Photosynthesis"),
         Core::StringInterner::GetInstance().Intern("Photosynthesis"),
-        Core::StringInterner::GetInstance().Intern("Divide"),
+        Core::StringInterner::GetInstance().Intern("DivideWithMutationChance: 0.100000"),
     };
     Sim->Populate(AppConfig.InitialDensity, Genome, AppConfig.InitialEnergy);
     UpdatesPerSecond = AppConfig.UpdatesPerSecond;

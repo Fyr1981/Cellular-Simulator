@@ -13,6 +13,8 @@ namespace Core
 class DivideCommand : public Command
 {
 public:
+    DivideCommand(float InMutationChance);
+    
     /**
      * @brief Executes the divide command to create offspring cell
      * 
@@ -29,6 +31,9 @@ public:
      * @note Energy is split equally between parent and offspring
      */
     void Execute(Simulator& Sim, Cell& Agent) override;
+
+private:
+    float MutationChance;
 };
 
 }  // namespace Core

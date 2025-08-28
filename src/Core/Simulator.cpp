@@ -159,6 +159,16 @@ Cell* Simulator::GetActiveCellByIndex(size_t Index)
     return &CellPool[Index];
 }
 
+void Simulator::SetEnergyConsumptionPerStep(int32_t InEnergyConsumptionPerStep)
+{
+    EnergyConsumptionPerStep = InEnergyConsumptionPerStep;
+}
+
+void Simulator::SetIgnoreDefendOnEnergyConsumption(bool bInIgnoreDefendOnEnergyConsumption)
+{
+    bIgnoreDefendOnEnergyConsumption = bInIgnoreDefendOnEnergyConsumption;
+}
+
 void Simulator::ProcessAgent(Cell& Agent)
 {
     if (Command* Cmd = CommandManager::GetCommand(Agent.DecideNextCommand()))
