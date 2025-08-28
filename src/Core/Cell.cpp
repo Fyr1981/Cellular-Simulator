@@ -2,9 +2,17 @@
 #include "CellularSimulator/Core/Cell.h"
 #include <CellularSimulator/Core/StringInterner.h>
 
+#include "CellularSimulator/App/Config.h"
+#include "CellularSimulator/App/ConfigLoader.h"
 #include "CellularSimulator/Core/CommandManager.h"
 
 using namespace CellularSimulator::Core;
+
+Cell::Cell()
+{
+    MaxDefences = App::ConfigLoader::GetConfig().MaxDefences;
+    MaxEnergy = App::ConfigLoader::GetConfig().MaxEnergy;
+}
 
 Cell::Cell(int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, int32_t InEnergy, bool InInObjectPool)
 {
@@ -17,7 +25,7 @@ Cell::Cell(
     Initialize(InX, InY, InDirection, std::move(InGenome), InEnergy, InInObjectPool, InColor);
 }
 
-void CellularSimulator::Core::Cell::Initialize(
+void Cell::Initialize(
     int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, int32_t InEnergy, bool InInObjectPool)
 {
     SetX(InX);

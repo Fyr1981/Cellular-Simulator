@@ -24,7 +24,7 @@ public:
     /**
      * @brief Default constructor for creating an empty cell in the object pool.
      */
-    Cell() = default;
+    Cell();
 
     /**
      * @brief Constructs a cell with the specified parameters.
@@ -209,10 +209,10 @@ public:
 private:
     void CalculateColor();
 
-    int32_t X;
-    int32_t Y;
-    EDirection Direction;
-    int32_t Energy;
+    int32_t X = 0;
+    int32_t Y = 0;
+    EDirection Direction = EDirection::North;
+    int32_t Energy = 0;
     int32_t MaxEnergy = 100.0f;
     int32_t Defences = 0;
     int32_t MaxDefences = 8;

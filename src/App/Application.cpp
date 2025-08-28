@@ -1,7 +1,6 @@
 #include "CellularSimulator/App/Application.h"
 #include <chrono>
 #include <iomanip>
-#include <iostream>
 #include "CellularSimulator/App/ConfigLoader.h"
 #include "CellularSimulator/Core/GridTile.h"
 #include "CellularSimulator/Core/Cell.h"
@@ -15,16 +14,8 @@ using namespace CellularSimulator::App;
 
 Application::Application()
 {
-    auto LoadedConfig = ConfigLoader::LoadConfigFromFile("config.json");
-    if (LoadedConfig)
-    {
-        AppConfig = *LoadedConfig;
-        std::cout << "CellularSimulator config loaded from config.json" << '\n';
-    }
-    else
-    {
-        std::cout << "config.json for CellularSimulator not found or invalid. Using default settings." << '\n';
-    }
+    ConfigLoader::Load("config.json");
+    const Config& AppConfig = ConfigLoader::GetConfig();
 
     const int32_t WindowHeight = AppConfig.WindowHeight;
     const int32_t WindowWidth = AppConfig.WindowWidth;

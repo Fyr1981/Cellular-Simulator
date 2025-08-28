@@ -45,8 +45,7 @@ private:
 
     static Color GetTileColor(const Core::GridTile* Tile);
     static Color GetCellColor(const Core::Cell* InCell);
-
-    Config AppConfig;
+    
     int32_t TileSize = 10;
     Camera2D WorldCamera{};
 

@@ -7,6 +7,26 @@
 using namespace CellularSimulator::App;
 using json = nlohmann::json;
 
+Config& ConfigLoader::GetInternalInstance()
+{
+    static Config Instance;
+    return Instance;
+}
+
+void ConfigLoader::Load(const std::string& FilePath)
+{
+    auto LoadedConfig = LoadConfigFromFile(FilePath);
+    if (LoadedConfig)
+    {
+        GetInternalInstance() = *LoadedConfig;
+    }
+}
+
+const Config& ConfigLoader::GetConfig()
+{
+    return GetInternalInstance();
+}
+
 std::optional<Config> ConfigLoader::LoadConfigFromFile(const std::string& FilePath)
 {
     std::ifstream File(FilePath);
@@ -42,6 +62,11 @@ std::optional<Config> ConfigLoader::LoadConfigFromFile(const std::string& FilePa
         Cfg.EnergyConsumption = Data["simulation"].value("energy_consumption", Cfg.EnergyConsumption);
         Cfg.bEnergyConsumptionIgnoreDefence = Data["simulation"].value("energy_consumption_ignore_defence",
             Cfg.bEnergyConsumptionIgnoreDefence);
+    }
+    if (Data.contains("cell"))
+    {
+        Cfg.MaxDefences = Data["cell"].value("max_defences", Cfg.MaxDefences);
+        Cfg.MaxEnergy = Data["cell"].value("max_energy", Cfg.MaxEnergy);
     }
     return Cfg;
 }

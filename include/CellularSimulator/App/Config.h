@@ -81,6 +81,16 @@ struct Config
      * @brief Whether to ignore defence when consuming energy every step.
      */
     bool bEnergyConsumptionIgnoreDefence = false;
+
+    // Cell settings
+    /**
+     * @brief Maximum number of defences a cell can have.
+     */
+    int32_t MaxDefences = 10;
+    /**
+     * @brief Maximum energy a cell can have.
+     */
+    int32_t MaxEnergy = 100;
 };
 
 } // namespace App
