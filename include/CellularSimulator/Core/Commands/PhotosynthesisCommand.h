@@ -13,6 +13,7 @@ namespace Core
 class PhotosynthesisCommand : public Command
 {
 public:
+    PhotosynthesisCommand(int32_t Energy);
     /**
     * @brief Executes the photosynthesis command to generate energy
     * 
@@ -29,6 +30,9 @@ public:
     * @note Represents a basic energy production mechanism
     */
     void Execute(Simulator& Sim, Cell& Agent) override;
+
+private:
+    int32_t EnergyGain = 15;
 };
 } // namespace Core
 } // namespace CellularSimulator

@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "CellularSimulator/App/Config.h"
+#include "CellularSimulator/App/ConfigLoader.h"
 #include "CellularSimulator/Core/Cell.h"
 #include "CellularSimulator/Core/CommandRegistry.h"
 #include "CellularSimulator/Core/GridTile.h"
@@ -34,7 +36,8 @@ struct EatForwardRegistrar
 {
     EatForwardRegistrar()
     {
-        for (int32_t i = 1; i <= 100; ++i)
+        const int32_t MaxValue = CellularSimulator::App::ConfigLoader::GetConfig().MaxEatForwardEnergySteal;
+        for (int32_t i = 1; i <= MaxValue; ++i)
         {
             std::string CommandName = "EatForward: " + std::to_string(i);
             auto CommandInstance = std::make_unique<EatForwardCommand>(i);

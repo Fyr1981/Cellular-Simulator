@@ -119,7 +119,8 @@ void Cell::AddEnergy(int32_t Amount)
 
 void Cell::ConsumeEnergy(int32_t Amount)
 {
-    if (Defences > 0 && Amount < 0)
+    if (Amount < 0) return;
+    if (Defences > 0)
     {
         Defences--;
         return;

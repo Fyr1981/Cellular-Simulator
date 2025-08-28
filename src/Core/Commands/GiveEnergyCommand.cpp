@@ -1,5 +1,8 @@
 ﻿#include "CellularSimulator/Core/Commands/GiveEnergyCommand.h"
 #include <string>
+
+#include "CellularSimulator/App/Config.h"
+#include "CellularSimulator/App/ConfigLoader.h"
 #include "CellularSimulator/Core/Cell.h"
 #include "CellularSimulator/Core/CellSimulatorTypes.h"
 #include "CellularSimulator/Core/CommandManager.h"
@@ -32,7 +35,8 @@ struct GiveEnergyRegistrar
 {
     GiveEnergyRegistrar()
     {
-        for (int32_t i = 1; i <= 100; ++i)
+        const int32_t MaxValue = CellularSimulator::App::ConfigLoader::GetConfig().MaxGiveEnergyAmount;
+        for (int32_t i = 1; i <= MaxValue; ++i)
         {
             std::string CommandName = "GiveEnergy: " + std::to_string(i);
             auto CommandInstance = std::make_unique<GiveEnergyCommand>(i);

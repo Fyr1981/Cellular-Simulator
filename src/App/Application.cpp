@@ -14,7 +14,6 @@ using namespace CellularSimulator::App;
 
 Application::Application()
 {
-    ConfigLoader::Load("config.json");
     const Config& AppConfig = ConfigLoader::GetConfig();
 
     const int32_t WindowHeight = AppConfig.WindowHeight;

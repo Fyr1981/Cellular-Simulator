@@ -91,6 +91,24 @@ struct Config
      * @brief Maximum energy a cell can have.
      */
     int32_t MaxEnergy = 100;
+
+    // Command settings
+    /**
+     * @brief Energy cost per defence in DefendCommand.
+     */
+    int32_t PerDefendEnergyCost = 10;
+    /**
+     * @brief Maximum energy steal in EatForwardCommand.
+     */
+    int32_t MaxEatForwardEnergySteal = 100;
+    /**
+     * @brief Maximum energy amount in GiveEnergyCommand.
+     */
+    int32_t MaxGiveEnergyAmount = 100;
+    /**
+     * @brief Energy gain per cell per update in PhotosynthesisCommand.
+     */
+    int32_t PhotosynthesisEnergyGain = 15;
 };
 
 } // namespace App

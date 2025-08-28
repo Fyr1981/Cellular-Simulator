@@ -1,30 +1,36 @@
 ﻿#include "CellularSimulator/App/ConfigLoader.h"
 #include <fstream>
-
+#include <threads.h>
 #include "CellularSimulator/App/Config.h"
 #include "nlohmann/json.hpp"
 
 using namespace CellularSimulator::App;
 using json = nlohmann::json;
 
-Config& ConfigLoader::GetInternalInstance()
+Config& ConfigLoader::LoadAndGetInstance()
 {
     static Config Instance;
-    return Instance;
-}
-
-void ConfigLoader::Load(const std::string& FilePath)
-{
-    auto LoadedConfig = LoadConfigFromFile(FilePath);
-    if (LoadedConfig)
+    static bool bLoaded = false;
+    if (!bLoaded)
     {
-        GetInternalInstance() = *LoadedConfig;
+        const auto LoadedConfig = LoadConfigFromFile("config.json");
+        if (LoadedConfig)
+        {
+            Instance = *LoadedConfig;
+        }
+        bLoaded = true;
     }
+    return Instance;
 }
 
 const Config& ConfigLoader::GetConfig()
 {
-    return GetInternalInstance();
+    static std::once_flag OnceFlag;
+    std::call_once(OnceFlag, []()
+    {
+        LoadAndGetInstance();
+    });
+    return LoadAndGetInstance();
 }
 
 std::optional<Config> ConfigLoader::LoadConfigFromFile(const std::string& FilePath)
@@ -67,6 +73,13 @@ std::optional<Config> ConfigLoader::LoadConfigFromFile(const std::string& FilePa
     {
         Cfg.MaxDefences = Data["cell"].value("max_defences", Cfg.MaxDefences);
         Cfg.MaxEnergy = Data["cell"].value("max_energy", Cfg.MaxEnergy);
+    }
+    if (Data.contains("Commands"))
+    {
+        Cfg.PerDefendEnergyCost = Data["Commands"].value("per_defend_energy_cost", Cfg.PerDefendEnergyCost);
+        Cfg.MaxEatForwardEnergySteal = Data["Commands"].value("max_eat_forward_energy_steal", Cfg.MaxEatForwardEnergySteal);
+        Cfg.MaxGiveEnergyAmount = Data["Commands"].value("max_give_energy_amount", Cfg.MaxGiveEnergyAmount);
+        Cfg.PhotosynthesisEnergyGain = Data["Commands"].value("photosynthesis_energy_gain", Cfg.PhotosynthesisEnergyGain);
     }
     return Cfg;
 }
