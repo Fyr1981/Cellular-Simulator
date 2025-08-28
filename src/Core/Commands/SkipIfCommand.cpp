@@ -100,7 +100,7 @@ bool IsLookingNorth(const Simulator& Sim, const Cell& Agent)
  */
 bool IsNotLookingNorth(const Simulator& Sim, const Cell& Agent)
 {
-    return Agent.GetDirection() != EDirection::North;
+    return !IsLookingNorth(Sim, Agent);
 }
 
 /**
@@ -118,7 +118,7 @@ bool IsLookingEast(const Simulator& Sim, const Cell& Agent)
  */
 bool IsNotLookingEast(const Simulator& Sim, const Cell& Agent)
 {
-    return Agent.GetDirection() != EDirection::East;
+    return !IsLookingEast(Sim, Agent);
 }
 
 /**
@@ -136,7 +136,7 @@ bool IsLookingSouth(const Simulator& Sim, const Cell& Agent)
  */
 bool IsNotLookingSouth(const Simulator& Sim, const Cell& Agent)
 {
-    return Agent.GetDirection() != EDirection::South;
+    return !IsLookingSouth(Sim, Agent);
 }
 
 /**
@@ -154,7 +154,7 @@ bool IsLookingWest(const Simulator& Sim, const Cell& Agent)
  */
 bool IsNotLookingWest(const Simulator& Sim, const Cell& Agent)
 {
-    return Agent.GetDirection() != EDirection::West;
+    return !IsLookingWest(Sim, Agent);
 }
 
 namespace

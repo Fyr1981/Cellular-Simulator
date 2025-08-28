@@ -13,6 +13,11 @@ namespace Core
 class DivideCommand : public Command
 {
 public:
+    /**
+     * @brief Construct a new Divide Command object with a mutation chance. With this mutation chance
+     * one of the genes can be replaced with an any available command.
+     * @param InMutationChance Mutation chance for the offspring cell
+     */
     DivideCommand(double InMutationChance);
     
     /**

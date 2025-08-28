@@ -13,6 +13,10 @@ namespace Core
 class PhotosynthesisCommand : public Command
 {
 public:
+    /**
+     * @brief Construct a new Photosynthesis Command object
+     * @param Energy The amount of energy to be gained on execution
+     */
     PhotosynthesisCommand(int32_t Energy);
     /**
     * @brief Executes the photosynthesis command to generate energy

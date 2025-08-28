@@ -59,7 +59,6 @@ public:
      * @param InGenome The genome of the cell.
      * @param InEnergy The energy of the cell.
      * @param InInObjectPool Whether the cell is in the object pool or active in the simulation.
-     * @param InColor The color of the cell for rendering purposes.
      * @note The color of the cell will be automatically calculated based on its genome.
      */
     void Initialize(int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, int32_t InEnergy, bool InInObjectPool);
