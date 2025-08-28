@@ -1,0 +1,5 @@
+<map id="CellularSimulator::Core::DeathCommand" name="CellularSimulator::Core::DeathCommand">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,153,164,233"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Command.html" title="Base class for commands that can be executed on the simulator for the cell." alt="" coords="17,5,152,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,119,87,153,82,153,82,119"/>
+</map>

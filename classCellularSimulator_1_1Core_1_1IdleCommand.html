@@ -126,6 +126,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a48acd4c1f48418b6248bf9187a40a57a" id="r_a48acd4c1f48418b6248bf9187a40a57a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCellularSimulator_1_1Core_1_1IdleCommand.html#a48acd4c1f48418b6248bf9187a40a57a">Execute</a> (<a class="el" href="classCellularSimulator_1_1Core_1_1Simulator.html">Simulator</a> &amp;Sim, <a class="el" href="classCellularSimulator_1_1Core_1_1Cell.html">Cell</a> &amp;Agent) override</td></tr>
 <tr class="memdesc:a48acd4c1f48418b6248bf9187a40a57a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the idle command (no operation)  <br /></td></tr>
 <tr class="separator:a48acd4c1f48418b6248bf9187a40a57a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_attribs_classCellularSimulator_1_1Core_1_1Command"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classCellularSimulator_1_1Core_1_1Command')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classCellularSimulator_1_1Core_1_1Command.html">CellularSimulator::Core::Command</a></td></tr>
+<tr class="memitem:aac64f6831db8f64416a4c06e7ff8fce3 inherit pro_attribs_classCellularSimulator_1_1Core_1_1Command" id="r_aac64f6831db8f64416a4c06e7ff8fce3"><td class="memItemLeft" align="right" valign="top">
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>EnergyCost</b> = 0</td></tr>
+<tr class="memdesc:aac64f6831db8f64416a4c06e7ff8fce3 inherit pro_attribs_classCellularSimulator_1_1Core_1_1Command"><td class="mdescLeft">&#160;</td><td class="mdescRight">Energy cost of the command. Can be overridden by derived classes to define custom energy costs. <br /></td></tr>
+<tr class="separator:aac64f6831db8f64416a4c06e7ff8fce3 inherit pro_attribs_classCellularSimulator_1_1Core_1_1Command"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A command that does nothing. </p>
@@ -177,7 +185,21 @@ Public Member Functions</h2></td></tr>
 <dd>
 Useful for genetic algorithms where some genes should have no effect </dd></dl>
 
-<p>Implements <a class="el" href="classCellularSimulator_1_1Core_1_1Command.html#a78bad608ee77b0a77fc488456e87fe7c">CellularSimulator::Core::Command</a>.</p>
+<p>Reimplemented from <a class="el" href="classCellularSimulator_1_1Core_1_1Command.html#a20546093af78283f1f3d0a1caab29bbc">CellularSimulator::Core::Command</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCellularSimulator_1_1Core_1_1IdleCommand_a48acd4c1f48418b6248bf9187a40a57a_cgraph.png" border="0" usemap="#aclassCellularSimulator_1_1Core_1_1IdleCommand_a48acd4c1f48418b6248bf9187a40a57a_cgraph" alt=""/></div>
+<map name="aclassCellularSimulator_1_1Core_1_1IdleCommand_a48acd4c1f48418b6248bf9187a40a57a_cgraph" id="aclassCellularSimulator_1_1Core_1_1IdleCommand_a48acd4c1f48418b6248bf9187a40a57a_cgraph">
+<area shape="rect" title="Executes the idle command (no operation)" alt="" coords="5,13,216,53"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1Command.html#a20546093af78283f1f3d0a1caab29bbc" title="Executes the command on the given simulator for the specified cell if overriden. Spends energy based ..." alt="" coords="264,13,451,53"/>
+<area shape="poly" title=" " alt="" coords="216,30,250,30,250,35,216,35"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1Cell.html#a9e2133697d6c2f620554f43c2865ab74" title="Consumes energy from the cell ignoring the defending amount." alt="" coords="499,5,739,60"/>
+<area shape="poly" title=" " alt="" coords="451,30,485,30,485,35,451,35"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1Cell.html#ac0e0688309e6c82d98852777275d4dcd" title="Sets the energy of the cell. It also can remove the defending flag if the energy is less than the cur..." alt="" coords="787,13,945,53"/>
+<area shape="poly" title=" " alt="" coords="739,30,773,30,773,35,739,35"/>
+</map>
+</div>
 
 </div>
 </div>

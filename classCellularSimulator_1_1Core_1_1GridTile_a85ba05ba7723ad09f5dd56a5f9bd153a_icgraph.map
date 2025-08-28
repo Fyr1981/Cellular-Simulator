@@ -1,5 +1,11 @@
 <map id="CellularSimulator::Core::GridTile::HasCell" name="CellularSimulator::Core::GridTile::HasCell">
-<area shape="rect" id="Node000001" title="Checks if the tile contains a cell." alt="" coords="253,13,423,53"/>
-<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1EatForwardCommand.html#aff3121b308adcd49605f4375cb161a10" title="Executes the eat forward command to steal energy from target cell." alt="" coords="5,5,205,60"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="239,35,206,35,206,30,239,30"/>
+<area shape="rect" id="Node000001" title="Checks if the tile contains a cell." alt="" coords="421,91,591,131"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1EatForwardCommand.html#aff3121b308adcd49605f4375cb161a10" title="Executes the eat forward command to steal energy from target cell." alt="" coords="172,5,372,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="432,89,353,63,355,58,434,84"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1GiveEnergyCommand.html#a963085c6fb49f04de99da70b94229473" title="Execute the command giving energy to the cell in the direction the agent is facing." alt="" coords="171,84,373,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="408,114,374,114,374,109,408,109"/>
+<area shape="rect" id="Node000004" href="$group__ConditionalPredicates.html#gae3d8d46ed49b72467b58ecd873dfbb5c" title="Checks if there is a cell in front of the agent." alt="" coords="223,163,321,188"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="426,138,374,153,322,166,321,161,373,147,425,133"/>
+<area shape="rect" id="Node000005" href="$group__ConditionalPredicates.html#ga6d7923b8cfe09a76f66d65e6584ca53c" title="Checks if there is no cell in front of the agent." alt="" coords="5,163,123,188"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="209,178,123,178,123,173,209,173"/>
 </map>

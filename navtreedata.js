@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "Cellular Simulator", "index.html", [
+    [ "Topics", "topics.html", "topics" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],

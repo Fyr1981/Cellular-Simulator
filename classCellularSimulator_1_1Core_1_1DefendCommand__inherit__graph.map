@@ -1,0 +1,5 @@
+<map id="CellularSimulator::Core::DefendCommand" name="CellularSimulator::Core::DefendCommand">
+<area shape="rect" id="Node000001" title="Defend against incoming energy consumption for a specified number of steps." alt="" coords="5,153,172,253"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Command.html" title="Base class for commands that can be executed on the simulator for the cell." alt="" coords="21,5,156,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,119,91,153,86,153,86,119"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="CellularSimulator::Core::Cell::ConsumeEnergyIgnoreDefendings" name="CellularSimulator::Core::Cell::ConsumeEnergyIgnoreDefendings">
+<area shape="rect" id="Node000001" title="Consumes energy from the cell ignoring the defending amount." alt="" coords="5,5,245,60"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#ac0e0688309e6c82d98852777275d4dcd" title="Sets the energy of the cell. It also can remove the defending flag if the energy is less than the cur..." alt="" coords="293,13,452,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="245,30,280,30,280,35,245,35"/>
+</map>

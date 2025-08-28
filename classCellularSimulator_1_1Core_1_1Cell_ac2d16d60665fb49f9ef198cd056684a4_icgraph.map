@@ -1,7 +1,9 @@
 <map id="CellularSimulator::Core::Cell::GetEnergy" name="CellularSimulator::Core::Cell::GetEnergy">
-<area shape="rect" id="Node000001" title="Gets the energy of the cell." alt="" coords="253,53,415,93"/>
-<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1DivideCommand.html#a02a42ca34a301c5d0ecf41f478d5a3ac" title="Executes the divide command to create offspring cell." alt="" coords="21,5,190,60"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="239,59,190,50,191,45,240,54"/>
-<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1EatForwardCommand.html#aff3121b308adcd49605f4375cb161a10" title="Executes the eat forward command to steal energy from target cell." alt="" coords="5,84,205,139"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="240,91,206,97,205,92,239,86"/>
+<area shape="rect" id="Node000001" title="Gets the energy of the cell." alt="" coords="256,91,417,131"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1DivideCommand.html#a02a42ca34a301c5d0ecf41f478d5a3ac" title="Executes the divide command to create offspring cell." alt="" coords="22,5,191,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="264,89,186,63,188,58,265,84"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1EatForwardCommand.html#aff3121b308adcd49605f4375cb161a10" title="Executes the eat forward command to steal energy from target cell." alt="" coords="7,84,207,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="242,114,207,114,207,109,242,109"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1GiveEnergyCommand.html#a963085c6fb49f04de99da70b94229473" title="Execute the command giving energy to the cell in the direction the agent is facing." alt="" coords="5,163,208,217"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="265,138,188,165,186,160,264,133"/>
 </map>

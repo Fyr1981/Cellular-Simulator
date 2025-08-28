@@ -1,7 +1,13 @@
 <map id="CellularSimulator::Core::TurnRightCommand::Execute" name="CellularSimulator::Core::TurnRightCommand::Execute">
-<area shape="rect" id="Node000001" title="Executes the turn right command to rotate the cell clockwise." alt="" coords="5,30,193,85"/>
-<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#a617acb8c7004c86bfebeaf527adead34" title="Gets the direction of the cell." alt="" coords="241,5,416,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,42,228,37,228,42,194,47"/>
-<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1Cell.html#a843027646478c664d6305a5a2d82167c" title="Sets the direction of the cell." alt="" coords="242,69,415,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="194,68,229,73,228,78,193,73"/>
+<area shape="rect" id="Node000001" title="Executes the turn right command to rotate the cell clockwise." alt="" coords="5,69,193,124"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Command.html#a20546093af78283f1f3d0a1caab29bbc" title="Executes the command on the given simulator for the specified cell if overriden. Spends energy based ..." alt="" coords="241,13,428,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,69,247,54,248,59,194,74"/>
+<area shape="rect" id="Node000005" href="$classCellularSimulator_1_1Core_1_1Cell.html#a617acb8c7004c86bfebeaf527adead34" title="Gets the direction of the cell." alt="" coords="247,77,422,117"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="194,94,234,94,234,99,194,99"/>
+<area shape="rect" id="Node000006" href="$classCellularSimulator_1_1Core_1_1Cell.html#a843027646478c664d6305a5a2d82167c" title="Sets the direction of the cell." alt="" coords="248,141,421,181"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="194,120,248,134,247,140,193,125"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1Cell.html#a9e2133697d6c2f620554f43c2865ab74" title="Consumes energy from the cell ignoring the defending amount." alt="" coords="476,5,716,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="428,30,462,30,462,35,428,35"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1Cell.html#ac0e0688309e6c82d98852777275d4dcd" title="Sets the energy of the cell. It also can remove the defending flag if the energy is less than the cur..." alt="" coords="764,13,923,53"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="716,30,750,30,750,35,716,35"/>
 </map>

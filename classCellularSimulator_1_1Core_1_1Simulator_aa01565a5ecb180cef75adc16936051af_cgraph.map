@@ -1,0 +1,29 @@
+<map id="CellularSimulator::Core::Simulator::Populate" name="CellularSimulator::Core::Simulator::Populate">
+<area shape="rect" id="Node000001" title="Clears the grid and populates it with a random distribution of cells with a specified genome." alt="" coords="5,201,193,241"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Simulator.html#aeca74cb91a1ac462255c72dfb36706e2" title="Returns a reference to the random number generator used by the simulator." alt="" coords="249,169,432,209"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,206,235,201,236,206,194,212"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a78c057ec4d6e325a09c4d6ab6d636cf1" title="Spawns a new cell at the specified location." alt="" coords="241,233,440,273"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="194,231,228,236,227,241,193,236"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1Simulator.html#ad250c291a9685aece0c680ba5a60cd66" title="Provides read&#45;only access to a specific tile on the grid." alt="" coords="498,133,677,173"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="412,231,439,219,462,201,487,183,501,176,503,181,489,188,466,205,441,224,414,236"/>
+<area shape="rect" id="Node000005" href="$classCellularSimulator_1_1Core_1_1Cell.html#a7011257739b620c658c8ba6cb1939c96" title="Initializes the cell with all the parameters." alt="" coords="513,197,662,237"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="440,236,498,228,499,233,441,241"/>
+<area shape="rect" id="Node000012" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a904d7147da803a472d383ee006009568" title="Checks if the specified tile is valid and empty." alt="" coords="488,262,687,317"/>
+<area shape="poly" id="edge11_Node000003_Node000012" title=" " alt="" coords="441,265,475,270,474,275,440,270"/>
+<area shape="rect" id="Node000014" href="$classCellularSimulator_1_1Core_1_1GridTile.html#a6b55be1f58b6b11b68fc83c988b84db9" title="Sets or clears the cell pointer for this tile." alt="" coords="505,341,670,381"/>
+<area shape="poly" id="edge13_Node000003_Node000014" title=" " alt="" coords="379,271,489,326,511,334,509,339,487,330,377,276"/>
+<area shape="rect" id="Node000006" href="$classCellularSimulator_1_1Core_1_1Cell.html#a843027646478c664d6305a5a2d82167c" title="Sets the direction of the cell." alt="" coords="746,5,919,45"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="661,199,685,183,697,168,704,153,708,121,712,88,720,72,733,55,738,51,741,55,737,59,724,75,717,90,713,122,709,154,702,171,688,187,664,204"/>
+<area shape="rect" id="Node000007" href="$classCellularSimulator_1_1Core_1_1Cell.html#ac0e0688309e6c82d98852777275d4dcd" title="Sets the energy of the cell. It also can remove the defending flag if the energy is less than the cur..." alt="" coords="753,69,912,109"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="661,197,685,183,700,168,708,152,717,136,733,119,742,113,745,118,736,123,721,139,713,155,704,171,688,187,664,201"/>
+<area shape="rect" id="Node000008" href="$classCellularSimulator_1_1Core_1_1Cell.html#a29aff38a9b172336a807ee2d956f762c" title="Sets the genome of the cell." alt="" coords="748,133,917,173"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="661,195,741,174,743,179,663,201"/>
+<area shape="rect" id="Node000009" href="$classCellularSimulator_1_1Core_1_1Cell.html#a8fd77a7b79eb9512c4e272f452c9ea45" title="Set cell in object pool flag." alt="" coords="735,197,931,237"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="662,215,721,215,721,220,662,220"/>
+<area shape="rect" id="Node000010" href="$classCellularSimulator_1_1Core_1_1Cell.html#aca333a7e1b6411313f73ecbb001c21ba" title="Sets the x&#45;coordinate of the cell." alt="" coords="761,261,904,301"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="663,234,749,257,747,262,661,239"/>
+<area shape="rect" id="Node000011" href="$classCellularSimulator_1_1Core_1_1Cell.html#afa11deb3fb7c6f3358490a705f24d6fc" title="Sets the y&#45;coordinate of the cell." alt="" coords="761,325,904,365"/>
+<area shape="poly" id="edge10_Node000005_Node000011" title=" " alt="" coords="664,233,688,247,704,264,713,280,721,296,736,311,751,320,748,324,733,315,717,299,708,283,700,267,685,251,661,238"/>
+<area shape="rect" id="Node000013" href="$classCellularSimulator_1_1Core_1_1GridTile.html#adff5627736a9f6927b4c48671d7f4e85" title="Provides read&#45;write access to the Cell." alt="" coords="749,389,916,429"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="666,314,688,327,703,340,713,352,722,364,736,375,747,381,745,386,733,380,718,367,708,355,699,343,685,332,663,319"/>
+</map>

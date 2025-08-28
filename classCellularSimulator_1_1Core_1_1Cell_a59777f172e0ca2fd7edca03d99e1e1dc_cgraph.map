@@ -1,5 +1,17 @@
 <map id="CellularSimulator::Core::Cell::Cell" name="CellularSimulator::Core::Cell::Cell">
-<area shape="rect" id="Node000001" title="Constructs a cell with the specified parameters." alt="" coords="5,5,148,45"/>
-<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#a727d113dc425177d62d27847a57477c1" title="Initializes the cell with all the parameters." alt="" coords="196,5,345,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,23,183,23,183,28,148,28"/>
+<area shape="rect" id="Node000001" title="Constructs a cell with the specified parameters." alt="" coords="5,165,148,205"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#a7011257739b620c658c8ba6cb1939c96" title="Initializes the cell with all the parameters." alt="" coords="196,165,345,205"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,183,183,183,183,188,148,188"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1Cell.html#a843027646478c664d6305a5a2d82167c" title="Sets the direction of the cell." alt="" coords="405,5,578,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="284,163,328,110,358,81,392,55,403,49,406,53,395,60,362,85,332,113,288,167"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1Cell.html#ac0e0688309e6c82d98852777275d4dcd" title="Sets the energy of the cell. It also can remove the defending flag if the energy is less than the cur..." alt="" coords="412,69,571,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="305,163,392,119,411,112,413,117,394,124,307,168"/>
+<area shape="rect" id="Node000005" href="$classCellularSimulator_1_1Core_1_1Cell.html#a29aff38a9b172336a807ee2d956f762c" title="Sets the genome of the cell." alt="" coords="407,133,576,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="345,172,393,165,394,170,346,177"/>
+<area shape="rect" id="Node000006" href="$classCellularSimulator_1_1Core_1_1Cell.html#a8fd77a7b79eb9512c4e272f452c9ea45" title="Set cell in object pool flag." alt="" coords="393,197,589,237"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="346,194,380,198,379,204,345,199"/>
+<area shape="rect" id="Node000007" href="$classCellularSimulator_1_1Core_1_1Cell.html#aca333a7e1b6411313f73ecbb001c21ba" title="Sets the x&#45;coordinate of the cell." alt="" coords="420,261,563,301"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="307,203,394,247,413,254,411,259,392,252,305,208"/>
+<area shape="rect" id="Node000008" href="$classCellularSimulator_1_1Core_1_1Cell.html#afa11deb3fb7c6f3358490a705f24d6fc" title="Sets the y&#45;coordinate of the cell." alt="" coords="420,325,563,365"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="288,204,332,257,362,286,395,311,409,319,406,324,392,316,358,290,328,261,284,207"/>
 </map>

@@ -1,9 +1,25 @@
 <map id="CellularSimulator::Core::Cell::SetX" name="CellularSimulator::Core::Cell::SetX">
-<area shape="rect" id="Node000001" title="Sets the x&#45;coordinate of the cell." alt="" coords="508,37,651,77"/>
-<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#a02df375b4b8d5bf4e924bd519dde628a" title="Initializes the cell with all the parameters." alt="" coords="289,5,439,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="494,47,438,39,439,34,495,42"/>
-<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a9d39dd414d5128666888806e8db959d7" title="Moves a cell to a new location if the tile is valid and empty." alt="" coords="268,69,460,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="495,73,461,78,460,72,494,67"/>
-<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1MoveForwardCommand.html#a6648710a33a4b06f23f2d8a94f13016e" title="Executes the move forward command to relocate the cell." alt="" coords="5,62,220,117"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="255,92,220,92,220,87,255,87"/>
+<area shape="rect" id="Node000001" title="Sets the x&#45;coordinate of the cell." alt="" coords="760,199,903,239"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#a7011257739b620c658c8ba6cb1939c96" title="Initializes the cell with all the parameters." alt="" coords="541,133,691,173"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="751,197,682,176,683,171,752,192"/>
+<area shape="rect" id="Node000010" href="$classCellularSimulator_1_1Core_1_1Cell.html#a02df375b4b8d5bf4e924bd519dde628a" title="Initializes the cell with all the parameters." alt="" coords="541,199,691,239"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="746,221,691,221,691,216,746,216"/>
+<area shape="rect" id="Node000011" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a9d39dd414d5128666888806e8db959d7" title="Moves a cell to a new location if the tile is valid and empty." alt="" coords="520,267,712,307"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="755,245,681,269,679,264,754,240"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1Cell.html#ae91ee2db6577d8abed043b89ec5aa51b" title="Constructs a cell with the specified parameters." alt="" coords="293,5,436,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="577,127,528,92,471,60,435,46,437,41,473,55,531,88,581,123"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1Cell.html#a59777f172e0ca2fd7edca03d99e1e1dc" title="Constructs a cell with the specified parameters." alt="" coords="293,69,436,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="527,134,436,110,437,105,529,128"/>
+<area shape="rect" id="Node000005" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a78c057ec4d6e325a09c4d6ab6d636cf1" title="Spawns a new cell at the specified location." alt="" coords="265,133,464,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="527,156,464,156,464,151,527,151"/>
+<area shape="rect" id="Node000009" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a6df9f36da810eaf940debe3939227ecc" title="Spawns a new cell at the specified location." alt="" coords="265,197,464,237"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="529,178,444,200,443,195,527,173"/>
+<area shape="rect" id="Node000006" href="$classCellularSimulator_1_1Core_1_1DivideCommand.html#a02a42ca34a301c5d0ecf41f478d5a3ac" title="Executes the divide command to create offspring cell." alt="" coords="23,54,192,109"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="279,132,192,108,193,102,280,127"/>
+<area shape="rect" id="Node000007" href="$classCellularSimulator_1_1Core_1_1Simulator.html#aa01565a5ecb180cef75adc16936051af" title="Clears the grid and populates it with a random distribution of cells with a specified genome." alt="" coords="13,133,201,173"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="252,156,202,156,202,151,252,151"/>
+<area shape="rect" id="Node000008" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a08f0d0837fa8248ad79b36537eb3b862" title="Clears the grid and populates it with a random distribution of cells with a random genome." alt="" coords="5,197,209,237"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="271,179,189,200,188,195,270,174"/>
+<area shape="rect" id="Node000012" href="$classCellularSimulator_1_1Core_1_1MoveForwardCommand.html#a6648710a33a4b06f23f2d8a94f13016e" title="Executes the move forward command to relocate the cell." alt="" coords="257,262,472,317"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="507,290,472,291,472,286,507,285"/>
 </map>

@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('classCellularSimulator_1_1Core_1_1Comm
 </div><!--header-->
 <div class="contents">
 
-<p>Registers a command with the command factory by its class and name.  
+<p>Registers a command in <a class="el" href="classCellularSimulator_1_1Core_1_1CommandManager.html" title="Owns a registry of commands and provides access to them.">CommandManager</a> with the command factory by its class and name and color.  
  <a href="classCellularSimulator_1_1Core_1_1CommandRegistrar.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="CommandRegistry_8h_source.html">CommandRegistry.h</a>&gt;</code></p>
@@ -105,25 +105,26 @@ Collaboration diagram for CellularSimulator::Core::CommandRegistrar&lt; TCommand
 <div class="dyncontent">
 <div class="center"><img src="classCellularSimulator_1_1Core_1_1CommandRegistrar__coll__graph.png" border="0" usemap="#aCellularSimulator_1_1Core_1_1CommandRegistrar_3_01TCommand_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="aCellularSimulator_1_1Core_1_1CommandRegistrar_3_01TCommand_01_4_coll__map" id="aCellularSimulator_1_1Core_1_1CommandRegistrar_3_01TCommand_01_4_coll__map">
-<area shape="rect" title="Registers a command with the command factory by its class and name." alt="" coords="5,5,184,100"/>
+<area shape="rect" title="Registers a command in CommandManager with the command factory by its class and name and color." alt="" coords="5,5,184,100"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a188bec6a9cfa89acdc0b3b80a7ace2d2" id="r_a188bec6a9cfa89acdc0b3b80a7ace2d2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCellularSimulator_1_1Core_1_1CommandRegistrar.html#a188bec6a9cfa89acdc0b3b80a7ace2d2">CommandRegistrar</a> (std::string_view CommandName, Color CommandColor)</td></tr>
-<tr class="memdesc:a188bec6a9cfa89acdc0b3b80a7ace2d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for registering a command.  <br /></td></tr>
+<tr class="memdesc:a188bec6a9cfa89acdc0b3b80a7ace2d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for registering a command in <a class="el" href="classCellularSimulator_1_1Core_1_1CommandManager.html" title="Owns a registry of commands and provides access to them.">CommandManager</a>.  <br /></td></tr>
 <tr class="separator:a188bec6a9cfa89acdc0b3b80a7ace2d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename TCommand&gt;<br />
-class CellularSimulator::Core::CommandRegistrar&lt; TCommand &gt;</div><p>Registers a command with the command factory by its class and name. </p>
+class CellularSimulator::Core::CommandRegistrar&lt; TCommand &gt;</div><p>Registers a command in <a class="el" href="classCellularSimulator_1_1Core_1_1CommandManager.html" title="Owns a registry of commands and provides access to them.">CommandManager</a> with the command factory by its class and name and color. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">TCommand</td><td><a class="el" href="classCellularSimulator_1_1Core_1_1Command.html" title="Base class for commands that can be executed on the simulator for the cell.">Command</a> type to create that must derive from <a class="el" href="classCellularSimulator_1_1Core_1_1Command.html" title="Base class for commands that can be executed on the simulator for the cell.">CellularSimulator::Core::Command</a> class </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>It's a helper class and can be used optionally for registering commands without any construction features </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a188bec6a9cfa89acdc0b3b80a7ace2d2" name="a188bec6a9cfa89acdc0b3b80a7ace2d2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a188bec6a9cfa89acdc0b3b80a7ace2d2">&#9670;&#160;</a></span>CommandRegistrar()</h2>
@@ -161,7 +162,7 @@ template&lt;typename TCommand &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Constructor for registering a command. </p>
+<p>Constructor for registering a command in <a class="el" href="classCellularSimulator_1_1Core_1_1CommandManager.html" title="Owns a registry of commands and provides access to them.">CommandManager</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">CommandName</td><td>Name of the command to register </td></tr>
@@ -175,7 +176,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCellularSimulator_1_1Core_1_1CommandRegistrar_a188bec6a9cfa89acdc0b3b80a7ace2d2_cgraph.png" border="0" usemap="#aclassCellularSimulator_1_1Core_1_1CommandRegistrar_a188bec6a9cfa89acdc0b3b80a7ace2d2_cgraph" alt=""/></div>
 <map name="aclassCellularSimulator_1_1Core_1_1CommandRegistrar_a188bec6a9cfa89acdc0b3b80a7ace2d2_cgraph" id="aclassCellularSimulator_1_1Core_1_1CommandRegistrar_a188bec6a9cfa89acdc0b3b80a7ace2d2_cgraph">
-<area shape="rect" title="Constructor for registering a command." alt="" coords="5,84,192,139"/>
+<area shape="rect" title="Constructor for registering a command in CommandManager." alt="" coords="5,84,192,139"/>
 <area shape="rect" href="classCellularSimulator_1_1Core_1_1CommandManager.html#a20a2e46905f3787f4e4a3467f8250054" title="Registers a command with the factory." alt="" coords="240,84,424,139"/>
 <area shape="poly" title=" " alt="" coords="192,109,226,109,226,114,192,114"/>
 <area shape="rect" href="classCellularSimulator_1_1Core_1_1StringInterner.html#a8ccc3a479554381b426972028aa3bc59" title="Retrieves the singleton instance." alt="" coords="473,5,623,60"/>

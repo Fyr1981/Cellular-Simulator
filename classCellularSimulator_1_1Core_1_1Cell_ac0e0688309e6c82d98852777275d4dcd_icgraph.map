@@ -1,5 +1,56 @@
 <map id="CellularSimulator::Core::Cell::SetEnergy" name="CellularSimulator::Core::Cell::SetEnergy">
-<area shape="rect" id="Node000001" title="Sets the energy of the cell." alt="" coords="203,5,361,45"/>
-<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#a02df375b4b8d5bf4e924bd519dde628a" title="Initializes the cell with all the parameters." alt="" coords="5,5,155,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,28,155,28,155,23,189,23"/>
+<area shape="rect" id="Node000001" title="Sets the energy of the cell. It also can remove the defending flag if the energy is less than the cur..." alt="" coords="815,631,973,671"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#af0e759e3f4f9fd16c244a00a2cdb9453" title="Adds energy to the cell." alt="" coords="298,210,461,250"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="856,625,403,252,407,248,860,621"/>
+<area shape="rect" id="Node000006" href="$classCellularSimulator_1_1Core_1_1Cell.html#a580dd48ebf16fa25ff6a4965a7ee02b1" title="Consumes energy from the cell. If the cell is defending, it will not consume energy and will remove t..." alt="" coords="280,91,479,131"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="877,620,832,530,801,478,765,429,721,380,673,334,573,249,481,180,411,134,414,129,484,176,576,245,676,330,724,377,769,426,805,475,837,527,881,618"/>
+<area shape="rect" id="Node000008" href="$classCellularSimulator_1_1Core_1_1Cell.html#a9e2133697d6c2f620554f43c2865ab74" title="Consumes energy from the cell ignoring the defending amount." alt="" coords="527,624,767,679"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="801,654,767,654,767,649,801,649"/>
+<area shape="rect" id="Node000017" href="$classCellularSimulator_1_1Core_1_1Cell.html#a7011257739b620c658c8ba6cb1939c96" title="Initializes the cell with all the parameters." alt="" coords="572,793,721,833"/>
+<area shape="poly" id="edge22_Node000001_Node000017" title=" " alt="" coords="853,681,680,795,677,790,850,677"/>
+<area shape="rect" id="Node000024" href="$classCellularSimulator_1_1Core_1_1Cell.html#a02df375b4b8d5bf4e924bd519dde628a" title="Initializes the cell with all the parameters." alt="" coords="572,857,721,897"/>
+<area shape="poly" id="edge30_Node000001_Node000024" title=" " alt="" coords="883,685,865,723,840,767,808,810,768,847,746,859,722,868,720,863,744,855,765,843,804,806,836,764,860,721,878,683"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1EatForwardCommand.html#aff3121b308adcd49605f4375cb161a10" title="Executes the eat forward command to steal energy from target cell." alt="" coords="19,84,219,139"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="332,205,231,152,203,141,205,136,233,148,335,201"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1GiveEnergyCommand.html#a963085c6fb49f04de99da70b94229473" title="Execute the command giving energy to the cell in the direction the agent is facing." alt="" coords="17,241,220,296"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="285,247,221,256,220,251,284,241"/>
+<area shape="rect" id="Node000005" href="$classCellularSimulator_1_1Core_1_1PhotosynthesisCommand.html#add31b33c99bd263d25c1f7fd5e5e299d" title="Executes the photosynthesis command to generate energy." alt="" coords="5,163,232,217"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="284,218,232,210,233,205,285,213"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="266,114,219,114,219,109,266,109"/>
+<area shape="rect" id="Node000007" href="$classCellularSimulator_1_1Core_1_1DeathCommand.html#afd580d3ca841808b7ebef3fcc6cee37f" title="Executes the command on the given simulator for the specified cell if overriden. Spends energy based ..." alt="" coords="31,5,206,60"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="299,90,205,61,207,56,300,85"/>
+<area shape="rect" id="Node000009" href="$classCellularSimulator_1_1Core_1_1Command.html#a20546093af78283f1f3d0a1caab29bbc" title="Executes the command on the given simulator for the specified cell if overriden. Spends energy based ..." alt="" coords="286,446,473,486"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="594,618,408,488,411,484,597,614"/>
+<area shape="rect" id="Node000011" href="$classCellularSimulator_1_1Core_1_1DivideCommand.html#a02a42ca34a301c5d0ecf41f478d5a3ac" title="Executes the divide command to create offspring cell." alt="" coords="34,779,203,833"/>
+<area shape="poly" id="edge21_Node000008_Node000011" title=" " alt="" coords="540,685,204,784,203,779,538,680"/>
+<area shape="poly" id="edge13_Node000009_Node000003" title=" " alt="" coords="359,435,278,263,266,230,260,202,251,177,230,152,216,141,219,137,234,148,255,175,265,201,271,228,282,261,364,432"/>
+<area shape="poly" id="edge14_Node000009_Node000004" title=" " alt="" coords="355,437,302,372,268,339,231,310,211,299,214,294,233,305,272,335,306,369,359,433"/>
+<area shape="poly" id="edge17_Node000009_Node000005" title=" " alt="" coords="364,434,344,388,315,334,277,278,230,231,214,220,217,215,234,227,281,275,320,331,349,386,369,432"/>
+<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="358,435,318,358,277,263,269,233,266,207,264,160,258,118,248,96,230,73,205,54,208,50,234,69,252,93,263,116,270,160,271,206,274,232,283,261,323,356,363,433"/>
+<area shape="rect" id="Node000010" href="$classCellularSimulator_1_1Core_1_1DefendCommand.html#a6552190395d2c339f2af16703d1ab9eb" title="Adds the number of defendings to the cell." alt="" coords="31,556,206,611"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="334,495,233,547,205,558,203,553,231,542,332,490"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="365,500,291,659,234,769,205,788,202,783,230,766,286,657,360,498"/>
+<area shape="rect" id="Node000012" href="$classCellularSimulator_1_1Core_1_1IdleCommand.html#a48acd4c1f48418b6248bf9187a40a57a" title="Executes the idle command (no operation)" alt="" coords="13,635,224,675"/>
+<area shape="poly" id="edge15_Node000009_Node000012" title=" " alt="" coords="359,499,307,563,272,597,233,626,209,638,207,633,231,621,269,593,303,560,355,496"/>
+<area shape="rect" id="Node000013" href="$classCellularSimulator_1_1Core_1_1MoveForwardCommand.html#a6648710a33a4b06f23f2d8a94f13016e" title="Executes the move forward command to relocate the cell." alt="" coords="11,700,226,755"/>
+<area shape="poly" id="edge16_Node000009_Node000013" title=" " alt="" coords="367,500,347,542,317,593,279,645,234,689,214,702,211,698,230,685,275,641,313,590,342,540,362,497"/>
+<area shape="rect" id="Node000014" href="$classCellularSimulator_1_1Core_1_1SkipIfCommand.html#a4e25563ad8b536e3b0a479ef786dbcfe" title="Skip the next command if the predicate returns true by moving the gene pointer to the next command." alt="" coords="37,320,201,375"/>
+<area shape="poly" id="edge18_Node000009_Node000014" title=" " alt="" coords="332,441,231,388,200,376,202,371,233,384,335,437"/>
+<area shape="rect" id="Node000015" href="$classCellularSimulator_1_1Core_1_1TurnLeftCommand.html#a09f70e59fdeaada7c4f6d1945324570a" title="Executes the turn left command to rotate the cell counterclockwise." alt="" coords="29,399,208,453"/>
+<area shape="poly" id="edge19_Node000009_Node000015" title=" " alt="" coords="272,452,208,442,209,437,273,447"/>
+<area shape="rect" id="Node000016" href="$classCellularSimulator_1_1Core_1_1TurnRightCommand.html#acce7396b93f5ce62888fff49ba7660d4" title="Executes the turn right command to rotate the cell clockwise." alt="" coords="25,477,213,532"/>
+<area shape="poly" id="edge20_Node000009_Node000016" title=" " alt="" coords="273,484,213,493,212,488,272,479"/>
+<area shape="rect" id="Node000018" href="$classCellularSimulator_1_1Core_1_1Cell.html#ae91ee2db6577d8abed043b89ec5aa51b" title="Constructs a cell with the specified parameters." alt="" coords="308,850,451,890"/>
+<area shape="poly" id="edge23_Node000017_Node000018" title=" " alt="" coords="559,834,452,857,450,852,558,829"/>
+<area shape="rect" id="Node000019" href="$classCellularSimulator_1_1Core_1_1Cell.html#a59777f172e0ca2fd7edca03d99e1e1dc" title="Constructs a cell with the specified parameters." alt="" coords="308,914,451,954"/>
+<area shape="poly" id="edge24_Node000017_Node000019" title=" " alt="" coords="560,832,528,847,513,860,505,874,496,889,480,904,452,919,450,914,477,900,492,886,500,872,509,857,525,842,558,827"/>
+<area shape="rect" id="Node000020" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a78c057ec4d6e325a09c4d6ab6d636cf1" title="Spawns a new cell at the specified location." alt="" coords="280,786,479,826"/>
+<area shape="poly" id="edge25_Node000017_Node000020" title=" " alt="" coords="558,813,479,811,479,806,559,808"/>
+<area shape="rect" id="Node000023" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a6df9f36da810eaf940debe3939227ecc" title="Spawns a new cell at the specified location." alt="" coords="280,978,479,1018"/>
+<area shape="poly" id="edge29_Node000017_Node000023" title=" " alt="" coords="560,828,528,847,516,861,509,875,505,905,500,936,493,952,480,968,464,980,461,976,477,964,489,950,495,935,500,905,504,874,512,858,525,843,557,823"/>
+<area shape="poly" id="edge26_Node000020_Node000011" title=" " alt="" coords="266,809,204,809,204,803,266,803"/>
+<area shape="rect" id="Node000021" href="$classCellularSimulator_1_1Core_1_1Simulator.html#aa01565a5ecb180cef75adc16936051af" title="Clears the grid and populates it with a random distribution of cells with a specified genome." alt="" coords="25,922,213,962"/>
+<area shape="poly" id="edge27_Node000020_Node000021" title=" " alt="" coords="289,835,282,840,266,857,259,875,251,894,234,912,213,924,210,919,230,908,246,891,254,873,262,854,278,836,286,831"/>
+<area shape="rect" id="Node000022" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a08f0d0837fa8248ad79b36537eb3b862" title="Clears the grid and populates it with a random distribution of cells with a random genome." alt="" coords="17,858,221,898"/>
+<area shape="poly" id="edge28_Node000020_Node000022" title=" " alt="" coords="294,832,193,860,191,855,292,827"/>
 </map>

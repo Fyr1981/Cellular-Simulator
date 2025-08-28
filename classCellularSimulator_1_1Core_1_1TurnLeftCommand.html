@@ -126,6 +126,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a09f70e59fdeaada7c4f6d1945324570a" id="r_a09f70e59fdeaada7c4f6d1945324570a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCellularSimulator_1_1Core_1_1TurnLeftCommand.html#a09f70e59fdeaada7c4f6d1945324570a">Execute</a> (<a class="el" href="classCellularSimulator_1_1Core_1_1Simulator.html">Simulator</a> &amp;Sim, <a class="el" href="classCellularSimulator_1_1Core_1_1Cell.html">Cell</a> &amp;Agent) override</td></tr>
 <tr class="memdesc:a09f70e59fdeaada7c4f6d1945324570a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the turn left command to rotate the cell counterclockwise.  <br /></td></tr>
 <tr class="separator:a09f70e59fdeaada7c4f6d1945324570a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_attribs_classCellularSimulator_1_1Core_1_1Command"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classCellularSimulator_1_1Core_1_1Command')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classCellularSimulator_1_1Core_1_1Command.html">CellularSimulator::Core::Command</a></td></tr>
+<tr class="memitem:aac64f6831db8f64416a4c06e7ff8fce3 inherit pro_attribs_classCellularSimulator_1_1Core_1_1Command" id="r_aac64f6831db8f64416a4c06e7ff8fce3"><td class="memItemLeft" align="right" valign="top">
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>EnergyCost</b> = 0</td></tr>
+<tr class="memdesc:aac64f6831db8f64416a4c06e7ff8fce3 inherit pro_attribs_classCellularSimulator_1_1Core_1_1Command"><td class="mdescLeft">&#160;</td><td class="mdescRight">Energy cost of the command. Can be overridden by derived classes to define custom energy costs. <br /></td></tr>
+<tr class="separator:aac64f6831db8f64416a4c06e7ff8fce3 inherit pro_attribs_classCellularSimulator_1_1Core_1_1Command"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Turn the agent 90 degrees to the left. </p>
@@ -179,17 +187,23 @@ No energy cost is associated with turning </dd>
 <dd>
 Affects the forward direction for other directional commands </dd></dl>
 
-<p>Implements <a class="el" href="classCellularSimulator_1_1Core_1_1Command.html#a78bad608ee77b0a77fc488456e87fe7c">CellularSimulator::Core::Command</a>.</p>
+<p>Reimplemented from <a class="el" href="classCellularSimulator_1_1Core_1_1Command.html#a20546093af78283f1f3d0a1caab29bbc">CellularSimulator::Core::Command</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCellularSimulator_1_1Core_1_1TurnLeftCommand_a09f70e59fdeaada7c4f6d1945324570a_cgraph.png" border="0" usemap="#aclassCellularSimulator_1_1Core_1_1TurnLeftCommand_a09f70e59fdeaada7c4f6d1945324570a_cgraph" alt=""/></div>
 <map name="aclassCellularSimulator_1_1Core_1_1TurnLeftCommand_a09f70e59fdeaada7c4f6d1945324570a_cgraph" id="aclassCellularSimulator_1_1Core_1_1TurnLeftCommand_a09f70e59fdeaada7c4f6d1945324570a_cgraph">
-<area shape="rect" title="Executes the turn left command to rotate the cell counterclockwise." alt="" coords="5,30,184,85"/>
-<area shape="rect" href="classCellularSimulator_1_1Core_1_1Cell.html#a617acb8c7004c86bfebeaf527adead34" title="Gets the direction of the cell." alt="" coords="232,5,407,45"/>
-<area shape="poly" title=" " alt="" coords="184,42,218,37,219,42,185,47"/>
-<area shape="rect" href="classCellularSimulator_1_1Core_1_1Cell.html#a843027646478c664d6305a5a2d82167c" title="Sets the direction of the cell." alt="" coords="233,69,406,109"/>
-<area shape="poly" title=" " alt="" coords="185,67,219,72,219,78,184,73"/>
+<area shape="rect" title="Executes the turn left command to rotate the cell counterclockwise." alt="" coords="5,69,184,124"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1Command.html#a20546093af78283f1f3d0a1caab29bbc" title="Executes the command on the given simulator for the specified cell if overriden. Spends energy based ..." alt="" coords="232,13,419,53"/>
+<area shape="poly" title=" " alt="" coords="183,69,239,54,240,59,185,74"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1Cell.html#a617acb8c7004c86bfebeaf527adead34" title="Gets the direction of the cell." alt="" coords="238,77,413,117"/>
+<area shape="poly" title=" " alt="" coords="184,94,225,94,225,99,184,99"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1Cell.html#a843027646478c664d6305a5a2d82167c" title="Sets the direction of the cell." alt="" coords="239,141,412,181"/>
+<area shape="poly" title=" " alt="" coords="185,119,240,134,239,140,183,124"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1Cell.html#a9e2133697d6c2f620554f43c2865ab74" title="Consumes energy from the cell ignoring the defending amount." alt="" coords="467,5,707,60"/>
+<area shape="poly" title=" " alt="" coords="419,30,453,30,453,35,419,35"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1Cell.html#ac0e0688309e6c82d98852777275d4dcd" title="Sets the energy of the cell. It also can remove the defending flag if the energy is less than the cur..." alt="" coords="755,13,913,53"/>
+<area shape="poly" title=" " alt="" coords="707,30,741,30,741,35,707,35"/>
 </map>
 </div>
 

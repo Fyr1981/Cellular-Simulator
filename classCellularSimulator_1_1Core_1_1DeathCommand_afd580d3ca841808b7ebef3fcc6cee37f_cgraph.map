@@ -1,0 +1,12 @@
+<map id="CellularSimulator::Core::DeathCommand::Execute" name="CellularSimulator::Core::DeathCommand::Execute">
+<area shape="rect" id="Node000001" title="Executes the command on the given simulator for the specified cell if overriden. Spends energy based ..." alt="" coords="5,35,180,90"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#a580dd48ebf16fa25ff6a4965a7ee02b1" title="Consumes energy from the cell. If the cell is defending, it will not consume energy and will remove t..." alt="" coords="483,5,682,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,53,469,31,470,37,180,59"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1Command.html#a20546093af78283f1f3d0a1caab29bbc" title="Executes the command on the given simulator for the specified cell if overriden. Spends energy based ..." alt="" coords="228,71,415,111"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="180,71,215,75,214,80,180,76"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1Cell.html#ac0e0688309e6c82d98852777275d4dcd" title="Sets the energy of the cell. It also can remove the defending flag if the energy is less than the cur..." alt="" coords="751,41,909,81"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="682,37,737,45,737,50,682,42"/>
+<area shape="rect" id="Node000005" href="$classCellularSimulator_1_1Core_1_1Cell.html#a9e2133697d6c2f620554f43c2865ab74" title="Consumes energy from the cell ignoring the defending amount." alt="" coords="463,70,703,125"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="415,90,449,91,449,97,415,96"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="702,77,737,72,737,77,703,82"/>
+</map>

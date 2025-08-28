@@ -1,7 +1,9 @@
 <map id="CellularSimulator::Core::Cell::AddEnergy" name="CellularSimulator::Core::Cell::AddEnergy">
-<area shape="rect" id="Node000001" title="Adds energy to the cell." alt="" coords="280,53,443,93"/>
+<area shape="rect" id="Node000001" title="Adds energy to the cell." alt="" coords="280,91,443,131"/>
 <area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1EatForwardCommand.html#aff3121b308adcd49605f4375cb161a10" title="Executes the eat forward command to steal energy from target cell." alt="" coords="19,5,219,60"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="266,60,219,52,219,47,267,54"/>
-<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1PhotosynthesisCommand.html#add31b33c99bd263d25c1f7fd5e5e299d" title="Executes the photosynthesis command to generate energy." alt="" coords="5,84,232,139"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="267,90,233,96,232,91,266,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="285,90,203,63,205,58,287,85"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1GiveEnergyCommand.html#a963085c6fb49f04de99da70b94229473" title="Execute the command giving energy to the cell in the direction the agent is facing." alt="" coords="17,84,220,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="266,114,220,114,220,109,266,109"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1PhotosynthesisCommand.html#add31b33c99bd263d25c1f7fd5e5e299d" title="Executes the photosynthesis command to generate energy." alt="" coords="5,163,232,217"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="287,138,205,165,203,160,285,133"/>
 </map>

@@ -91,8 +91,9 @@ $(document).ready(function(){initNavTree('classCellularSimulator_1_1Core_1_1Comm
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classCellularSimulator_1_1Core_1_1Command-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">CellularSimulator::Core::Command Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
+  <div class="headertitle"><div class="title">CellularSimulator::Core::Command Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -105,21 +106,29 @@ Inheritance diagram for CellularSimulator::Core::Command:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCellularSimulator_1_1Core_1_1Command__inherit__graph.png" border="0" usemap="#aCellularSimulator_1_1Core_1_1Command_inherit__map" alt="Inheritance graph"/></div>
 <map name="aCellularSimulator_1_1Core_1_1Command_inherit__map" id="aCellularSimulator_1_1Core_1_1Command_inherit__map">
-<area shape="rect" title="Base class for commands that can be executed on the simulator for the cell." alt="" coords="611,5,745,105"/>
-<area shape="rect" href="classCellularSimulator_1_1Core_1_1DivideCommand.html" title="Spawn a new agent on the next empty tile. It gets a half of the agent&#39;s energy and probably a gene mu..." alt="" coords="5,153,167,233"/>
-<area shape="poly" title=" " alt="" coords="597,70,405,102,292,126,180,156,168,160,166,155,179,151,291,121,404,97,596,65"/>
-<area shape="rect" href="classCellularSimulator_1_1Core_1_1EatForwardCommand.html" title="Take energy from the cell in the direction the agent is facing." alt="" coords="191,153,383,233"/>
-<area shape="poly" title=" " alt="" coords="599,86,396,156,385,160,383,155,394,151,597,81"/>
-<area shape="rect" href="classCellularSimulator_1_1Core_1_1IdleCommand.html" title="A command that does nothing." alt="" coords="408,153,551,233"/>
-<area shape="poly" title=" " alt="" coords="600,113,538,155,535,151,597,108"/>
-<area shape="rect" href="classCellularSimulator_1_1Core_1_1MoveForwardCommand.html" title="Move the agent forward by one cell by looking at the direction it is facing." alt="" coords="575,153,781,233"/>
-<area shape="poly" title=" " alt="" coords="681,119,681,153,675,153,675,119"/>
-<area shape="rect" href="classCellularSimulator_1_1Core_1_1PhotosynthesisCommand.html" title="A command that allows a cell to gain energy." alt="" coords="806,153,1025,233"/>
-<area shape="poly" title=" " alt="" coords="759,100,849,151,846,156,756,104"/>
-<area shape="rect" href="classCellularSimulator_1_1Core_1_1TurnLeftCommand.html" title="Turn the agent 90 degrees to the left." alt="" coords="1049,153,1219,233"/>
-<area shape="poly" title=" " alt="" coords="759,73,891,107,1037,151,1049,155,1047,160,1036,156,889,112,758,78"/>
-<area shape="rect" href="classCellularSimulator_1_1Core_1_1TurnRightCommand.html" title="Turn the agent 90 degrees to the right." alt="" coords="1244,153,1424,233"/>
-<area shape="poly" title=" " alt="" coords="760,63,975,95,1104,120,1232,151,1244,154,1243,159,1231,156,1103,125,974,101,759,69"/>
+<area shape="rect" title="Base class for commands that can be executed on the simulator for the cell." alt="" coords="1004,5,1139,105"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1DeathCommand.html" title=" " alt="" coords="5,163,164,243"/>
+<area shape="poly" title=" " alt="" coords="990,64,804,77,568,97,340,124,246,139,176,156,151,166,149,161,175,151,245,134,339,118,567,92,803,72,990,59"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1DefendCommand.html" title="Defend against incoming energy consumption for a specified number of steps." alt="" coords="188,153,355,253"/>
+<area shape="poly" title=" " alt="" coords="990,62,867,69,710,85,537,113,451,132,367,156,356,160,354,155,365,151,449,127,536,108,710,80,867,64,990,56"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1DivideCommand.html" title="Spawn a new agent on the next empty tile. It gets a half of the agent&#39;s energy and probably a gene mu..." alt="" coords="379,153,540,253"/>
+<area shape="poly" title=" " alt="" coords="991,67,900,78,789,96,670,122,554,156,541,161,539,156,552,151,669,117,788,91,899,73,990,62"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1EatForwardCommand.html" title="Take energy from the cell in the direction the agent is facing." alt="" coords="565,153,757,253"/>
+<area shape="poly" title=" " alt="" coords="992,82,885,115,770,156,758,160,756,155,768,151,884,110,990,77"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1GiveEnergyCommand.html" title="Give energy to the cell in the direction the agent is facing." alt="" coords="781,153,975,253"/>
+<area shape="poly" title=" " alt="" coords="997,116,945,155,941,151,994,111"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1IdleCommand.html" title="A command that does nothing." alt="" coords="1000,163,1143,243"/>
+<area shape="poly" title=" " alt="" coords="1074,119,1074,163,1069,163,1069,119"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1MoveForwardCommand.html" title="Move the agent forward by one cell by looking at the direction it is facing." alt="" coords="1167,163,1373,243"/>
+<area shape="poly" title=" " alt="" coords="1151,111,1219,161,1215,165,1147,116"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1PhotosynthesisCommand.html" title="A command that allows a cell to gain energy." alt="" coords="1398,153,1617,253"/>
+<area shape="poly" title=" " alt="" coords="1153,77,1264,110,1387,151,1399,155,1397,160,1385,156,1263,115,1151,82"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1SkipIfCommand.html" title="A command that skips the next command if the predicate returns true." alt="" coords="1641,153,1797,253"/>
+<area shape="poly" title=" " alt="" coords="1152,60,1250,70,1371,88,1501,114,1630,151,1642,155,1640,160,1628,156,1500,119,1370,93,1250,76,1152,65"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1TurnLeftCommand.html" title="Turn the agent 90 degrees to the left." alt="" coords="1822,163,1993,243"/>
+<area shape="poly" title=" " alt="" coords="1153,56,1281,63,1447,79,1630,107,1722,127,1811,151,1838,161,1836,166,1809,156,1720,132,1629,112,1446,84,1281,68,1153,61"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1TurnRightCommand.html" title="Turn the agent 90 degrees to the right." alt="" coords="2017,163,2197,243"/>
+<area shape="poly" title=" " alt="" coords="1153,53,1312,57,1526,70,1644,82,1766,99,1888,122,2005,151,2034,161,2032,166,2004,156,1886,127,1765,105,1644,88,1525,75,1312,62,1153,59"/>
 </map>
 </div>
 <div class="dynheader">
@@ -133,15 +142,22 @@ Collaboration diagram for CellularSimulator::Core::Command:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a78bad608ee77b0a77fc488456e87fe7c" id="r_a78bad608ee77b0a77fc488456e87fe7c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCellularSimulator_1_1Core_1_1Command.html#a78bad608ee77b0a77fc488456e87fe7c">Execute</a> (<a class="el" href="classCellularSimulator_1_1Core_1_1Simulator.html">Simulator</a> &amp;Sim, <a class="el" href="classCellularSimulator_1_1Core_1_1Cell.html">Cell</a> &amp;Agent)=0</td></tr>
-<tr class="memdesc:a78bad608ee77b0a77fc488456e87fe7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the command on the given simulator for the specified cell.  <br /></td></tr>
-<tr class="separator:a78bad608ee77b0a77fc488456e87fe7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20546093af78283f1f3d0a1caab29bbc" id="r_a20546093af78283f1f3d0a1caab29bbc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCellularSimulator_1_1Core_1_1Command.html#a20546093af78283f1f3d0a1caab29bbc">Execute</a> (<a class="el" href="classCellularSimulator_1_1Core_1_1Simulator.html">Simulator</a> &amp;Sim, <a class="el" href="classCellularSimulator_1_1Core_1_1Cell.html">Cell</a> &amp;Agent)</td></tr>
+<tr class="memdesc:a20546093af78283f1f3d0a1caab29bbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the command on the given simulator for the specified cell if overriden. Spends energy based on the EnergyCost ignoring defences.  <br /></td></tr>
+<tr class="separator:a20546093af78283f1f3d0a1caab29bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:aac64f6831db8f64416a4c06e7ff8fce3" id="r_aac64f6831db8f64416a4c06e7ff8fce3"><td class="memItemLeft" align="right" valign="top"><a id="aac64f6831db8f64416a4c06e7ff8fce3" name="aac64f6831db8f64416a4c06e7ff8fce3"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>EnergyCost</b> = 0</td></tr>
+<tr class="memdesc:aac64f6831db8f64416a4c06e7ff8fce3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Energy cost of the command. Can be overridden by derived classes to define custom energy costs. <br /></td></tr>
+<tr class="separator:aac64f6831db8f64416a4c06e7ff8fce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for commands that can be executed on the simulator for the cell. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a78bad608ee77b0a77fc488456e87fe7c" name="a78bad608ee77b0a77fc488456e87fe7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78bad608ee77b0a77fc488456e87fe7c">&#9670;&#160;</a></span>Execute()</h2>
+<a id="a20546093af78283f1f3d0a1caab29bbc" name="a20546093af78283f1f3d0a1caab29bbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20546093af78283f1f3d0a1caab29bbc">&#9670;&#160;</a></span>Execute()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -150,7 +166,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void CellularSimulator::Core::Command::Execute </td>
+          <td class="memname">void Command::Execute </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classCellularSimulator_1_1Core_1_1Simulator.html">Simulator</a> &amp;&#160;</td>
           <td class="paramname"><em>Sim</em>, </td>
@@ -169,12 +185,12 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Executes the command on the given simulator for the specified cell. </p>
+<p>Executes the command on the given simulator for the specified cell if overriden. Spends energy based on the EnergyCost ignoring defences. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Sim</td><td>The simulator on which the command is executed. </td></tr>
@@ -183,12 +199,55 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classCellularSimulator_1_1Core_1_1DivideCommand.html#a02a42ca34a301c5d0ecf41f478d5a3ac">CellularSimulator::Core::DivideCommand</a>, <a class="el" href="classCellularSimulator_1_1Core_1_1EatForwardCommand.html#aff3121b308adcd49605f4375cb161a10">CellularSimulator::Core::EatForwardCommand</a>, <a class="el" href="classCellularSimulator_1_1Core_1_1IdleCommand.html#a48acd4c1f48418b6248bf9187a40a57a">CellularSimulator::Core::IdleCommand</a>, <a class="el" href="classCellularSimulator_1_1Core_1_1MoveForwardCommand.html#a6648710a33a4b06f23f2d8a94f13016e">CellularSimulator::Core::MoveForwardCommand</a>, <a class="el" href="classCellularSimulator_1_1Core_1_1PhotosynthesisCommand.html#add31b33c99bd263d25c1f7fd5e5e299d">CellularSimulator::Core::PhotosynthesisCommand</a>, <a class="el" href="classCellularSimulator_1_1Core_1_1TurnLeftCommand.html#a09f70e59fdeaada7c4f6d1945324570a">CellularSimulator::Core::TurnLeftCommand</a>, and <a class="el" href="classCellularSimulator_1_1Core_1_1TurnRightCommand.html#acce7396b93f5ce62888fff49ba7660d4">CellularSimulator::Core::TurnRightCommand</a>.</p>
+<p>Reimplemented in <a class="el" href="classCellularSimulator_1_1Core_1_1DeathCommand.html#afd580d3ca841808b7ebef3fcc6cee37f">CellularSimulator::Core::DeathCommand</a>, <a class="el" href="classCellularSimulator_1_1Core_1_1DefendCommand.html#a6552190395d2c339f2af16703d1ab9eb">CellularSimulator::Core::DefendCommand</a>, <a class="el" href="classCellularSimulator_1_1Core_1_1DivideCommand.html#a02a42ca34a301c5d0ecf41f478d5a3ac">CellularSimulator::Core::DivideCommand</a>, <a class="el" href="classCellularSimulator_1_1Core_1_1EatForwardCommand.html#aff3121b308adcd49605f4375cb161a10">CellularSimulator::Core::EatForwardCommand</a>, <a class="el" href="classCellularSimulator_1_1Core_1_1GiveEnergyCommand.html#a963085c6fb49f04de99da70b94229473">CellularSimulator::Core::GiveEnergyCommand</a>, <a class="el" href="classCellularSimulator_1_1Core_1_1IdleCommand.html#a48acd4c1f48418b6248bf9187a40a57a">CellularSimulator::Core::IdleCommand</a>, <a class="el" href="classCellularSimulator_1_1Core_1_1MoveForwardCommand.html#a6648710a33a4b06f23f2d8a94f13016e">CellularSimulator::Core::MoveForwardCommand</a>, <a class="el" href="classCellularSimulator_1_1Core_1_1PhotosynthesisCommand.html#add31b33c99bd263d25c1f7fd5e5e299d">CellularSimulator::Core::PhotosynthesisCommand</a>, <a class="el" href="classCellularSimulator_1_1Core_1_1SkipIfCommand.html#a4e25563ad8b536e3b0a479ef786dbcfe">CellularSimulator::Core::SkipIfCommand</a>, <a class="el" href="classCellularSimulator_1_1Core_1_1TurnLeftCommand.html#a09f70e59fdeaada7c4f6d1945324570a">CellularSimulator::Core::TurnLeftCommand</a>, and <a class="el" href="classCellularSimulator_1_1Core_1_1TurnRightCommand.html#acce7396b93f5ce62888fff49ba7660d4">CellularSimulator::Core::TurnRightCommand</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCellularSimulator_1_1Core_1_1Command_a20546093af78283f1f3d0a1caab29bbc_cgraph.png" border="0" usemap="#aclassCellularSimulator_1_1Core_1_1Command_a20546093af78283f1f3d0a1caab29bbc_cgraph" alt=""/></div>
+<map name="aclassCellularSimulator_1_1Core_1_1Command_a20546093af78283f1f3d0a1caab29bbc_cgraph" id="aclassCellularSimulator_1_1Core_1_1Command_a20546093af78283f1f3d0a1caab29bbc_cgraph">
+<area shape="rect" title="Executes the command on the given simulator for the specified cell if overriden. Spends energy based ..." alt="" coords="5,13,192,53"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1Cell.html#a9e2133697d6c2f620554f43c2865ab74" title="Consumes energy from the cell ignoring the defending amount." alt="" coords="240,5,480,60"/>
+<area shape="poly" title=" " alt="" coords="192,30,226,30,226,35,192,35"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1Cell.html#ac0e0688309e6c82d98852777275d4dcd" title="Sets the energy of the cell. It also can remove the defending flag if the energy is less than the cur..." alt="" coords="528,13,687,53"/>
+<area shape="poly" title=" " alt="" coords="480,30,514,30,514,35,480,35"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCellularSimulator_1_1Core_1_1Command_a20546093af78283f1f3d0a1caab29bbc_icgraph.png" border="0" usemap="#aclassCellularSimulator_1_1Core_1_1Command_a20546093af78283f1f3d0a1caab29bbc_icgraph" alt=""/></div>
+<map name="aclassCellularSimulator_1_1Core_1_1Command_a20546093af78283f1f3d0a1caab29bbc_icgraph" id="aclassCellularSimulator_1_1Core_1_1Command_a20546093af78283f1f3d0a1caab29bbc_icgraph">
+<area shape="rect" title="Executes the command on the given simulator for the specified cell if overriden. Spends energy based ..." alt="" coords="280,399,467,439"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1DeathCommand.html#afd580d3ca841808b7ebef3fcc6cee37f" title="Executes the command on the given simulator for the specified cell if overriden. Spends energy based ..." alt="" coords="31,5,206,60"/>
+<area shape="poly" title=" " alt="" coords="365,386,353,321,328,237,311,193,289,149,262,109,230,73,205,56,208,52,234,69,266,106,293,147,315,190,333,235,358,320,370,385"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1DefendCommand.html#a6552190395d2c339f2af16703d1ab9eb" title="Adds the number of defendings to the cell." alt="" coords="31,84,206,139"/>
+<area shape="poly" title=" " alt="" coords="361,387,344,335,317,272,280,208,257,178,230,152,205,136,208,131,234,148,261,175,284,205,322,270,349,334,366,385"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1DivideCommand.html#a02a42ca34a301c5d0ecf41f478d5a3ac" title="Executes the divide command to create offspring cell." alt="" coords="34,163,203,217"/>
+<area shape="poly" title=" " alt="" coords="354,388,333,352,305,310,271,267,230,231,202,215,205,210,234,227,275,264,310,306,338,349,358,386"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1EatForwardCommand.html#aff3121b308adcd49605f4375cb161a10" title="Executes the eat forward command to steal energy from target cell." alt="" coords="19,241,219,296"/>
+<area shape="poly" title=" " alt="" coords="340,392,290,350,231,310,208,298,210,294,233,305,294,346,343,388"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1GiveEnergyCommand.html#a963085c6fb49f04de99da70b94229473" title="Execute the command giving energy to the cell in the direction the agent is facing." alt="" coords="17,320,220,375"/>
+<area shape="poly" title=" " alt="" coords="288,398,215,377,216,372,289,393"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1IdleCommand.html#a48acd4c1f48418b6248bf9187a40a57a" title="Executes the idle command (no operation)" alt="" coords="13,399,224,439"/>
+<area shape="poly" title=" " alt="" coords="266,422,224,422,224,417,266,417"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1MoveForwardCommand.html#a6648710a33a4b06f23f2d8a94f13016e" title="Executes the move forward command to relocate the cell." alt="" coords="11,464,226,519"/>
+<area shape="poly" title=" " alt="" coords="289,446,216,467,215,461,288,441"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1PhotosynthesisCommand.html#add31b33c99bd263d25c1f7fd5e5e299d" title="Executes the photosynthesis command to generate energy." alt="" coords="5,543,232,597"/>
+<area shape="poly" title=" " alt="" coords="343,451,293,492,233,532,207,545,205,540,231,528,290,488,340,446"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1SkipIfCommand.html#a4e25563ad8b536e3b0a479ef786dbcfe" title="Skip the next command if the predicate returns true by moving the gene pointer to the next command." alt="" coords="37,621,201,676"/>
+<area shape="poly" title=" " alt="" coords="358,453,309,531,274,574,234,611,202,629,199,624,230,607,271,570,305,528,354,450"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1TurnLeftCommand.html#a09f70e59fdeaada7c4f6d1945324570a" title="Executes the turn left command to rotate the cell counterclockwise." alt="" coords="29,700,208,755"/>
+<area shape="poly" title=" " alt="" coords="366,453,349,505,322,568,284,633,260,663,234,689,210,705,207,701,230,685,256,659,279,630,317,566,344,503,361,452"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1TurnRightCommand.html#acce7396b93f5ce62888fff49ba7660d4" title="Executes the turn right command to rotate the cell clockwise." alt="" coords="25,779,213,833"/>
+<area shape="poly" title=" " alt="" coords="370,453,358,519,333,603,315,647,293,691,266,732,234,768,215,782,211,778,230,764,262,728,288,688,310,645,328,601,352,518,365,452"/>
+</map>
+</div>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/CellularSimulator/Core/<a class="el" href="Command_8h_source.html">Command.h</a></li>
+<li>src/Core/<b>Command.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

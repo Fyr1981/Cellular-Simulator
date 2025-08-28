@@ -1,7 +1,9 @@
 <map id="CellularSimulator::Core::Simulator::GetRNG" name="CellularSimulator::Core::Simulator::GetRNG">
-<area shape="rect" id="Node000001" title="Returns a reference to the random number generator used by the simulator." alt="" coords="257,49,440,89"/>
+<area shape="rect" id="Node000001" title="Returns a reference to the random number generator used by the simulator." alt="" coords="257,85,440,125"/>
 <area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1DivideCommand.html#a02a42ca34a301c5d0ecf41f478d5a3ac" title="Executes the divide command to create offspring cell." alt="" coords="23,5,192,60"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="243,56,192,48,193,43,244,50"/>
-<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a08f0d0837fa8248ad79b36537eb3b862" title="Clears the grid and populates it with a random distribution of cells." alt="" coords="5,85,209,125"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="244,87,210,92,209,87,243,82"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="267,83,191,60,193,55,269,78"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1Simulator.html#aa01565a5ecb180cef75adc16936051af" title="Clears the grid and populates it with a random distribution of cells with a specified genome." alt="" coords="13,85,201,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="244,107,201,107,201,102,244,102"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a08f0d0837fa8248ad79b36537eb3b862" title="Clears the grid and populates it with a random distribution of cells with a random genome." alt="" coords="5,149,209,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="260,131,184,151,183,146,259,126"/>
 </map>

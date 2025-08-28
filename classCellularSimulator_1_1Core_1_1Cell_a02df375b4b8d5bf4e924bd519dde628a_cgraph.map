@@ -1,10 +1,10 @@
 <map id="CellularSimulator::Core::Cell::Initialize" name="CellularSimulator::Core::Cell::Initialize">
 <area shape="rect" id="Node000001" title="Initializes the cell with all the parameters." alt="" coords="5,197,155,237"/>
-<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#a2bd0288ba8527e47d2a32d553246a178" title="Sets the color of the cell for rendering purposes." alt="" coords="227,5,375,45"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#a5c10610388eebe64223bb65a9d2db3ff" title="Sets the color of the cell for rendering purposes." alt="" coords="227,5,375,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,196,132,127,164,89,201,55,213,48,215,52,204,59,167,92,136,130,94,198"/>
 <area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1Cell.html#a843027646478c664d6305a5a2d82167c" title="Sets the direction of the cell." alt="" coords="214,69,387,109"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="100,195,145,157,201,119,215,112,218,117,204,124,148,161,104,199"/>
-<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1Cell.html#ac0e0688309e6c82d98852777275d4dcd" title="Sets the energy of the cell." alt="" coords="221,133,380,173"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1Cell.html#ac0e0688309e6c82d98852777275d4dcd" title="Sets the energy of the cell. It also can remove the defending flag if the energy is less than the cur..." alt="" coords="221,133,380,173"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="149,195,217,175,219,180,150,200"/>
 <area shape="rect" id="Node000005" href="$classCellularSimulator_1_1Core_1_1Cell.html#a29aff38a9b172336a807ee2d956f762c" title="Sets the genome of the cell." alt="" coords="216,197,385,237"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="155,215,202,215,202,220,155,220"/>

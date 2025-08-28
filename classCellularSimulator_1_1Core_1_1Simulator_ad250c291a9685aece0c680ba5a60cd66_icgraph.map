@@ -1,0 +1,25 @@
+<map id="CellularSimulator::Core::Simulator::GetTile" name="CellularSimulator::Core::Simulator::GetTile">
+<area shape="rect" id="Node000001" title="Provides read&#45;only access to a specific tile on the grid." alt="" coords="508,221,687,261"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1EatForwardCommand.html#aff3121b308adcd49605f4375cb161a10" title="Executes the eat forward command to steal energy from target cell." alt="" coords="259,5,459,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="576,210,527,142,495,105,458,73,441,62,444,58,462,69,499,102,532,139,580,207"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1GiveEnergyCommand.html#a963085c6fb49f04de99da70b94229473" title="Execute the command giving energy to the cell in the direction the agent is facing." alt="" coords="257,84,460,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="556,215,510,184,459,154,432,141,435,136,461,149,513,179,559,210"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1Simulator.html#ad3afd94104794164379d6ec9151b0647" title="Provides read&#45;write access to a specific tile on the grid." alt="" coords="269,163,448,203"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="500,220,442,206,443,201,501,215"/>
+<area shape="rect" id="Node000005" href="$group__ConditionalPredicates.html#gae3d8d46ed49b72467b58ecd873dfbb5c" title="Checks if there is a cell in front of the agent." alt="" coords="309,228,408,253"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="494,243,408,243,408,238,494,238"/>
+<area shape="rect" id="Node000007" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a78c057ec4d6e325a09c4d6ab6d636cf1" title="Spawns a new cell at the specified location." alt="" coords="259,278,458,318"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="501,266,443,281,442,275,500,261"/>
+<area shape="rect" id="Node000011" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a6df9f36da810eaf940debe3939227ecc" title="Spawns a new cell at the specified location." alt="" coords="259,342,458,382"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="561,271,514,303,461,332,432,344,430,340,459,328,512,298,558,267"/>
+<area shape="rect" id="Node000012" href="$classCellularSimulator_1_1Core_1_1Simulator.html#ae1fc3712f08ff07cd17d2aeb4aab8b32" title="Advances the entire simulation by one step." alt="" coords="269,406,448,446"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="578,274,530,336,497,368,461,396,439,408,436,404,459,392,494,364,526,332,574,270"/>
+<area shape="rect" id="Node000006" href="$group__ConditionalPredicates.html#ga6d7923b8cfe09a76f66d65e6584ca53c" title="Checks if there is no cell in front of the agent." alt="" coords="49,185,166,211"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="295,233,166,211,167,205,296,227"/>
+<area shape="rect" id="Node000008" href="$classCellularSimulator_1_1Core_1_1DivideCommand.html#a02a42ca34a301c5d0ecf41f478d5a3ac" title="Executes the divide command to create offspring cell." alt="" coords="23,235,192,289"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="245,284,192,277,193,271,246,279"/>
+<area shape="rect" id="Node000009" href="$classCellularSimulator_1_1Core_1_1Simulator.html#aa01565a5ecb180cef75adc16936051af" title="Clears the grid and populates it with a random distribution of cells with a specified genome." alt="" coords="13,314,201,354"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="246,317,202,323,201,318,245,312"/>
+<area shape="rect" id="Node000010" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a08f0d0837fa8248ad79b36537eb3b862" title="Clears the grid and populates it with a random distribution of cells with a random genome." alt="" coords="5,378,209,418"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="273,326,259,332,235,350,211,368,183,380,181,375,208,364,232,346,256,328,271,321"/>
+</map>

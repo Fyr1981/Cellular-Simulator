@@ -1,5 +1,12 @@
 <map id="CellularSimulator::Core::PhotosynthesisCommand::Execute" name="CellularSimulator::Core::PhotosynthesisCommand::Execute">
-<area shape="rect" id="Node000001" title="Executes the photosynthesis command to generate energy." alt="" coords="5,5,232,60"/>
-<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#af0e759e3f4f9fd16c244a00a2cdb9453" title="Adds energy to the cell." alt="" coords="280,13,443,53"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,30,266,30,266,35,232,35"/>
+<area shape="rect" id="Node000001" title="Executes the photosynthesis command to generate energy." alt="" coords="5,35,232,90"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#af0e759e3f4f9fd16c244a00a2cdb9453" title="Adds energy to the cell." alt="" coords="553,5,716,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,52,539,30,540,35,232,57"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1Command.html#a20546093af78283f1f3d0a1caab29bbc" title="Executes the command on the given simulator for the specified cell if overriden. Spends energy based ..." alt="" coords="280,71,467,111"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="233,73,267,76,266,82,232,78"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1Cell.html#ac0e0688309e6c82d98852777275d4dcd" title="Sets the energy of the cell. It also can remove the defending flag if the energy is less than the cur..." alt="" coords="803,41,961,81"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="717,34,789,45,789,50,716,40"/>
+<area shape="rect" id="Node000005" href="$classCellularSimulator_1_1Core_1_1Cell.html#a9e2133697d6c2f620554f43c2865ab74" title="Consumes energy from the cell ignoring the defending amount." alt="" coords="515,70,755,125"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="467,90,501,91,501,97,467,96"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="754,77,789,72,789,77,755,82"/>
 </map>

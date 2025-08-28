@@ -105,7 +105,7 @@ Inheritance diagram for CellularSimulator::Core::PhotosynthesisCommand:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCellularSimulator_1_1Core_1_1PhotosynthesisCommand__inherit__graph.png" border="0" usemap="#aCellularSimulator_1_1Core_1_1PhotosynthesisCommand_inherit__map" alt="Inheritance graph"/></div>
 <map name="aCellularSimulator_1_1Core_1_1PhotosynthesisCommand_inherit__map" id="aCellularSimulator_1_1Core_1_1PhotosynthesisCommand_inherit__map">
-<area shape="rect" title="A command that allows a cell to gain energy." alt="" coords="5,153,224,233"/>
+<area shape="rect" title="A command that allows a cell to gain energy." alt="" coords="5,153,224,253"/>
 <area shape="rect" href="classCellularSimulator_1_1Core_1_1Command.html" title="Base class for commands that can be executed on the simulator for the cell." alt="" coords="47,5,182,105"/>
 <area shape="poly" title=" " alt="" coords="117,119,117,153,112,153,112,119"/>
 </map>
@@ -115,7 +115,7 @@ Collaboration diagram for CellularSimulator::Core::PhotosynthesisCommand:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCellularSimulator_1_1Core_1_1PhotosynthesisCommand__coll__graph.png" border="0" usemap="#aCellularSimulator_1_1Core_1_1PhotosynthesisCommand_coll__map" alt="Collaboration graph"/></div>
 <map name="aCellularSimulator_1_1Core_1_1PhotosynthesisCommand_coll__map" id="aCellularSimulator_1_1Core_1_1PhotosynthesisCommand_coll__map">
-<area shape="rect" title="A command that allows a cell to gain energy." alt="" coords="5,153,224,233"/>
+<area shape="rect" title="A command that allows a cell to gain energy." alt="" coords="5,153,224,253"/>
 <area shape="rect" href="classCellularSimulator_1_1Core_1_1Command.html" title="Base class for commands that can be executed on the simulator for the cell." alt="" coords="47,5,182,105"/>
 <area shape="poly" title=" " alt="" coords="117,119,117,153,112,153,112,119"/>
 </map>
@@ -123,13 +123,51 @@ Collaboration diagram for CellularSimulator::Core::PhotosynthesisCommand:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:aa50b94d8615787a72a6ed26cc18dfde9" id="r_aa50b94d8615787a72a6ed26cc18dfde9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCellularSimulator_1_1Core_1_1PhotosynthesisCommand.html#aa50b94d8615787a72a6ed26cc18dfde9">PhotosynthesisCommand</a> (int32_t Energy)</td></tr>
+<tr class="memdesc:aa50b94d8615787a72a6ed26cc18dfde9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Photosynthesis <a class="el" href="classCellularSimulator_1_1Core_1_1Command.html" title="Base class for commands that can be executed on the simulator for the cell.">Command</a> object.  <br /></td></tr>
+<tr class="separator:aa50b94d8615787a72a6ed26cc18dfde9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add31b33c99bd263d25c1f7fd5e5e299d" id="r_add31b33c99bd263d25c1f7fd5e5e299d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCellularSimulator_1_1Core_1_1PhotosynthesisCommand.html#add31b33c99bd263d25c1f7fd5e5e299d">Execute</a> (<a class="el" href="classCellularSimulator_1_1Core_1_1Simulator.html">Simulator</a> &amp;Sim, <a class="el" href="classCellularSimulator_1_1Core_1_1Cell.html">Cell</a> &amp;Agent) override</td></tr>
 <tr class="memdesc:add31b33c99bd263d25c1f7fd5e5e299d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the photosynthesis command to generate energy.  <br /></td></tr>
 <tr class="separator:add31b33c99bd263d25c1f7fd5e5e299d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_attribs_classCellularSimulator_1_1Core_1_1Command"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classCellularSimulator_1_1Core_1_1Command')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classCellularSimulator_1_1Core_1_1Command.html">CellularSimulator::Core::Command</a></td></tr>
+<tr class="memitem:aac64f6831db8f64416a4c06e7ff8fce3 inherit pro_attribs_classCellularSimulator_1_1Core_1_1Command" id="r_aac64f6831db8f64416a4c06e7ff8fce3"><td class="memItemLeft" align="right" valign="top">
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>EnergyCost</b> = 0</td></tr>
+<tr class="memdesc:aac64f6831db8f64416a4c06e7ff8fce3 inherit pro_attribs_classCellularSimulator_1_1Core_1_1Command"><td class="mdescLeft">&#160;</td><td class="mdescRight">Energy cost of the command. Can be overridden by derived classes to define custom energy costs. <br /></td></tr>
+<tr class="separator:aac64f6831db8f64416a4c06e7ff8fce3 inherit pro_attribs_classCellularSimulator_1_1Core_1_1Command"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A command that allows a cell to gain energy. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aa50b94d8615787a72a6ed26cc18dfde9" name="aa50b94d8615787a72a6ed26cc18dfde9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa50b94d8615787a72a6ed26cc18dfde9">&#9670;&#160;</a></span>PhotosynthesisCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PhotosynthesisCommand::PhotosynthesisCommand </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>Energy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new Photosynthesis <a class="el" href="classCellularSimulator_1_1Core_1_1Command.html" title="Base class for commands that can be executed on the simulator for the cell.">Command</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Energy</td><td>The amount of energy to be gained on execution </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="add31b33c99bd263d25c1f7fd5e5e299d" name="add31b33c99bd263d25c1f7fd5e5e299d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#add31b33c99bd263d25c1f7fd5e5e299d">&#9670;&#160;</a></span>Execute()</h2>
 
@@ -179,15 +217,22 @@ No maximum energy limit is enforced by this command </dd>
 <dd>
 Represents a basic energy production mechanism </dd></dl>
 
-<p>Implements <a class="el" href="classCellularSimulator_1_1Core_1_1Command.html#a78bad608ee77b0a77fc488456e87fe7c">CellularSimulator::Core::Command</a>.</p>
+<p>Reimplemented from <a class="el" href="classCellularSimulator_1_1Core_1_1Command.html#a20546093af78283f1f3d0a1caab29bbc">CellularSimulator::Core::Command</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCellularSimulator_1_1Core_1_1PhotosynthesisCommand_add31b33c99bd263d25c1f7fd5e5e299d_cgraph.png" border="0" usemap="#aclassCellularSimulator_1_1Core_1_1PhotosynthesisCommand_add31b33c99bd263d25c1f7fd5e5e299d_cgraph" alt=""/></div>
 <map name="aclassCellularSimulator_1_1Core_1_1PhotosynthesisCommand_add31b33c99bd263d25c1f7fd5e5e299d_cgraph" id="aclassCellularSimulator_1_1Core_1_1PhotosynthesisCommand_add31b33c99bd263d25c1f7fd5e5e299d_cgraph">
-<area shape="rect" title="Executes the photosynthesis command to generate energy." alt="" coords="5,5,232,60"/>
-<area shape="rect" href="classCellularSimulator_1_1Core_1_1Cell.html#af0e759e3f4f9fd16c244a00a2cdb9453" title="Adds energy to the cell." alt="" coords="280,13,443,53"/>
-<area shape="poly" title=" " alt="" coords="232,30,266,30,266,35,232,35"/>
+<area shape="rect" title="Executes the photosynthesis command to generate energy." alt="" coords="5,35,232,90"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1Cell.html#af0e759e3f4f9fd16c244a00a2cdb9453" title="Adds energy to the cell." alt="" coords="553,5,716,45"/>
+<area shape="poly" title=" " alt="" coords="232,52,539,30,540,35,232,57"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1Command.html#a20546093af78283f1f3d0a1caab29bbc" title="Executes the command on the given simulator for the specified cell if overriden. Spends energy based ..." alt="" coords="280,71,467,111"/>
+<area shape="poly" title=" " alt="" coords="233,73,267,76,266,82,232,78"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1Cell.html#ac0e0688309e6c82d98852777275d4dcd" title="Sets the energy of the cell. It also can remove the defending flag if the energy is less than the cur..." alt="" coords="803,41,961,81"/>
+<area shape="poly" title=" " alt="" coords="717,34,789,45,789,50,716,40"/>
+<area shape="rect" href="classCellularSimulator_1_1Core_1_1Cell.html#a9e2133697d6c2f620554f43c2865ab74" title="Consumes energy from the cell ignoring the defending amount." alt="" coords="515,70,755,125"/>
+<area shape="poly" title=" " alt="" coords="467,90,501,91,501,97,467,96"/>
+<area shape="poly" title=" " alt="" coords="754,77,789,72,789,77,755,82"/>
 </map>
 </div>
 

@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['tilecolor_0',['TileColor',['../structCellularSimulator_1_1App_1_1TileRenderData.html#a2b889f16c7b2fb15109287916f4b0acc',1,'CellularSimulator::App::TileRenderData']]],
-  ['tilerenderdata_1',['TileRenderData',['../structCellularSimulator_1_1App_1_1TileRenderData.html',1,'CellularSimulator::App']]],
-  ['tiles_2',['Tiles',['../structCellularSimulator_1_1App_1_1SimulationState.html#a3af5d30294f0cdc9bf91283d7d348567',1,'CellularSimulator::App::SimulationState']]],
-  ['turnleftcommand_3',['TurnLeftCommand',['../classCellularSimulator_1_1Core_1_1TurnLeftCommand.html',1,'CellularSimulator::Core']]],
-  ['turnrightcommand_4',['TurnRightCommand',['../classCellularSimulator_1_1Core_1_1TurnRightCommand.html',1,'CellularSimulator::Core']]]
+  ['update_0',['Update',['../classCellularSimulator_1_1Core_1_1Simulator.html#ae1fc3712f08ff07cd17d2aeb4aab8b32',1,'CellularSimulator::Core::Simulator']]],
+  ['updatefrombuffer_1',['UpdateFromBuffer',['../structCellularSimulator_1_1App_1_1SimulationState.html#a103ca9cff7f6c2730a31370cda9378af',1,'CellularSimulator::App::SimulationState']]],
+  ['updatespersecond_2',['UpdatesPerSecond',['../structCellularSimulator_1_1App_1_1Config.html#a2d5eebec960089b98c94d7b9d7c20966',1,'CellularSimulator::App::Config']]]
 ];

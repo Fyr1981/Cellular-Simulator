@@ -1,5 +1,5 @@
 <map id="CellularSimulator::Core::DivideCommand" name="CellularSimulator::Core::DivideCommand">
-<area shape="rect" id="Node000001" title="Spawn a new agent on the next empty tile. It gets a half of the agent&#39;s energy and probably a gene mu..." alt="" coords="5,153,167,233"/>
+<area shape="rect" id="Node000001" title="Spawn a new agent on the next empty tile. It gets a half of the agent&#39;s energy and probably a gene mu..." alt="" coords="5,153,167,253"/>
 <area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Command.html" title="Base class for commands that can be executed on the simulator for the cell." alt="" coords="19,5,153,105"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,119,89,153,83,153,83,119"/>
 </map>

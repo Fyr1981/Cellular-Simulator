@@ -1,5 +1,5 @@
 <map id="CellularSimulator::Core::EatForwardCommand" name="CellularSimulator::Core::EatForwardCommand">
-<area shape="rect" id="Node000001" title="Take energy from the cell in the direction the agent is facing." alt="" coords="5,153,197,233"/>
+<area shape="rect" id="Node000001" title="Take energy from the cell in the direction the agent is facing." alt="" coords="5,153,197,253"/>
 <area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Command.html" title="Base class for commands that can be executed on the simulator for the cell." alt="" coords="34,5,169,105"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,119,104,153,99,153,99,119"/>
 </map>

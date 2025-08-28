@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['tilecolor_0',['TileColor',['../structCellularSimulator_1_1App_1_1TileRenderData.html#a2b889f16c7b2fb15109287916f4b0acc',1,'CellularSimulator::App::TileRenderData']]],
-  ['tiles_1',['Tiles',['../structCellularSimulator_1_1App_1_1SimulationState.html#a3af5d30294f0cdc9bf91283d7d348567',1,'CellularSimulator::App::SimulationState']]]
+  ['perdefendenergycost_0',['PerDefendEnergyCost',['../structCellularSimulator_1_1App_1_1Config.html#a9d9ba686039ec29d4d4ce7299cecbb01',1,'CellularSimulator::App::Config']]],
+  ['photosynthesisenergygain_1',['PhotosynthesisEnergyGain',['../structCellularSimulator_1_1App_1_1Config.html#a4f78a0ebf0fc135431ee6fd5dc798f12',1,'CellularSimulator::App::Config']]]
 ];

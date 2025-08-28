@@ -105,7 +105,7 @@ Collaboration diagram for CellularSimulator::App::Config:</div>
 <div class="dyncontent">
 <div class="center"><img src="structCellularSimulator_1_1App_1_1Config__coll__graph.png" border="0" usemap="#aCellularSimulator_1_1App_1_1Config_coll__map" alt="Collaboration graph"/></div>
 <map name="aCellularSimulator_1_1App_1_1Config_coll__map" id="aCellularSimulator_1_1App_1_1Config_coll__map">
-<area shape="rect" title="Provides full application configuration." alt="" coords="5,5,156,305"/>
+<area shape="rect" title="Provides full application configuration." alt="" coords="5,5,156,285"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -147,18 +147,58 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>UpdatesPerSecond</
 float&#160;</td><td class="memItemRight" valign="bottom"><b>MaxUpdateTime</b> = 0.25f</td></tr>
 <tr class="memdesc:afb7b76dfe8c9d25234446f47ed6dc292"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum time (in seconds) allowed for a single update. <br /></td></tr>
 <tr class="separator:afb7b76dfe8c9d25234446f47ed6dc292"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8774de1ec1514ee3f1c8a852d1abbce" id="r_ab8774de1ec1514ee3f1c8a852d1abbce"><td class="memItemLeft" align="right" valign="top"><a id="ab8774de1ec1514ee3f1c8a852d1abbce" name="ab8774de1ec1514ee3f1c8a852d1abbce"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>Seed</b> = 0</td></tr>
-<tr class="memdesc:ab8774de1ec1514ee3f1c8a852d1abbce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seed for random number generation. <br /></td></tr>
-<tr class="separator:ab8774de1ec1514ee3f1c8a852d1abbce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af34571f54975e43a45ea2f5f43b43b5b" id="r_af34571f54975e43a45ea2f5f43b43b5b"><td class="memItemLeft" align="right" valign="top"><a id="af34571f54975e43a45ea2f5f43b43b5b" name="af34571f54975e43a45ea2f5f43b43b5b"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>GenomeLength</b> = 16</td></tr>
-<tr class="memdesc:af34571f54975e43a45ea2f5f43b43b5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length of the genome for each cell. <br /></td></tr>
-<tr class="separator:af34571f54975e43a45ea2f5f43b43b5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9418db1adce8860562268e0529acaecd" id="r_a9418db1adce8860562268e0529acaecd"><td class="memItemLeft" align="right" valign="top"><a id="a9418db1adce8860562268e0529acaecd" name="a9418db1adce8860562268e0529acaecd"></a>
 int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>InitialEnergy</b> = 100</td></tr>
 <tr class="memdesc:a9418db1adce8860562268e0529acaecd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initial energy for each cell. <br /></td></tr>
 <tr class="separator:a9418db1adce8860562268e0529acaecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8774de1ec1514ee3f1c8a852d1abbce" id="r_ab8774de1ec1514ee3f1c8a852d1abbce"><td class="memItemLeft" align="right" valign="top"><a id="ab8774de1ec1514ee3f1c8a852d1abbce" name="ab8774de1ec1514ee3f1c8a852d1abbce"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>Seed</b> = 0</td></tr>
+<tr class="memdesc:ab8774de1ec1514ee3f1c8a852d1abbce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seed for random number generation. <br /></td></tr>
+<tr class="separator:ab8774de1ec1514ee3f1c8a852d1abbce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c8680d066fc588a72cdb664acdb300f" id="r_a3c8680d066fc588a72cdb664acdb300f"><td class="memItemLeft" align="right" valign="top"><a id="a3c8680d066fc588a72cdb664acdb300f" name="a3c8680d066fc588a72cdb664acdb300f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>bRandomGenome</b> = true</td></tr>
+<tr class="memdesc:a3c8680d066fc588a72cdb664acdb300f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to initialize cells with a random genome. <br /></td></tr>
+<tr class="separator:a3c8680d066fc588a72cdb664acdb300f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af34571f54975e43a45ea2f5f43b43b5b" id="r_af34571f54975e43a45ea2f5f43b43b5b"><td class="memItemLeft" align="right" valign="top"><a id="af34571f54975e43a45ea2f5f43b43b5b" name="af34571f54975e43a45ea2f5f43b43b5b"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>GenomeLength</b> = 16</td></tr>
+<tr class="memdesc:af34571f54975e43a45ea2f5f43b43b5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length of the genome for each cell if initialized with a random genome. <br /></td></tr>
+<tr class="separator:af34571f54975e43a45ea2f5f43b43b5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e1e5e5a6961b2d1314abafc0c0738f3" id="r_a2e1e5e5a6961b2d1314abafc0c0738f3"><td class="memItemLeft" align="right" valign="top"><a id="a2e1e5e5a6961b2d1314abafc0c0738f3" name="a2e1e5e5a6961b2d1314abafc0c0738f3"></a>
+std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>InitialPopulationGenome</b></td></tr>
+<tr class="memdesc:a2e1e5e5a6961b2d1314abafc0c0738f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Genome for the initial population of cells if bRandomGenome is false. <br /></td></tr>
+<tr class="separator:a2e1e5e5a6961b2d1314abafc0c0738f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac84ee9da82c2faa4cb5b11bdf9d9dc79" id="r_ac84ee9da82c2faa4cb5b11bdf9d9dc79"><td class="memItemLeft" align="right" valign="top"><a id="ac84ee9da82c2faa4cb5b11bdf9d9dc79" name="ac84ee9da82c2faa4cb5b11bdf9d9dc79"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>EnergyConsumption</b> = 10</td></tr>
+<tr class="memdesc:ac84ee9da82c2faa4cb5b11bdf9d9dc79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Energy consumption per cell per update. <br /></td></tr>
+<tr class="separator:ac84ee9da82c2faa4cb5b11bdf9d9dc79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9db366db391cd7427fd4075690c89c04" id="r_a9db366db391cd7427fd4075690c89c04"><td class="memItemLeft" align="right" valign="top"><a id="a9db366db391cd7427fd4075690c89c04" name="a9db366db391cd7427fd4075690c89c04"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>bEnergyConsumptionIgnoreDefence</b> = false</td></tr>
+<tr class="memdesc:a9db366db391cd7427fd4075690c89c04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to ignore defence when consuming energy every step. <br /></td></tr>
+<tr class="separator:a9db366db391cd7427fd4075690c89c04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a084b1624daf9e6a3bcfcfc9b4e4d157c" id="r_a084b1624daf9e6a3bcfcfc9b4e4d157c"><td class="memItemLeft" align="right" valign="top"><a id="a084b1624daf9e6a3bcfcfc9b4e4d157c" name="a084b1624daf9e6a3bcfcfc9b4e4d157c"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>MaxDefences</b> = 10</td></tr>
+<tr class="memdesc:a084b1624daf9e6a3bcfcfc9b4e4d157c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of defences a cell can have. <br /></td></tr>
+<tr class="separator:a084b1624daf9e6a3bcfcfc9b4e4d157c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a277ce79453656c0bce88d7d79b589a2e" id="r_a277ce79453656c0bce88d7d79b589a2e"><td class="memItemLeft" align="right" valign="top"><a id="a277ce79453656c0bce88d7d79b589a2e" name="a277ce79453656c0bce88d7d79b589a2e"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>MaxEnergy</b> = 100</td></tr>
+<tr class="memdesc:a277ce79453656c0bce88d7d79b589a2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum energy a cell can have. <br /></td></tr>
+<tr class="separator:a277ce79453656c0bce88d7d79b589a2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d9ba686039ec29d4d4ce7299cecbb01" id="r_a9d9ba686039ec29d4d4ce7299cecbb01"><td class="memItemLeft" align="right" valign="top"><a id="a9d9ba686039ec29d4d4ce7299cecbb01" name="a9d9ba686039ec29d4d4ce7299cecbb01"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>PerDefendEnergyCost</b> = 10</td></tr>
+<tr class="memdesc:a9d9ba686039ec29d4d4ce7299cecbb01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Energy cost per defence in DefendCommand. <br /></td></tr>
+<tr class="separator:a9d9ba686039ec29d4d4ce7299cecbb01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1728b107dff4825778b082696f55b186" id="r_a1728b107dff4825778b082696f55b186"><td class="memItemLeft" align="right" valign="top"><a id="a1728b107dff4825778b082696f55b186" name="a1728b107dff4825778b082696f55b186"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>MaxEatForwardEnergySteal</b> = 100</td></tr>
+<tr class="memdesc:a1728b107dff4825778b082696f55b186"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum energy steal in EatForwardCommand. <br /></td></tr>
+<tr class="separator:a1728b107dff4825778b082696f55b186"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6702a774a1cb52939971a2b12e1776fe" id="r_a6702a774a1cb52939971a2b12e1776fe"><td class="memItemLeft" align="right" valign="top"><a id="a6702a774a1cb52939971a2b12e1776fe" name="a6702a774a1cb52939971a2b12e1776fe"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>MaxGiveEnergyAmount</b> = 100</td></tr>
+<tr class="memdesc:a6702a774a1cb52939971a2b12e1776fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum energy amount in GiveEnergyCommand. <br /></td></tr>
+<tr class="separator:a6702a774a1cb52939971a2b12e1776fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f78a0ebf0fc135431ee6fd5dc798f12" id="r_a4f78a0ebf0fc135431ee6fd5dc798f12"><td class="memItemLeft" align="right" valign="top"><a id="a4f78a0ebf0fc135431ee6fd5dc798f12" name="a4f78a0ebf0fc135431ee6fd5dc798f12"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>PhotosynthesisEnergyGain</b> = 15</td></tr>
+<tr class="memdesc:a4f78a0ebf0fc135431ee6fd5dc798f12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Energy gain per cell per update in PhotosynthesisCommand. <br /></td></tr>
+<tr class="separator:a4f78a0ebf0fc135431ee6fd5dc798f12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides full application configuration. </p>

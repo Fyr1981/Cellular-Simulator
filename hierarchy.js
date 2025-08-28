@@ -3,11 +3,15 @@ var hierarchy =
     [ "CellularSimulator::App::Application", "classCellularSimulator_1_1App_1_1Application.html", null ],
     [ "CellularSimulator::Core::Cell", "classCellularSimulator_1_1Core_1_1Cell.html", null ],
     [ "CellularSimulator::Core::Command", "classCellularSimulator_1_1Core_1_1Command.html", [
+      [ "CellularSimulator::Core::DeathCommand", "classCellularSimulator_1_1Core_1_1DeathCommand.html", null ],
+      [ "CellularSimulator::Core::DefendCommand", "classCellularSimulator_1_1Core_1_1DefendCommand.html", null ],
       [ "CellularSimulator::Core::DivideCommand", "classCellularSimulator_1_1Core_1_1DivideCommand.html", null ],
       [ "CellularSimulator::Core::EatForwardCommand", "classCellularSimulator_1_1Core_1_1EatForwardCommand.html", null ],
+      [ "CellularSimulator::Core::GiveEnergyCommand", "classCellularSimulator_1_1Core_1_1GiveEnergyCommand.html", null ],
       [ "CellularSimulator::Core::IdleCommand", "classCellularSimulator_1_1Core_1_1IdleCommand.html", null ],
       [ "CellularSimulator::Core::MoveForwardCommand", "classCellularSimulator_1_1Core_1_1MoveForwardCommand.html", null ],
       [ "CellularSimulator::Core::PhotosynthesisCommand", "classCellularSimulator_1_1Core_1_1PhotosynthesisCommand.html", null ],
+      [ "CellularSimulator::Core::SkipIfCommand", "classCellularSimulator_1_1Core_1_1SkipIfCommand.html", null ],
       [ "CellularSimulator::Core::TurnLeftCommand", "classCellularSimulator_1_1Core_1_1TurnLeftCommand.html", null ],
       [ "CellularSimulator::Core::TurnRightCommand", "classCellularSimulator_1_1Core_1_1TurnRightCommand.html", null ]
     ] ],

@@ -1,17 +1,25 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classCellularSimulator_1_1Core_1_1Command.html" title="Base class for commands that can be executed on the simulator for the cell." alt="" coords="5,197,148,237"/>
-<area shape="rect" id="Node000001" href="$classCellularSimulator_1_1Core_1_1DivideCommand.html" title="Spawn a new agent on the next empty tile. It gets a half of the agent&#39;s energy and probably a gene mu..." alt="" coords="225,5,394,45"/>
-<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="91,184,132,118,161,84,195,55,223,40,226,45,197,60,165,88,136,121,96,186"/>
-<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1EatForwardCommand.html" title="Take energy from the cell in the direction the agent is facing." alt="" coords="209,69,409,109"/>
-<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="106,185,146,151,195,119,222,107,224,112,197,124,149,155,109,189"/>
-<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1IdleCommand.html" title="A command that does nothing." alt="" coords="234,133,385,173"/>
-<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="160,192,235,171,237,176,162,197"/>
-<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1MoveForwardCommand.html" title="Move the agent forward by one cell by looking at the direction it is facing." alt="" coords="202,197,417,237"/>
-<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="162,215,202,215,202,220,162,220"/>
-<area shape="rect" id="Node000005" href="$classCellularSimulator_1_1Core_1_1PhotosynthesisCommand.html" title="A command that allows a cell to gain energy." alt="" coords="196,261,423,301"/>
-<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="162,238,237,259,235,264,160,243"/>
-<area shape="rect" id="Node000006" href="$classCellularSimulator_1_1Core_1_1TurnLeftCommand.html" title="Turn the agent 90 degrees to the left." alt="" coords="220,325,399,365"/>
-<area shape="poly" id="edge6_Node000000_Node000006" title=" " alt="" coords="109,245,149,280,197,311,224,323,222,328,195,316,146,284,106,249"/>
-<area shape="rect" id="Node000007" href="$classCellularSimulator_1_1Core_1_1TurnRightCommand.html" title="Turn the agent 90 degrees to the right." alt="" coords="215,389,403,429"/>
-<area shape="poly" id="edge7_Node000000_Node000007" title=" " alt="" coords="96,248,136,313,165,347,198,375,219,387,216,392,194,380,161,350,132,316,91,251"/>
+<area shape="rect" id="Node000000" href="$classCellularSimulator_1_1Core_1_1Command.html" title="Base class for commands that can be executed on the simulator for the cell." alt="" coords="5,325,148,365"/>
+<area shape="rect" id="Node000001" href="$classCellularSimulator_1_1Core_1_1DeathCommand.html" title=" " alt="" coords="226,5,393,45"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="80,311,91,256,111,187,145,116,167,84,194,55,224,37,227,42,198,59,172,87,150,119,116,189,96,257,85,312"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1DefendCommand.html" title="Defend against incoming energy consumption for a specified number of steps." alt="" coords="222,69,397,109"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="84,311,98,268,121,216,153,164,172,140,194,119,220,104,223,108,198,123,176,144,157,167,126,218,103,269,89,313"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1DivideCommand.html" title="Spawn a new agent on the next empty tile. It gets a half of the agent&#39;s energy and probably a gene mu..." alt="" coords="225,133,394,173"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="91,312,132,246,161,212,195,183,223,168,226,173,197,188,165,216,136,249,96,314"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1EatForwardCommand.html" title="Take energy from the cell in the direction the agent is facing." alt="" coords="209,197,409,237"/>
+<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="106,313,146,279,195,247,222,235,224,240,197,252,149,283,109,317"/>
+<area shape="rect" id="Node000005" href="$classCellularSimulator_1_1Core_1_1GiveEnergyCommand.html" title="Give energy to the cell in the direction the agent is facing." alt="" coords="208,261,411,301"/>
+<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="160,320,235,299,237,304,162,325"/>
+<area shape="rect" id="Node000006" href="$classCellularSimulator_1_1Core_1_1IdleCommand.html" title="A command that does nothing." alt="" coords="234,325,385,365"/>
+<area shape="poly" id="edge6_Node000000_Node000006" title=" " alt="" coords="162,343,234,343,234,348,162,348"/>
+<area shape="rect" id="Node000007" href="$classCellularSimulator_1_1Core_1_1MoveForwardCommand.html" title="Move the agent forward by one cell by looking at the direction it is facing." alt="" coords="202,389,417,429"/>
+<area shape="poly" id="edge7_Node000000_Node000007" title=" " alt="" coords="162,366,237,387,235,392,160,371"/>
+<area shape="rect" id="Node000008" href="$classCellularSimulator_1_1Core_1_1PhotosynthesisCommand.html" title="A command that allows a cell to gain energy." alt="" coords="196,453,423,493"/>
+<area shape="poly" id="edge8_Node000000_Node000008" title=" " alt="" coords="109,373,149,408,197,439,224,451,222,456,195,444,146,412,106,377"/>
+<area shape="rect" id="Node000009" href="$classCellularSimulator_1_1Core_1_1SkipIfCommand.html" title="A command that skips the next command if the predicate returns true." alt="" coords="227,517,391,557"/>
+<area shape="poly" id="edge9_Node000000_Node000009" title=" " alt="" coords="96,376,136,441,165,475,197,503,228,519,226,523,195,508,161,478,132,444,91,379"/>
+<area shape="rect" id="Node000010" href="$classCellularSimulator_1_1Core_1_1TurnLeftCommand.html" title="Turn the agent 90 degrees to the left." alt="" coords="220,581,399,621"/>
+<area shape="poly" id="edge10_Node000000_Node000010" title=" " alt="" coords="89,378,103,421,126,472,157,524,176,547,198,567,221,581,218,586,194,571,172,551,153,527,121,475,98,423,84,380"/>
+<area shape="rect" id="Node000011" href="$classCellularSimulator_1_1Core_1_1TurnRightCommand.html" title="Turn the agent 90 degrees to the right." alt="" coords="215,645,403,685"/>
+<area shape="poly" id="edge11_Node000000_Node000011" title=" " alt="" coords="85,378,96,434,116,502,150,572,172,603,198,631,217,644,214,649,194,635,167,607,145,574,111,504,91,435,80,379"/>
 </map>

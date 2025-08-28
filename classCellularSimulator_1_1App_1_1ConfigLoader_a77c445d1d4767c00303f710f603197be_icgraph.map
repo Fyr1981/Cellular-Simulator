@@ -1,0 +1,5 @@
+<map id="CellularSimulator::App::ConfigLoader::GetConfig" name="CellularSimulator::App::ConfigLoader::GetConfig">
+<area shape="rect" id="Node000001" title="Provides access to the loaded configuration." alt="" coords="196,5,408,45"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#a394510643e8664cf12b5efaf5cb99f71" title="Default constructor for creating an empty cell in the object pool." alt="" coords="5,5,148,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,28,149,28,149,23,182,23"/>
+</map>

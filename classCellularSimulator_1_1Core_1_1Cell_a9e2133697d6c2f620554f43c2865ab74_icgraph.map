@@ -1,0 +1,28 @@
+<map id="CellularSimulator::Core::Cell::ConsumeEnergyIgnoreDefendings" name="CellularSimulator::Core::Cell::ConsumeEnergyIgnoreDefendings">
+<area shape="rect" id="Node000001" title="Consumes energy from the cell ignoring the defending amount." alt="" coords="515,328,755,383"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Command.html#a20546093af78283f1f3d0a1caab29bbc" title="Executes the command on the given simulator for the specified cell if overriden. Spends energy based ..." alt="" coords="280,363,467,403"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="501,372,467,376,466,371,501,367"/>
+<area shape="rect" id="Node000005" href="$classCellularSimulator_1_1Core_1_1DivideCommand.html#a02a42ca34a301c5d0ecf41f478d5a3ac" title="Executes the divide command to create offspring cell." alt="" coords="34,5,203,60"/>
+<area shape="poly" id="edge13_Node000001_Node000005" title=" " alt="" coords="589,321,523,268,436,202,336,135,231,74,203,61,205,56,233,69,339,130,439,198,526,264,592,317"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1DeathCommand.html#afd580d3ca841808b7ebef3fcc6cee37f" title="Executes the command on the given simulator for the specified cell if overriden. Spends energy based ..." alt="" coords="31,84,206,139"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="358,351,340,307,312,253,276,199,230,152,205,136,208,132,234,148,280,196,317,250,344,304,363,349"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1DefendCommand.html#a6552190395d2c339f2af16703d1ab9eb" title="Adds the number of defendings to the cell." alt="" coords="31,163,206,217"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="349,354,299,292,267,259,231,231,205,217,208,212,233,226,270,255,303,288,353,350"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="352,352,278,199,266,161,261,130,252,102,230,73,202,54,205,50,234,69,257,100,266,129,271,160,282,197,357,350"/>
+<area shape="rect" id="Node000006" href="$classCellularSimulator_1_1Core_1_1EatForwardCommand.html#aff3121b308adcd49605f4375cb161a10" title="Executes the eat forward command to steal energy from target cell." alt="" coords="19,241,219,296"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="325,359,231,311,200,299,202,294,233,306,327,354"/>
+<area shape="rect" id="Node000007" href="$classCellularSimulator_1_1Core_1_1GiveEnergyCommand.html#a963085c6fb49f04de99da70b94229473" title="Execute the command giving energy to the cell in the direction the agent is facing." alt="" coords="17,320,220,375"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="266,371,220,364,221,359,267,366"/>
+<area shape="rect" id="Node000008" href="$classCellularSimulator_1_1Core_1_1IdleCommand.html#a48acd4c1f48418b6248bf9187a40a57a" title="Executes the idle command (no operation)" alt="" coords="13,399,224,439"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="267,401,225,407,224,402,266,396"/>
+<area shape="rect" id="Node000009" href="$classCellularSimulator_1_1Core_1_1MoveForwardCommand.html#a6648710a33a4b06f23f2d8a94f13016e" title="Executes the move forward command to relocate the cell." alt="" coords="11,464,226,519"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="322,412,233,454,201,466,199,462,231,449,320,407"/>
+<area shape="rect" id="Node000010" href="$classCellularSimulator_1_1Core_1_1PhotosynthesisCommand.html#add31b33c99bd263d25c1f7fd5e5e299d" title="Executes the photosynthesis command to generate energy." alt="" coords="5,543,232,597"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="352,416,302,475,269,506,233,534,213,545,210,540,231,529,266,502,298,472,348,413"/>
+<area shape="rect" id="Node000011" href="$classCellularSimulator_1_1Core_1_1SkipIfCommand.html#a4e25563ad8b536e3b0a479ef786dbcfe" title="Skip the next command if the predicate returns true by moving the gene pointer to the next command." alt="" coords="37,621,201,676"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="363,417,344,461,316,513,279,566,234,612,203,630,200,626,230,608,275,563,311,510,339,459,358,415"/>
+<area shape="rect" id="Node000012" href="$classCellularSimulator_1_1Core_1_1TurnLeftCommand.html#a09f70e59fdeaada7c4f6d1945324570a" title="Executes the turn left command to rotate the cell counterclockwise." alt="" coords="29,700,208,755"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="368,418,353,476,327,549,288,625,263,660,234,691,210,707,207,703,230,687,259,656,284,622,322,547,348,474,363,416"/>
+<area shape="rect" id="Node000013" href="$classCellularSimulator_1_1Core_1_1TurnRightCommand.html#acce7396b93f5ce62888fff49ba7660d4" title="Executes the turn right command to rotate the cell clockwise." alt="" coords="25,779,213,833"/>
+<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="372,417,361,489,338,583,320,633,297,682,269,728,234,769,215,784,212,779,230,765,264,725,293,680,315,631,333,582,356,488,367,417"/>
+</map>

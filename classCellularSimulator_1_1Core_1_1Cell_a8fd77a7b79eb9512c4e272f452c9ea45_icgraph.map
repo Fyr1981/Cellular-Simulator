@@ -1,5 +1,21 @@
 <map id="CellularSimulator::Core::Cell::SetInObjectPool" name="CellularSimulator::Core::Cell::SetInObjectPool">
-<area shape="rect" id="Node000001" title="Set cell in object pool flag." alt="" coords="203,5,399,45"/>
-<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#a02df375b4b8d5bf4e924bd519dde628a" title="Initializes the cell with all the parameters." alt="" coords="5,5,155,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,28,155,28,155,23,189,23"/>
+<area shape="rect" id="Node000001" title="Set cell in object pool flag." alt="" coords="701,133,897,173"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1Cell.html#a7011257739b620c658c8ba6cb1939c96" title="Initializes the cell with all the parameters." alt="" coords="504,101,653,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="687,140,653,135,654,130,688,134"/>
+<area shape="rect" id="Node000010" href="$classCellularSimulator_1_1Core_1_1Cell.html#a02df375b4b8d5bf4e924bd519dde628a" title="Initializes the cell with all the parameters." alt="" coords="504,165,653,205"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="688,172,654,177,653,172,687,167"/>
+<area shape="rect" id="Node000003" href="$classCellularSimulator_1_1Core_1_1Cell.html#ae91ee2db6577d8abed043b89ec5aa51b" title="Constructs a cell with the specified parameters." alt="" coords="285,5,428,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="530,97,455,60,424,48,425,43,457,55,532,92"/>
+<area shape="rect" id="Node000004" href="$classCellularSimulator_1_1Core_1_1Cell.html#a59777f172e0ca2fd7edca03d99e1e1dc" title="Constructs a cell with the specified parameters." alt="" coords="285,69,428,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="490,111,428,102,428,97,491,106"/>
+<area shape="rect" id="Node000005" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a78c057ec4d6e325a09c4d6ab6d636cf1" title="Spawns a new cell at the specified location." alt="" coords="257,133,456,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="491,137,457,142,456,136,490,131"/>
+<area shape="rect" id="Node000009" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a6df9f36da810eaf940debe3939227ecc" title="Spawns a new cell at the specified location." alt="" coords="257,197,456,237"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="517,150,505,156,482,172,457,188,429,200,426,195,455,183,479,168,503,151,514,145"/>
+<area shape="rect" id="Node000006" href="$classCellularSimulator_1_1Core_1_1DivideCommand.html#a02a42ca34a301c5d0ecf41f478d5a3ac" title="Executes the divide command to create offspring cell." alt="" coords="23,54,192,109"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="273,132,192,108,193,103,274,127"/>
+<area shape="rect" id="Node000007" href="$classCellularSimulator_1_1Core_1_1Simulator.html#aa01565a5ecb180cef75adc16936051af" title="Clears the grid and populates it with a random distribution of cells with a specified genome." alt="" coords="13,133,201,173"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="244,156,202,156,202,151,244,151"/>
+<area shape="rect" id="Node000008" href="$classCellularSimulator_1_1Core_1_1Simulator.html#a08f0d0837fa8248ad79b36537eb3b862" title="Clears the grid and populates it with a random distribution of cells with a random genome." alt="" coords="5,197,209,237"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="266,179,186,200,185,195,264,174"/>
 </map>

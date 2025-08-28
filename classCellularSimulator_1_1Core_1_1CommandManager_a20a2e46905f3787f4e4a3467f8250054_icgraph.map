@@ -1,5 +1,5 @@
 <map id="CellularSimulator::Core::CommandManager::RegisterCommand" name="CellularSimulator::Core::CommandManager::RegisterCommand">
 <area shape="rect" id="Node000001" title="Registers a command with the factory." alt="" coords="240,5,424,60"/>
-<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1CommandRegistrar.html#a188bec6a9cfa89acdc0b3b80a7ace2d2" title="Constructor for registering a command." alt="" coords="5,5,192,60"/>
+<area shape="rect" id="Node000002" href="$classCellularSimulator_1_1Core_1_1CommandRegistrar.html#a188bec6a9cfa89acdc0b3b80a7ace2d2" title="Constructor for registering a command in CommandManager." alt="" coords="5,5,192,60"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,35,192,35,192,30,226,30"/>
 </map>
