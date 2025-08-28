@@ -135,6 +135,9 @@ private:
     void ProcessAgent(Cell& Agent);
     void ClearGrid();
 
+    int32_t EnergyConsumptionPerStep = 10;
+    bool bIgnoreDefendOnEnergyConsumption = false;
+
     int32_t Width = 256;
     int32_t Height = 256;
     std::vector<GridTile> Grid;

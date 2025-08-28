@@ -10,6 +10,8 @@ using namespace CellularSimulator::Core;
 
 void DivideCommand::Execute(Simulator& Sim, Cell& Agent)
 {
+    Command::Execute(Sim, Agent);
+    const int32_t HalfEnergy = Agent.GetEnergy() / 2;
     const EDirection Direction = Agent.GetDirection();
     int32_t NextX;
     int32_t NextY;
@@ -27,13 +29,13 @@ void DivideCommand::Execute(Simulator& Sim, Cell& Agent)
             std::uniform_int_distribution<size_t> GeneIndex(0, NewGenome.size() - 1);
             NewGenome[GeneIndex(Rng)] = AvailableCommands[CmdIndex(Rng)];
         }
-        Sim.SpawnCell(NextX, NextY, Agent.GetDirection(), NewGenome, Agent.GetEnergy() / 2);
+        Sim.SpawnCell(NextX, NextY, Agent.GetDirection(), NewGenome, HalfEnergy);
     }
     else
     {
-        Sim.SpawnCell(NextX, NextY, Agent.GetDirection(), NewGenome, Agent.GetEnergy() / 2, Agent.GetColor());
+        Sim.SpawnCell(NextX, NextY, Agent.GetDirection(), NewGenome, HalfEnergy, Agent.GetColor());
     }
-    Agent.ConsumeEnergy(Agent.GetEnergy() / 2);
+    Agent.ConsumeEnergyIgnoreDefendings(HalfEnergy);
 }
 
 namespace

@@ -11,10 +11,12 @@ using namespace CellularSimulator::Core;
 
 EatForwardCommand::EatForwardCommand(int32_t EnergyToSteal): EnergySteal(EnergyToSteal)
 {
+    EnergyCost = EnergySteal / 2;
 }
 
 void EatForwardCommand::Execute(Simulator& Sim, Cell& Agent)
 {
+    Command::Execute(Sim, Agent);
     int32_t NextX, NextY;
     GetForwardXY(Agent.GetDirection(), NextX, NextY, Agent.GetX(), Agent.GetY());
     GridTile* TargetTile = Sim.GetTile(NextX, NextY);

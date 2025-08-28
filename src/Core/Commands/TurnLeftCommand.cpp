@@ -6,6 +6,7 @@ using namespace CellularSimulator::Core;
 
 void TurnLeftCommand::Execute(Simulator& Sim, Cell& Agent)
 {
+    Command::Execute(Sim, Agent);
     Agent.SetDirection(TurnLeft(Agent.GetDirection()));
 }
 

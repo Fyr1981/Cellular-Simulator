@@ -164,6 +164,12 @@ public:
     void ConsumeEnergy(int32_t Amount);
 
     /**
+    * @brief Consumes energy from the cell ignoring the defending amount.
+    * @param Amount The amount of energy to consume.
+    */
+    void ConsumeEnergyIgnoreDefendings(int32_t Amount);
+
+    /**
      * @brief Sets the energy of the cell. It also can remove the defending flag if the energy is less than the current energy.
      * @param InEnergy The energy of the cell.
      */
@@ -198,6 +204,9 @@ public:
      */
     void AddDefendings(int32_t Amount);
 
+    bool IsExecutedThisStep() const;
+    void SetExecutedThisStep(bool bInExecuted);
+
 private:
     void CalculateColor();
 
@@ -207,11 +216,13 @@ private:
     int32_t Energy;
     int32_t MaxEnergy = 100.0f;
     int32_t Defences = 0;
-    int32_t MaxDefences = 3;
+    int32_t MaxDefences = 8;
     std::vector<size_t> Genome;
     size_t GenomePointer = 0;
     bool bInsideObjectPool = true;
     Color CellColor = DARKGRAY;
+
+    bool bExecutedThisStep = false;
 };
 } // namespace Core
 } // namespace CellularSimulator

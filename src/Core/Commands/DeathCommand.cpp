@@ -6,6 +6,7 @@ using namespace CellularSimulator::Core;
 
 void DeathCommand::Execute(Simulator& Sim, Cell& Agent)
 {
+    Command::Execute(Sim, Agent);
     Agent.ConsumeEnergy(100);
 }
 

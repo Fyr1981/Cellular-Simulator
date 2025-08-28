@@ -46,6 +46,7 @@ set(CORE_HEADERS
     include/CellularSimulator/Core/Commands/DeathCommand.h
     include/CellularSimulator/Core/Commands/DefendCommand.h
     include/CellularSimulator/Core/Commands/SkipIfCommand.h
+    include/CellularSimulator/Core/Commands/GiveEnergyCommand.h
     include/CellularSimulator/Core/Commands/IdleCommand.h
     include/CellularSimulator/Core/Commands/PhotosynthesisCommand.h
     include/CellularSimulator/Core/Commands/MoveForwardCommand.h
@@ -61,9 +62,11 @@ set(CORE_SOURCES
     src/Core/Simulator.cpp
     src/Core/CommandManager.cpp
     src/Core/StringInterner.cpp
+    src/Core/Command.cpp
     src/Core/Commands/DeathCommand.cpp
     src/Core/Commands/DefendCommand.cpp
     src/Core/Commands/SkipIfCommand.cpp
+    src/Core/Commands/GiveEnergyCommand.cpp
     src/Core/Commands/IdleCommand.cpp
     src/Core/Commands/PhotosynthesisCommand.cpp
     src/Core/Commands/MoveForwardCommand.cpp

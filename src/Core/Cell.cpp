@@ -111,16 +111,21 @@ void Cell::AddEnergy(int32_t Amount)
 
 void Cell::ConsumeEnergy(int32_t Amount)
 {
+    if (Defences > 0 && Amount < 0)
+    {
+        Defences--;
+        return;
+    }
+    SetEnergy(Energy - Amount);
+}
+
+void Cell::ConsumeEnergyIgnoreDefendings(int32_t Amount)
+{
     SetEnergy(Energy - Amount);
 }
 
 void Cell::SetEnergy(int32_t InEnergy)
 {
-    if (Defences > 0 && InEnergy < Energy)
-    {
-        Defences--;
-        return;
-    }
     Energy = std::max(0, std::min(MaxEnergy, InEnergy));
 }
 
@@ -156,6 +161,16 @@ void Cell::AddDefendings(int32_t Amount)
     {
         Defences = MaxDefences;
     }
+}
+
+bool Cell::IsExecutedThisStep() const
+{
+    return bExecutedThisStep;
+}
+
+void Cell::SetExecutedThisStep(bool bInExecuted)
+{
+    bExecutedThisStep = bInExecuted;
 }
 
 void Cell::CalculateColor()

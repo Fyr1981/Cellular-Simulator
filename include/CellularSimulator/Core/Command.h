@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <cstdint>
 
 namespace CellularSimulator
 {
@@ -21,7 +22,10 @@ public:
      * @param Sim The simulator on which the command is executed.
      * @param Agent The cell for which the command is executed.
      */
-    virtual void Execute(Simulator& Sim, Cell& Agent) = 0;
+    virtual void Execute(Simulator& Sim, Cell& Agent);
+
+protected:
+    int32_t EnergyCost = 0;
 };
 } // namespace Core
 } // namespace CellularSimulator

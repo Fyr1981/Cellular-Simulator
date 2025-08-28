@@ -9,6 +9,7 @@ using namespace CellularSimulator::Core;
 
 void MoveForwardCommand::Execute(Simulator& Sim, Cell& Agent)
 {
+    Command::Execute(Sim, Agent);
     const EDirection Direction = Agent.GetDirection();
     int32_t NextX;
     int32_t NextY;

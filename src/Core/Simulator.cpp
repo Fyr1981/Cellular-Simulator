@@ -23,10 +23,11 @@ void Simulator::Update()
     // Active cell pool
     const auto FirstCellIt = CellPool.begin();
     const auto LastCellIt = CellPool.begin() + ActiveCellCount;
-    // Tile reassignment
+    // Reassignment
     std::for_each(std::execution::par, FirstCellIt, LastCellIt, [&](Cell& Agent)
     {
         GetTile(Agent.GetX(), Agent.GetY())->SetCell(&Agent);
+        Agent.SetExecutedThisStep(false);
     });
     // Cell actions, energy consumption and death
     // Process per 2 lines to avoid data race
@@ -39,7 +40,7 @@ void Simulator::Update()
     });
     std::for_each(std::execution::par, FirstCellIt, LastCellIt, [&](Cell& Agent)
     {
-        if (Agent.GetY() % 4 >= 2)
+        if (Agent.GetY() % 4 >= 2 && !Agent.IsExecutedThisStep())
         {
             ProcessAgent(Agent);
         }
@@ -164,11 +165,19 @@ void Simulator::ProcessAgent(Cell& Agent)
     {
         Cmd->Execute(*this, Agent);
     }
-    Agent.ConsumeEnergy(10.0f);
+    if (bIgnoreDefendOnEnergyConsumption)
+    {
+        Agent.ConsumeEnergyIgnoreDefendings(EnergyConsumptionPerStep);
+    }
+    else
+    {
+        Agent.ConsumeEnergy(EnergyConsumptionPerStep);
+    }
     if (Agent.GetEnergy() <= 0)
     {
         Agent.SetInObjectPool(true);
     }
+    Agent.SetExecutedThisStep(true);
 }
 
 void Simulator::ClearGrid()

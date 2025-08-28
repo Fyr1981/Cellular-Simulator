@@ -5,15 +5,20 @@ namespace CellularSimulator
 {
 namespace Core
 {
-class DefendCommand : public Command
+
+
+class GiveEnergyCommand : public Command
 {
 public:
-    DefendCommand(int32_t Cost, int32_t InNumDefendings);
+    GiveEnergyCommand(int32_t GiveAmount);
     
     void Execute(Simulator& Sim, Cell& Agent) override;
 
 private:
-    int32_t NumDefendings;
+    /**
+    * @brief Amount of energy to give to the target cell
+    */
+    int32_t EnergyToGive = 20;
 };
-} // namespace Core
-} // namespace CellularSimulator
+}
+}
