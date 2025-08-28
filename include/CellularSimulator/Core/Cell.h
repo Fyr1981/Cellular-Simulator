@@ -24,7 +24,7 @@ public:
     /**
      * @brief Default constructor for creating an empty cell in the object pool.
      */
-    Cell() = default;
+    Cell();
 
     /**
      * @brief Constructs a cell with the specified parameters.
@@ -48,8 +48,7 @@ public:
      * @param InInObjectPool Whether the cell is in the object pool or active in the simulation.
      * @param InColor The color of the cell for rendering purposes.
      */
-    Cell(
-        int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, int32_t InEnergy, bool InInObjectPool,
+    Cell(int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, int32_t InEnergy, bool InInObjectPool,
         Color InColor);
 
     /**
@@ -60,7 +59,6 @@ public:
      * @param InGenome The genome of the cell.
      * @param InEnergy The energy of the cell.
      * @param InInObjectPool Whether the cell is in the object pool or active in the simulation.
-     * @param InColor The color of the cell for rendering purposes.
      * @note The color of the cell will be automatically calculated based on its genome.
      */
     void Initialize(int32_t InX, int32_t InY, EDirection InDirection, std::vector<size_t> InGenome, int32_t InEnergy, bool InInObjectPool);
@@ -158,13 +156,19 @@ public:
     void AddEnergy(int32_t Amount);
 
     /**
-     * @brief Consumes energy from the cell.
+     * @brief Consumes energy from the cell. If the cell is defending, it will not consume energy and will remove the defending flag.
      * @param Amount The amount of energy to consume.
      */
     void ConsumeEnergy(int32_t Amount);
 
     /**
-     * @brief Sets the energy of the cell.
+    * @brief Consumes energy from the cell ignoring the defending amount.
+    * @param Amount The amount of energy to consume.
+    */
+    void ConsumeEnergyIgnoreDefendings(int32_t Amount);
+
+    /**
+     * @brief Sets the energy of the cell. It also can remove the defending flag if the energy is less than the current energy.
      * @param InEnergy The energy of the cell.
      */
     void SetEnergy(int32_t InEnergy);
@@ -187,18 +191,48 @@ public:
      */
     void SetColor(Color InColor);
 
+    /**
+     * @brief Moves the gene pointer to the next command.
+     */
+    void MoveToNextCommand();
+
+    /**
+     * @brief Adds defendings to the cell which protects it from energy consumption.
+     * @param Amount The amount of defendings to add.
+     */
+    void AddDefendings(int32_t Amount);
+
+    /**
+     * @brief Checks if cell already executed this step.
+     * @return True if cell already executed this step, false otherwise.
+     */
+    bool IsExecutedThisStep() const;
+    
+    /**
+     * @brief Sets the executed this step flag.
+     * @param bInExecuted The executed this step flag.
+     */
+    void SetExecutedThisStep(bool bInExecuted);
+
 private:
+    /**
+     * @brief Calculates the color of the cell based on its genome.
+     */
     void CalculateColor();
 
-    int32_t X;
-    int32_t Y;
-    EDirection Direction;
-    int32_t Energy;
+    int32_t X = 0;
+    int32_t Y = 0;
+    EDirection Direction = EDirection::North;
+    int32_t Energy = 0;
     int32_t MaxEnergy = 100.0f;
+    int32_t Defences = 0;
+    int32_t MaxDefences = 8;
     std::vector<size_t> Genome;
     size_t GenomePointer = 0;
     bool bInsideObjectPool = true;
     Color CellColor = DARKGRAY;
+
+    bool bExecutedThisStep = false;
 };
 } // namespace Core
 } // namespace CellularSimulator

@@ -5,6 +5,7 @@ using namespace CellularSimulator::Core;
 
 void IdleCommand::Execute(Simulator& Sim, Cell& Agent)
 {
+    Command::Execute(Sim, Agent);
 }
 
 namespace

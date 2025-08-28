@@ -1,7 +1,6 @@
 #include "CellularSimulator/App/Application.h"
 #include <chrono>
 #include <iomanip>
-#include <iostream>
 #include "CellularSimulator/App/ConfigLoader.h"
 #include "CellularSimulator/Core/GridTile.h"
 #include "CellularSimulator/Core/Cell.h"
@@ -15,16 +14,7 @@ using namespace CellularSimulator::App;
 
 Application::Application()
 {
-    auto LoadedConfig = ConfigLoader::LoadConfigFromFile("config.json");
-    if (LoadedConfig)
-    {
-        AppConfig = *LoadedConfig;
-        std::cout << "CellularSimulator config loaded from config.json" << '\n';
-    }
-    else
-    {
-        std::cout << "config.json for CellularSimulator not found or invalid. Using default settings." << '\n';
-    }
+    const Config& AppConfig = ConfigLoader::GetConfig();
 
     const int32_t WindowHeight = AppConfig.WindowHeight;
     const int32_t WindowWidth = AppConfig.WindowWidth;
@@ -42,7 +32,22 @@ Application::Application()
         Seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
     }
     Sim = std::make_unique<Core::Simulator>(SimWidth, SimHeight, Seed);
-    Sim->Randomize(AppConfig.InitialDensity, AppConfig.GenomeLength, AppConfig.InitialEnergy);
+    if (AppConfig.bRandomGenome)
+    {
+        Sim->Randomize(AppConfig.InitialDensity, AppConfig.GenomeLength, AppConfig.InitialEnergy);
+    }
+    else
+    {
+        std::vector<size_t> Genome;
+        for (const std::string& GeneName : AppConfig.InitialPopulationGenome)
+        {
+            Genome.push_back(Core::StringInterner::GetInstance().Intern(GeneName));
+        }
+        Sim->Populate(AppConfig.InitialDensity, Genome, AppConfig.InitialEnergy);
+    }
+    Sim->SetEnergyConsumptionPerStep(AppConfig.EnergyConsumption);
+    Sim->SetIgnoreDefendOnEnergyConsumption(AppConfig.bEnergyConsumptionIgnoreDefence);
+
     UpdatesPerSecond = AppConfig.UpdatesPerSecond;
     MaxUpdateTime = AppConfig.MaxUpdateTime;
 
@@ -59,7 +64,7 @@ Application::Application()
     WorldCamera.zoom = InitialZoom;
     WorldCamera.target = {WorldWidthPx / 2.0f, WorldHeightPx / 2.0f};
 
-    if(AppConfig.bStartFullscreen)
+    if (AppConfig.bStartFullscreen)
     {
         ToggleFullscreen();
     }
@@ -210,9 +215,8 @@ void Application::ProcessInput()
         Vector2 MouseWorldPos = GetScreenToWorld2D(GetMousePosition(), WorldCamera);
         WorldCamera.offset = GetMousePosition();
         WorldCamera.target = MouseWorldPos;
-        const float ZoomIncrement = 0.125f;
-        WorldCamera.zoom += (WheelMove * ZoomIncrement);
-        if (WorldCamera.zoom < ZoomIncrement) WorldCamera.zoom = ZoomIncrement;
+        WorldCamera.zoom += (WheelMove * MouseZoomIncrement);
+        if (WorldCamera.zoom < MouseZoomIncrement) WorldCamera.zoom = MouseZoomIncrement;
     }
     if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
     {

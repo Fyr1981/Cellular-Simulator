@@ -19,17 +19,15 @@ Simulator::Simulator(int32_t InWidth, int32_t InHeight, int32_t SimulationSeed) 
 void Simulator::Update()
 {
     // Tile cleanup
-    std::for_each(std::execution::par, Grid.begin(), Grid.end(), [](GridTile& Tile)
-    {
-        Tile.SetCell(nullptr);
-    });
+    ClearGrid();
     // Active cell pool
     const auto FirstCellIt = CellPool.begin();
     const auto LastCellIt = CellPool.begin() + ActiveCellCount;
-    // Tile reassignment
+    // Reassignment
     std::for_each(std::execution::par, FirstCellIt, LastCellIt, [&](Cell& Agent)
     {
         GetTile(Agent.GetX(), Agent.GetY())->SetCell(&Agent);
+        Agent.SetExecutedThisStep(false);
     });
     // Cell actions, energy consumption and death
     // Process per 2 lines to avoid data race
@@ -42,7 +40,7 @@ void Simulator::Update()
     });
     std::for_each(std::execution::par, FirstCellIt, LastCellIt, [&](Cell& Agent)
     {
-        if (Agent.GetY() % 4 >= 2)
+        if (Agent.GetY() % 4 >= 2 && !Agent.IsExecutedThisStep())
         {
             ProcessAgent(Agent);
         }
@@ -55,10 +53,7 @@ void Simulator::Update()
 
 void Simulator::Randomize(float Density, int32_t GenomeLength, int32_t Energy)
 {
-    for (auto& Tile : Grid)
-    {
-        Tile.SetCell(nullptr);
-    }
+    ClearGrid();
     const std::vector<size_t> AvailableCommands = CommandManager::GetRegisteredCommandNamesHashes();
     if (AvailableCommands.empty()) return;
     std::mt19937 Rng = GetRNG();
@@ -80,10 +75,31 @@ void Simulator::Randomize(float Density, int32_t GenomeLength, int32_t Energy)
     }
 }
 
-GridTile* Simulator::GetTile(int32_t X, int32_t Y)
+void Simulator::Populate(float Density, const std::vector<size_t>& Genome, int32_t Energy)
+{
+    ClearGrid();
+    std::mt19937 Rng = GetRNG();
+    std::uniform_real_distribution<float> Dist(0.0f, 1.0f);
+    for (int32_t Y = 0; Y < Height; ++Y)
+    {
+        for (int32_t X = 0; X < Width; ++X)
+        {
+            if (Dist(Rng) > Density) continue;
+            SpawnCell(X, Y, EDirection::North, Genome, Energy);
+        }
+    }
+}
+
+const GridTile* Simulator::GetTile(int32_t X, int32_t Y) const
 {
     if (X < 0 || X >= Width || Y < 0 || Y >= Height) return nullptr;
     return &Grid[static_cast<size_t>(Y) * Width + X];
+}
+
+GridTile* Simulator::GetTile(int32_t X, int32_t Y)
+{
+    const GridTile* СonstTile = static_cast<const Simulator*>(this)->GetTile(X, Y);
+    return const_cast<GridTile*>(СonstTile);
 }
 
 int32_t Simulator::GetWidth() const
@@ -149,15 +165,41 @@ Cell* Simulator::GetActiveCellByIndex(size_t Index)
     return &CellPool[Index];
 }
 
+void Simulator::SetEnergyConsumptionPerStep(int32_t InEnergyConsumptionPerStep)
+{
+    EnergyConsumptionPerStep = InEnergyConsumptionPerStep;
+}
+
+void Simulator::SetIgnoreDefendOnEnergyConsumption(bool bInIgnoreDefendOnEnergyConsumption)
+{
+    bIgnoreDefendOnEnergyConsumption = bInIgnoreDefendOnEnergyConsumption;
+}
+
 void Simulator::ProcessAgent(Cell& Agent)
 {
     if (Command* Cmd = CommandManager::GetCommand(Agent.DecideNextCommand()))
     {
         Cmd->Execute(*this, Agent);
     }
-    Agent.ConsumeEnergy(10.0f);
+    if (bIgnoreDefendOnEnergyConsumption)
+    {
+        Agent.ConsumeEnergyIgnoreDefendings(EnergyConsumptionPerStep);
+    }
+    else
+    {
+        Agent.ConsumeEnergy(EnergyConsumptionPerStep);
+    }
     if (Agent.GetEnergy() <= 0)
     {
         Agent.SetInObjectPool(true);
     }
+    Agent.SetExecutedThisStep(true);
+}
+
+void Simulator::ClearGrid()
+{
+    std::for_each(std::execution::par, Grid.begin(), Grid.end(), [](GridTile& Tile)
+    {
+        Tile.SetCell(nullptr);
+    });
 }

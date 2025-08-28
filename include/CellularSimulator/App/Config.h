@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <cstdint>
 #include <string>
+#include <vector>
 
 namespace CellularSimulator
 {
@@ -53,17 +54,61 @@ struct Config
     */
     float MaxUpdateTime = 0.25f;
     /**
+    * @brief Initial energy for each cell.
+    */
+    int32_t InitialEnergy = 100;
+    /**
     * @brief Seed for random number generation.
     */
     int32_t Seed = 0;
     /**
-    * @brief Length of the genome for each cell.
+     * @brief Whether to initialize cells with a random genome.
+     */
+    bool bRandomGenome = true;
+    /**
+    * @brief Length of the genome for each cell if initialized with a random genome.
     */
     int32_t GenomeLength = 16;
     /**
-    * @brief Initial energy for each cell.
-    */
-    int32_t InitialEnergy = 100;
+     * @brief Genome for the initial population of cells if bRandomGenome is false.
+     */
+    std::vector<std::string> InitialPopulationGenome;
+    /**
+     * @brief Energy consumption per cell per update.
+     */
+    int32_t EnergyConsumption = 10;
+    /**
+     * @brief Whether to ignore defence when consuming energy every step.
+     */
+    bool bEnergyConsumptionIgnoreDefence = false;
+
+    // Cell settings
+    /**
+     * @brief Maximum number of defences a cell can have.
+     */
+    int32_t MaxDefences = 10;
+    /**
+     * @brief Maximum energy a cell can have.
+     */
+    int32_t MaxEnergy = 100;
+
+    // Command settings
+    /**
+     * @brief Energy cost per defence in DefendCommand.
+     */
+    int32_t PerDefendEnergyCost = 10;
+    /**
+     * @brief Maximum energy steal in EatForwardCommand.
+     */
+    int32_t MaxEatForwardEnergySteal = 100;
+    /**
+     * @brief Maximum energy amount in GiveEnergyCommand.
+     */
+    int32_t MaxGiveEnergyAmount = 100;
+    /**
+     * @brief Energy gain per cell per update in PhotosynthesisCommand.
+     */
+    int32_t PhotosynthesisEnergyGain = 15;
 };
 
 } // namespace App

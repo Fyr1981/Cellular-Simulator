@@ -6,6 +6,7 @@ namespace CellularSimulator
 {
 namespace App
 {
+
 struct Config;
 
 /**
@@ -15,6 +16,18 @@ struct Config;
 class ConfigLoader
 {
 public:
+    ConfigLoader(const ConfigLoader&) = delete;
+    ConfigLoader& operator=(const ConfigLoader&) = delete;
+
+    /**
+     * @brief Provides access to the loaded configuration.
+     * @return A reference to the loaded configuration.
+     */
+    static const Config& GetConfig();
+
+private:
+    ConfigLoader() = default;
+    static Config& LoadAndGetInstance();
     /**
      * @brief Loads the configuration from a JSON file.
      * @param FilePath 

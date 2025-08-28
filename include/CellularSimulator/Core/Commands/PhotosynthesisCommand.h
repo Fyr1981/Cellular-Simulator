@@ -14,6 +14,11 @@ class PhotosynthesisCommand : public Command
 {
 public:
     /**
+     * @brief Construct a new Photosynthesis Command object
+     * @param Energy The amount of energy to be gained on execution
+     */
+    PhotosynthesisCommand(int32_t Energy);
+    /**
     * @brief Executes the photosynthesis command to generate energy
     * 
     * Adds a fixed amount of energy (20 units) to the executing cell.
@@ -29,6 +34,9 @@ public:
     * @note Represents a basic energy production mechanism
     */
     void Execute(Simulator& Sim, Cell& Agent) override;
+
+private:
+    int32_t EnergyGain = 15;
 };
 } // namespace Core
 } // namespace CellularSimulator

@@ -1,4 +1,6 @@
 ﻿#pragma once
+#include <cstdint>
+
 #include "CellularSimulator/Core/Command.h"
 
 namespace CellularSimulator
@@ -13,6 +15,12 @@ namespace Core
 class EatForwardCommand : public Command
 {
 public:
+    /**
+     * @brief Construct a new Eat Forward Command object
+     * @param EnergyToSteal Amount of energy to steal from the target cell.
+     */
+    EatForwardCommand(int32_t EnergyToSteal);
+    
     /**
     * @brief Executes the eat forward command to steal energy from target cell
     * 
@@ -29,6 +37,12 @@ public:
     * @note Victim's energy is reduced by the amount stolen
     */
     void Execute(Simulator& Sim, Cell& Agent) override;
+
+private:
+    /**
+     * @brief Amount of energy to steal from the target cell.
+     */
+    int32_t EnergySteal = 20;
 };
 
 } // namespace Core

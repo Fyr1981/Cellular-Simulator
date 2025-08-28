@@ -14,6 +14,13 @@ class DivideCommand : public Command
 {
 public:
     /**
+     * @brief Construct a new Divide Command object with a mutation chance. With this mutation chance
+     * one of the genes can be replaced with an any available command.
+     * @param InMutationChance Mutation chance for the offspring cell
+     */
+    DivideCommand(double InMutationChance);
+    
+    /**
      * @brief Executes the divide command to create offspring cell
      * 
      * Creates a new cell in the forward direction with half of the parent's energy.
@@ -29,6 +36,9 @@ public:
      * @note Energy is split equally between parent and offspring
      */
     void Execute(Simulator& Sim, Cell& Agent) override;
+
+private:
+    double MutationChance;
 };
 
 }  // namespace Core

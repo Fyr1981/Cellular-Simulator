@@ -38,7 +38,7 @@ public:
     void Update();
 
     /**
-     * @brief Clears the grid and populates it with a random distribution of cells.
+     * @brief Clears the grid and populates it with a random distribution of cells with a random genome.
      * @param Density The probability (0.0 to 1.0) for any tile to contain a cell.
      * @param GenomeLength Num of genes in the genome.
      * @param Energy Initial energy of the cell.
@@ -46,12 +46,28 @@ public:
     void Randomize(float Density, int32_t GenomeLength, int32_t Energy);
 
     /**
+    * @brief Clears the grid and populates it with a random distribution of cells with a specified genome.
+    * @param Density The probability (0.0 to 1.0) for any tile to contain a cell.
+    * @param Genome The genome of the cells.
+    * @param Energy Initial energy of the cell.
+    */
+    void Populate(float Density, const std::vector<size_t>& Genome, int32_t Energy);
+
+    /**
      * @brief Provides read-only access to a specific tile on the grid.
      * @param X The x-coordinate of the tile.
      * @param Y The y-coordinate of the tile.
      * @return A const pointer to the Tile, or nullptr if coordinates are out of bounds.
      */
-    [[nodiscard]] GridTile* GetTile(int32_t X, int32_t Y);
+    [[nodiscard]] const GridTile* GetTile(int32_t X, int32_t Y) const;
+
+    /**
+    * @brief Provides read-write access to a specific tile on the grid.
+    * @param X The x-coordinate of the tile.
+    * @param Y The y-coordinate of the tile.
+    * @return A const pointer to the Tile, or nullptr if coordinates are out of bounds.
+    */
+    [[nodiscard]]GridTile* GetTile(int32_t X, int32_t Y);
 
     /**
      * @brief Gets the width of the simulation grid.
@@ -123,8 +139,24 @@ public:
      */
     Cell* GetActiveCellByIndex(size_t Index);
 
+    /**
+     * @brief Sets the energy consumption per step for cells.
+     * @param InEnergyConsumptionPerStep The new energy consumption per step.
+     */
+    void SetEnergyConsumptionPerStep(int32_t InEnergyConsumptionPerStep);
+
+    /**
+     * @brief Sets whether to ignore defendings when cells consume energy.
+     * @param bInIgnoreDefendOnEnergyConsumption Whether to ignore defendings when cells consume energy.
+     */
+    void SetIgnoreDefendOnEnergyConsumption(bool bInIgnoreDefendOnEnergyConsumption);
+
 private:
     void ProcessAgent(Cell& Agent);
+    void ClearGrid();
+
+    int32_t EnergyConsumptionPerStep = 10;
+    bool bIgnoreDefendOnEnergyConsumption = false;
 
     int32_t Width = 256;
     int32_t Height = 256;
